@@ -11,8 +11,12 @@ namespace MUE.Models
         public string catagoryName;
         public string catagoryDescription;
 
+        
         public ICollection<IsACatagory> IsACatagory;
+
         public ICollection<TypeOfProject> TypeOfProject;
 
     }
+
+
 }

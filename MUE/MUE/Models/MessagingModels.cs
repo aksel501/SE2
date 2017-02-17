@@ -9,14 +9,20 @@ namespace MUE.Models
 {
     public class Message
     {
-        public string ApplicationUserID { get; set; }
+
+        
+        public int MessageID { get; set; }
 
         public string text { get; set; }
         public DateTime made { get; set; }
 
-        [ForeignKey("ApplicationUserID")]
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationUserID { get; set; }
+
+        [Required] 
         public ApplicationUser ApplicationUser { get; set; }
 
+        [Required]
         public Conversation Conversation { get; set; }
 
     }
@@ -30,8 +36,11 @@ namespace MUE.Models
         public DateTime Started { get; set; }
         public string subject { get; set; }
 
+
         public string ApplicationUserID { get; set; }
-        public string MessageID { get; set; }
+
+
+        public int MessageID { get; set; }
 
         [ForeignKey("MessageID")]
         public ICollection<Message> Message { get; set; }
