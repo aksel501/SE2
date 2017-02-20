@@ -24,19 +24,16 @@ namespace MUE.Models
 
 
 
+
+
     }
 
-    public class Reply
+    public class Reply: Post
     {
         public DateTime whenReplied { get; set; }
 
-        [Key]
-        public int ParentID { get; set; }
-
+        
         public int RepliedPostID { get; set; }
-
-        [ForeignKey ("ParentID")]
-        public Post Parent { get; set; }
 
         [ForeignKey("RepliedPostID")]
         public Post RepliedToPost { get; set; }
