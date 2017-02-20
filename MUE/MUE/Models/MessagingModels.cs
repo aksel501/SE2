@@ -29,7 +29,7 @@ namespace MUE.Models
 
     public class Conversation
     {
-        [Key]
+        
         public int ConversationID { get; set; }
 
         public DateTime LastSeen { get; set; }

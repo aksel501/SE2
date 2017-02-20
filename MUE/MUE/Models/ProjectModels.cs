@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -9,7 +10,8 @@ namespace MUE.Models
 {
     public class Project
     {
-        int ProjectID { get; set; }
+        [Key]
+        int ID { get; set; }
         bool completed { get; set; }
         string title { get; set; }
         string description { get; set; }
@@ -46,4 +48,26 @@ namespace MUE.Models
         [ForeignKey("ApplicationUserID")]
         public ApplicationUser ApplicationUser;
     }
+
+    //public class ProjectDBContext : DbContext
+    //{
+
+    //    public static ProjectDBContext Create()
+    //    {
+    //        return new ProjectDBContext();
+    //    }
+
+    //    public DbSet<Project> Project { get; set; }
+    //}
+
+    //public class CatagoryDBContext : DbContext
+    //{
+
+    //    public static CatagoryDBContext Create()
+    //    {
+    //        return new CatagoryDBContext();
+    //    }
+
+    //    public DbSet<Catagory> Catagory { get; set; }
+    //}
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -18,27 +19,52 @@ namespace MUE.Models
 
         public ApplicationUser ApplicationUser { get; set; }
 
-        public ICollection<Reply> Reply { get; set; }
+        //public ICollection<Reply> Reply { get; set; }
 
-        public Reply Child { get; set; }
+        //public Reply Child { get; set; }
+
+
 
 
 
     }
 
-    public class Reply
-    {
-        public DateTime whenReplied { get; set; }
+    //public class Reply : Post
+    //{
+    //    public DateTime whenReplied { get; set; }
 
-        [Key]
-        public int ParentID { get; set; }
 
-        public int RepliedPostID { get; set; }
+    //    [ForeignKey("Post")]
+    //    public int RepliedToPostID { get; set; }
 
-        [ForeignKey ("ParentID")]
-        public Post Parent { get; set; }
 
-        [ForeignKey("RepliedPostID")]
-        public Post RepliedToPost { get; set; }
-    }
+    //    public Post Post { get; set; }
+    //}
+
+    //public class InheritanceMappingContext : DbContext
+    //{
+    //    public DbSet<Post> Post { get; set; }
+    //}
+
+    //public class ReplyDBContext : DbContext
+    //{
+
+    //    public static ReplyDBContext Create()
+    //    {
+    //        return new ReplyDBContext();
+    //    }
+
+    //    public DbSet<Reply> Reply { get; set; }
+    //}
+
+    //public class PostDBContext : DbContext
+    //{
+
+    //    public static PostDBContext Create()
+    //    {
+    //        return new PostDBContext();
+    //    }
+
+    //    public DbSet<Post> Post { get; set; }
+    //}
 }
