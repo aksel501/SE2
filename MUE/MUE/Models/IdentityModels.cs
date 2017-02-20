@@ -50,5 +50,12 @@ namespace MUE.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Project> Project { get; set; }
+    }
+
+    public class InheritanceMappingContext : DbContext
+    {
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
     }
 }
