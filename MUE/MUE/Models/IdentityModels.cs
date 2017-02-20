@@ -18,7 +18,7 @@ namespace MUE.Models
 
         public char MiddleInit { get; set; }
 
-        public Collaborator Collaborator { get; set; }
+        //public Collaborator Collaborator { get; set; }
 
         public ICollection<Post> Post { get; set; }
 
