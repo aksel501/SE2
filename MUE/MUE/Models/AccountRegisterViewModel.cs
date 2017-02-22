@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using MUE.Models;
+using System.Web.Security;
+using System.Web.Mvc;
 
 namespace MUE.Models
 {
