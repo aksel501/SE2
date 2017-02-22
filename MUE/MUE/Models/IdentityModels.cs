@@ -22,9 +22,9 @@ namespace MUE.Models
 
         public ICollection<Post> Post { get; set; }
 
-        public ICollection<Message> Message { get; set; }
+        //public ICollection<Message> Message { get; set; }
 
-        public ICollection<Conversation> Conversation { get; set; }
+        //public ICollection<Conversation> Conversation { get; set; }
 
 
 

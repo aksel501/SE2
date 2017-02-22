@@ -157,10 +157,10 @@ namespace MUE.Controllers
         {
             if (ModelState.IsValid)
             {
-                string EncodedResponse = Request.Form["g-Recaptcha-Response"];
-                bool IsCaptchaValid=(ReCaptcha.Validate(EncodedResponse)=="True" ? true: false);
-                if (IsCaptchaValid)
-                {
+                //string EncodedResponse = Request.Form["g-Recaptcha-Response"];
+                //bool IsCaptchaValid=(ReCaptcha.Validate(EncodedResponse)=="True" ? true: false);
+                //if (IsCaptchaValid)
+                //{
                     var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                     var result = await UserManager.CreateAsync(user, model.Password);
                     
@@ -181,12 +181,12 @@ namespace MUE.Controllers
                         return RedirectToAction("Index", "Home");
                     }
                     AddErrors(result);
-                }
-                else {
+                //}
+                //else {
 
-                    TempData["recaptcha"] = "Please verify that you are not a robt";
+                //    TempData["recaptcha"] = "Please verify that you are not a robot";
 
-                }
+                //}
                 //AccountRegisterViewModel ARVM = new AccountRegisterViewModel();
 
                 

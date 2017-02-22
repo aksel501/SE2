@@ -208,7 +208,6 @@
     <Compile Include="Models\ForumPostModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\MessagingModels.cs" />
     <Compile Include="Models\ProjectModels.cs" />
     <Compile Include="Models\ReCaptcha.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
