@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "New Message";
+}
+
+<div class="container">
+    <div class="row">
+        <h2 align="center">New message</h2>
+        <hr style="border-bottom : 5px" />
+        
+    </div>
+    <div class="row">
+        <div class="col-md-12" align="center">
+            <form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
+                <div class="row">
+                    <label for="Receiver">Receiver: </label><br />
+                    <input id="Receiver" class="input" receiver="receiver" type="text" value="" size="80" /><br />
+                </div>
+                <div class="row">
+                    <label for="Subject">Message subject:</label><br />
+                    <input id="name" class="input" name="name" type="text" value="" size="80" /><br />
+                </div>
+              
+                <div class="row">
+                    <label for="email">Your email:</label><br />
+                    <input id="email" class="input" name="email" type="text" value="" size="80" /><br />
+                </div>
+                <div class="row">
+                    <label for="message">Your message:</label><br />
+                    <textarea id="message" class="input" name="message" rows="7" cols="80"></textarea><br />
+                </div>
+                <input id="submit_button" type="submit" value="Send Message" />
+            </form>						
+        </div>
+        <div class="row">
+            <div>
+                <a href="Index">Back to messages</a>
+            </div>
+        </div>
+    </div>
+</div>
+
