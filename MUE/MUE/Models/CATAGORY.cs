@@ -6,21 +6,26 @@ namespace MUE.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class AspNetRole
+    [Table("CATAGORY")]
+    public partial class CATAGORY
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AspNetRole()
+        public CATAGORY()
         {
-            AspNetUsers = new HashSet<AspNetUser>();
+            PROJECTs = new HashSet<PROJECT>();
         }
 
-        public string Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ID { get; set; }
 
         [Required]
-        [StringLength(256)]
-        public string Name { get; set; }
+        [StringLength(64)]
+        public string NAME { get; set; }
+
+        [Required]
+        public string DESCRIPTION { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
+        public virtual ICollection<PROJECT> PROJECTs { get; set; }
     }
 }

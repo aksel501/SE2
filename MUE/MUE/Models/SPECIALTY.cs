@@ -6,20 +6,21 @@ namespace MUE.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class AspNetUserLogin
+    [Table("SPECIALTY")]
+    public partial class SPECIALTY
     {
         [Key]
         [Column(Order = 0)]
-        public string LoginProvider { get; set; }
+        public string ID { get; set; }
 
         [Key]
         [Column(Order = 1)]
-        public string ProviderKey { get; set; }
+        [StringLength(64)]
+        public string NAME { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
-        public string UserId { get; set; }
+        [Required]
+        public string DESCRIPTION { get; set; }
 
-        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual EXPERT EXPERT { get; set; }
     }
 }

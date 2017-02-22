@@ -18,14 +18,6 @@ namespace MUE.Models
 
         public char MiddleInit { get; set; }
 
-        public Collaborator Collaborator { get; set; }
-
-        public ICollection<Post> Post { get; set; }
-
-        public ICollection<Message> Message { get; set; }
-
-        public ICollection<Conversation> Conversation { get; set; }
-
 
 
 
@@ -51,11 +43,5 @@ namespace MUE.Models
             return new ApplicationDbContext();
         }
 
-        public DbSet<Project> Project { get; set; }
-    }
-
-    public class InheritanceMappingContext : DbContext
-    {
-        public DbSet<ApplicationUser> ApplicationUser { get; set; }
     }
 }
