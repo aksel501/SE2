@@ -163,7 +163,7 @@ namespace MUE.Controllers
                 {
                     var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                     var result = await UserManager.CreateAsync(user, model.Password);
-                    var expert = new Expert { Specialty = model.Specialty };
+                    
                     user.FirstName = model.FirstName;
                     user.LastName = model.LastName;
                     user.MiddleInit = model.MiddleInt;
@@ -208,7 +208,7 @@ namespace MUE.Controllers
 
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
-                var expert = new Expert { Specialty = model.Specialty };
+                //var expert = new Expert { Specialty = model.Specialty };
                 user.FirstName = model.FirstName;
                 user.LastName = model.LastName;
                 user.MiddleInit = model.MiddleInt;

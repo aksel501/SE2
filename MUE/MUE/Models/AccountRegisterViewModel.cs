@@ -33,32 +33,36 @@ namespace MUE.Models
         //public Expert Specialty { get; set; }
 
         //public Expert IsaCatagory { get; set; }
-
+        [Required]
         public String Email { get; set; }
 
+        [Required]
         public String Password { get; set; }
         [Display(Name = "Confirm Password")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public String ConfirmPassword { get; set; }
 
+        [Required]
         [Display(Name = "First Name")]
         public String FirstName { get; set; }
+
+        [Required]
         [Display(Name = "Last Name")]
         public String LastName { get; set; }
+
         [Display(Name = "Middle Initial")]
-        [MaxLength(length: 1)]
         public Char MiddleInt { get; set; }
         [Display(Name = "Name of Specialty")]
         public String NameOfSpecialty { get; set; }
         [Display(Name = "Description of Specialty")]
         public String DescriptionOfSpecialty { get; set; }
 
-        public ICollection<Specialty> Specialty { get; set; }
+        //public ICollection<Specialty> Specialty { get; set; }
 
-        public ICollection<IsACatagory> IsACatagory { get; set; }
+        //public ICollection<IsACatagory> IsACatagory { get; set; }
 
         
-        [Display(Name = "Are you a robot?")]
-        public bool isARobot { get; set; }
+        
 
 
     }
