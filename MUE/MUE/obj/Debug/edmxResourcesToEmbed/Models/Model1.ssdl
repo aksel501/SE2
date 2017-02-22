@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db562cddb93b5540c7ac57a71600deabc4Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="disabled" Type="bit" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" />
+    <Property Name="LastName" Type="nvarchar(max)" />
+    <Property Name="Collaborator_ProjectID" Type="int" Nullable="false" />
+    <Property Name="Collaborator_ApplicationUserID" Type="int" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ConversationApplicationUsers">
+    <Key>
+      <PropertyRef Name="Conversation_ConversationID" />
+      <PropertyRef Name="ApplicationUser_Id" />
+    </Key>
+    <Property Name="Conversation_ConversationID" Type="int" Nullable="false" />
+    <Property Name="ApplicationUser_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Conversations">
+    <Key>
+      <PropertyRef Name="ConversationID" />
+    </Key>
+    <Property Name="ConversationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LastSeen" Type="datetime" Nullable="false" />
+    <Property Name="Started" Type="datetime" Nullable="false" />
+    <Property Name="subject" Type="nvarchar(max)" />
+    <Property Name="ApplicationUserID" Type="nvarchar(max)" />
+    <Property Name="MessageID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Messages">
+    <Key>
+      <PropertyRef Name="MessageID" />
+    </Key>
+    <Property Name="MessageID" Type="int" Nullable="false" />
+    <Property Name="text" Type="nvarchar(max)" />
+    <Property Name="made" Type="datetime" Nullable="false" />
+    <Property Name="ApplicationUserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Posts">
+    <Key>
+      <PropertyRef Name="PostID" />
+    </Key>
+    <Property Name="PostID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="subject" Type="nvarchar(max)" />
+    <Property Name="text" Type="nvarchar(max)" />
+    <Property Name="dateTimePosted" Type="datetime" Nullable="false" />
+    <Property Name="ApplicationUserID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Child_ParentID" Type="int" />
+  </EntityType>
+  <EntityType Name="Replies">
+    <Key>
+      <PropertyRef Name="ParentID" />
+    </Key>
+    <Property Name="ParentID" Type="int" Nullable="false" />
+    <Property Name="whenReplied" Type="datetime" Nullable="false" />
+    <Property Name="RepliedPostID" Type="int" Nullable="false" />
+    <Property Name="Post_PostID" Type="int" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ConversationApplicationUsers_dbo_AspNetUsers_ApplicationUser_Id">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ConversationApplicationUsers" Type="Self.ConversationApplicationUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ConversationApplicationUsers">
+        <PropertyRef Name="ApplicationUser_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ConversationApplicationUsers_dbo_Conversations_Conversation_ConversationID">
+    <End Role="Conversations" Type="Self.Conversations" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ConversationApplicationUsers" Type="Self.ConversationApplicationUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Conversations">
+        <PropertyRef Name="ConversationID" />
+      </Principal>
+      <Dependent Role="ConversationApplicationUsers">
+        <PropertyRef Name="Conversation_ConversationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Messages_dbo_AspNetUsers_ApplicationUserID">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Messages">
+        <PropertyRef Name="ApplicationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Messages_dbo_Conversations_MessageID">
+    <End Role="Conversations" Type="Self.Conversations" Multiplicity="1" />
+    <End Role="Messages" Type="Self.Messages" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Conversations">
+        <PropertyRef Name="ConversationID" />
+      </Principal>
+      <Dependent Role="Messages">
+        <PropertyRef Name="MessageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Posts_dbo_AspNetUsers_ApplicationUserID">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Posts">
+        <PropertyRef Name="ApplicationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Posts_dbo_Replies_Child_ParentID">
+    <End Role="Replies" Type="Self.Replies" Multiplicity="0..1" />
+    <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Replies">
+        <PropertyRef Name="ParentID" />
+      </Principal>
+      <Dependent Role="Posts">
+        <PropertyRef Name="Child_ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Replies_dbo_Posts_ParentID">
+    <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
+    <End Role="Replies" Type="Self.Replies" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Posts">
+        <PropertyRef Name="PostID" />
+      </Principal>
+      <Dependent Role="Replies">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Replies_dbo_Posts_Post_PostID">
+    <End Role="Posts" Type="Self.Posts" Multiplicity="0..1" />
+    <End Role="Replies" Type="Self.Replies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posts">
+        <PropertyRef Name="PostID" />
+      </Principal>
+      <Dependent Role="Replies">
+        <PropertyRef Name="Post_PostID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Replies_dbo_Posts_RepliedPostID">
+    <End Role="Posts" Type="Self.Posts" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Replies" Type="Self.Replies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posts">
+        <PropertyRef Name="PostID" />
+      </Principal>
+      <Dependent Role="Replies">
+        <PropertyRef Name="RepliedPostID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="db562cddb93b5540c7ac57a71600deabc4ModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ConversationApplicationUsers" EntityType="Self.ConversationApplicationUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Conversations" EntityType="Self.Conversations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Replies" EntityType="Self.Replies" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ConversationApplicationUsers_dbo_AspNetUsers_ApplicationUser_Id" Association="Self.FK_dbo_ConversationApplicationUsers_dbo_AspNetUsers_ApplicationUser_Id">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="ConversationApplicationUsers" EntitySet="ConversationApplicationUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ConversationApplicationUsers_dbo_Conversations_Conversation_ConversationID" Association="Self.FK_dbo_ConversationApplicationUsers_dbo_Conversations_Conversation_ConversationID">
+      <End Role="Conversations" EntitySet="Conversations" />
+      <End Role="ConversationApplicationUsers" EntitySet="ConversationApplicationUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Messages_dbo_AspNetUsers_ApplicationUserID" Association="Self.FK_dbo_Messages_dbo_AspNetUsers_ApplicationUserID">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Messages" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Messages_dbo_Conversations_MessageID" Association="Self.FK_dbo_Messages_dbo_Conversations_MessageID">
+      <End Role="Conversations" EntitySet="Conversations" />
+      <End Role="Messages" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Posts_dbo_AspNetUsers_ApplicationUserID" Association="Self.FK_dbo_Posts_dbo_AspNetUsers_ApplicationUserID">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Posts" EntitySet="Posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Posts_dbo_Replies_Child_ParentID" Association="Self.FK_dbo_Posts_dbo_Replies_Child_ParentID">
+      <End Role="Replies" EntitySet="Replies" />
+      <End Role="Posts" EntitySet="Posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Replies_dbo_Posts_ParentID" Association="Self.FK_dbo_Replies_dbo_Posts_ParentID">
+      <End Role="Posts" EntitySet="Posts" />
+      <End Role="Replies" EntitySet="Replies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Replies_dbo_Posts_Post_PostID" Association="Self.FK_dbo_Replies_dbo_Posts_Post_PostID">
+      <End Role="Posts" EntitySet="Posts" />
+      <End Role="Replies" EntitySet="Replies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Replies_dbo_Posts_RepliedPostID" Association="Self.FK_dbo_Replies_dbo_Posts_RepliedPostID">
+      <End Role="Posts" EntitySet="Posts" />
+      <End Role="Replies" EntitySet="Replies" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
