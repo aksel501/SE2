@@ -28,7 +28,7 @@ namespace MUE.Models
         public int ProjectID { get; set; }
 
         [ForeignKey("CatagoryID")]
-        public Catagory Catagory { get; set; }
+        public CATAGORY Catagory { get; set; }
 
         [ForeignKey("ProjectID")]
         public Project Project { get; set; }
