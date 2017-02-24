@@ -162,12 +162,13 @@ namespace MUE.Controllers
                 //bool IsCaptchaValid=(ReCaptcha.Validate(EncodedResponse)=="True" ? true: false);
                 //if (IsCaptchaValid)
                 //{
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    MiddleInit = model.MiddleInt
+            };
                 var result = await UserManager.CreateAsync(user, model.Password);
 
-                user.FirstName = model.FirstName;
-                user.LastName = model.LastName;
-                user.MiddleInit = model.MiddleInt;
+              
 
                 if (result.Succeeded)
                 {
