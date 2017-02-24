@@ -153,21 +153,20 @@ namespace MUE.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(AccountRegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
+                
+                
                 //string EncodedResponse = Request.Form["g-Recaptcha-Response"];
                 //bool IsCaptchaValid=(ReCaptcha.Validate(EncodedResponse)=="True" ? true: false);
                 //if (IsCaptchaValid)
                 //{
-                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName=model.FirstName, LastName=model.LastName };
                     var result = await UserManager.CreateAsync(user, model.Password);
                     
-                    user.FirstName = model.FirstName;
-                    user.LastName = model.LastName;
-                    user.MiddleInit = model.MiddleInt;
-
+                   
                     if (result.Succeeded)
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);

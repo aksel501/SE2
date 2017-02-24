@@ -1,4 +1,4 @@
-﻿@model MUE.Models.AccountRegisterViewModel
+﻿@model MUE.Models.RegisterViewModel
 @{
     ViewBag.Title = "User Registration";
 }
@@ -37,12 +37,12 @@
             @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
         </div>
     </div>
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(m => m.MiddleInt, new { @class = "col-md-2 control-label" })
             <div class="col-md-1">
                 @Html.TextBoxFor(m => m.MiddleInt, new { @class = "form-control" })
             </div>
-        </div>
+        </div>*@
         <div class="form-group">
             @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
