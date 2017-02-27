@@ -1,6 +1,6 @@
 ﻿@model MUE.Models.RegisterViewModel
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "User Registration";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -8,9 +8,11 @@
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
+    <h4>Enter your information</h4>
     @Html.ValidationSummary("", new { @class = "text-danger" })
+    <small>Want to register as an expert?</small>
+    @Html.ActionLink("Click Here", "ExpertRegistration", routeValues: null, htmlAttributes: new { id = "expertRegistrationLink" })
+    <div></div>
     <div class="form-group">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
@@ -30,10 +32,40 @@
         </div>
     </div>
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
+        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
         </div>
     </div>
+        @*<div class="form-group">
+            @Html.LabelFor(m => m.MiddleInt, new { @class = "col-md-2 control-label" })
+            <div class="col-md-1">
+                @Html.TextBoxFor(m => m.MiddleInt, new { @class = "form-control" })
+            </div>
+        </div>*@
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <div class="g-recaptcha" data-sitekey="6LeLbRYUAAAAAPxxs9tO5ZQpClT3zFniIAl-uAsc"></div>
+                <div>
+                    @if (TempData["recaptcha"] != null)
+                    { 
+                        <p>TempData["recaptcha"]</p>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Register" />
+            </div>
+        </div>
+
 }
 
 @section Scripts {
