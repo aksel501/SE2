@@ -31,6 +31,13 @@ namespace MUE
                 role.Name = "Expert";
                 roleManager.Create(role);
             }
+
+            if (!roleManager.RoleExists("Admin"))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "Admin";
+                roleManager.Create(role);
+            }
         }
 
 
