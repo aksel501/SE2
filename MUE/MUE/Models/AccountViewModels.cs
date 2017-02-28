@@ -1,8 +1,29 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace MUE.Models
 {
+
+
+    public class EditUserViewModel
+    {
+        public string Id { get; set; }
+
+        
+        [Display(Name = "Email")]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+    }
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
@@ -72,6 +93,12 @@ namespace MUE.Models
         [Display(Name ="Last Name")]
         public string LastName { get; set; }
 
+
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -87,6 +114,11 @@ namespace MUE.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Name of Specialty")]
+        public string NameOfSpecialty { get; set; }
+        [Display(Name = "Description of Specialty")]
+        public string DescriptionOfSpecialty { get; set; }
     }
 
     public class ResetPasswordViewModel
