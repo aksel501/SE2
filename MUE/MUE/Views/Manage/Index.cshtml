@@ -15,44 +15,64 @@
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div class="row">
     @*<div class="col-md-8">
-        <em>To edit your account</em>
-        @Html.ActionLink("Click Here", "Edit", routeValues: null, htmlAttributes: new { id = "editAccountLink" })
-    </div>
-    <div class="col-md-8">*@
+            <em>To edit your account</em>
+            @Html.ActionLink("Click Here", "Edit", routeValues: null, htmlAttributes: new { id = "editAccountLink" })
+        </div>
+        <div class="col-md-8">*@
+    <p>
+        <b>Email: @Html.Raw(currentUser.Email)</b>
+    </p>
+    <p>
+        <b>First Name: @Html.Raw(currentUser.FirstName)</b>
+    </p>
+    <p>
+        <b>Last Name: @Html.Raw(currentUser.LastName)</b>
+    </p>
+    <p>
+       <b> Phone Number: @Html.Raw(currentUser.PhoneNumber)</b>
+    </p>
+    @if (User.IsInRole("Expert"))
+    {
+    <p>
+        <b>1st Catagory: </b>
         
-            Email: @Html.Raw(currentUser.Email)
-        </p>    
-        <p>
-            First Name: @Html.Raw(currentUser.FirstName)
-        </p>
-        <p>
-            Last Name: @Html.Raw(currentUser.LastName)
-        </p>
-        <p>
-            Phone Number: @Html.Raw(currentUser.PhoneNumber)
-        </p>
-        
-        [
-        @if (Model.HasPassword)
-            {
-            @Html.ActionLink("Change your password", "ChangePassword")
-        }
-        else
-        {
-            @Html.ActionLink("Create", "SetPassword")
-        }
-        ]
+    </p>
+    <p>
+        <b>2nd Catagory: </b>
+    </p>
+    <p>
+        <b>3rd Catagory: </b>
+    </p>
+    <p>
+        <b>1st Specialty: </b>
+    </p>
 
-        @*<dt>External Logins:</dt>
+
+
+    }
+
+
+    [
+    @if (Model.HasPassword)
+    {
+        @Html.ActionLink("Change your password", "ChangePassword")
+    }
+    else
+    {
+        @Html.ActionLink("Create", "SetPassword")
+    }
+    ]
+
+    @*<dt>External Logins:</dt>
         <dd>
             @Model.Logins.Count [
             @Html.ActionLink("Manage", "ManageLogins") ]
         </dd>*@
 
 
-        <p>
+    <p>
 
 
-        
+
 </div>
     </div>
