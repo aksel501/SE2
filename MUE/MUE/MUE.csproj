@@ -203,18 +203,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetRole.cs" />
     <Compile Include="Models\AspNetUser.cs" />
     <Compile Include="Models\AspNetUserClaim.cs" />
     <Compile Include="Models\AspNetUserLogin.cs" />
     <Compile Include="Models\CATAGORY.cs" />
-    <Compile Include="Models\C__MigrationHistory.cs" />
-    <Compile Include="Models\DatabaseTrial-22_FEB_17.cs" />
+    <Compile Include="Models\CONVERSATION.cs" />
     <Compile Include="Models\EXPERT.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\POST.cs" />
     <Compile Include="Models\PROJECT.cs" />
     <Compile Include="Models\SPECIALTY.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -289,6 +287,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
