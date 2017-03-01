@@ -18,8 +18,8 @@ namespace MUE.Models
 
     public class Specialty
     {
-        public string nameOfSpecialty;
-        public string descriptionOfSpecialty;
+        public string nameOfSpecialty { get; set; }
+        public string descriptionOfSpecialty { get; set; }
 
         public Expert Expert;
     }
