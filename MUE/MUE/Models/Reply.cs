@@ -12,23 +12,23 @@ namespace MUE.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Conversation
+    public partial class Reply
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Conversation()
+        public Reply()
         {
-            this.AspNetUsers = new HashSet<AspNetUser>();
+            this.Posts = new HashSet<Post>();
         }
     
-        public int ConversationID { get; set; }
-        public System.DateTime LastSeen { get; set; }
-        public System.DateTime Started { get; set; }
-        public string subject { get; set; }
-        public string ApplicationUserID { get; set; }
-        public int MessageID { get; set; }
+        public int ParentID { get; set; }
+        public System.DateTime whenReplied { get; set; }
+        public int RepliedPostID { get; set; }
+        public Nullable<int> Post_PostID { get; set; }
     
-        public virtual Message Message { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
+        public virtual ICollection<Post> Posts { get; set; }
+        public virtual Post Post { get; set; }
+        public virtual Post Post1 { get; set; }
+        public virtual Post Post2 { get; set; }
     }
 }
