@@ -13,7 +13,7 @@ using MUE.Models;
 namespace MUE.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController :  Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
