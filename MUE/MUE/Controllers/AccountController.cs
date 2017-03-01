@@ -154,29 +154,21 @@ namespace MUE.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(AccountRegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-
-
                 //string EncodedResponse = Request.Form["g-Recaptcha-Response"];
                 //bool IsCaptchaValid=(ReCaptcha.Validate(EncodedResponse)=="True" ? true: false);
                 //if (IsCaptchaValid)
                 //{
-                var user = new ApplicationUser
-                {
-                    UserName = model.Email,
-                    Email = model.Email,
-                    FirstName = model.FirstName,
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName,
                     LastName = model.LastName,
-                    PhoneNumber = model.PhoneNumber
-
-                };
-
-
+                    MiddleInit = model.MiddleInt
+            };
                 var result = await UserManager.CreateAsync(user, model.Password);
 
+              
 
                 if (result.Succeeded)
                 {
@@ -210,34 +202,21 @@ namespace MUE.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         //added by nate
-        public async Task<ActionResult> ExpertRegistration(RegisterViewModel model)
+        public async Task<ActionResult> ExpertRegistration(AccountRegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
                 //AccountRegisterViewModel ARVM = new AccountRegisterViewModel();
 
-                var user = new ApplicationUser
-                {
-                    UserName = model.Email,
-                    Email = model.Email,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    PhoneNumber = model.PhoneNumber
-
-
-                };
-                var specialty = new SPECIALTY
-                {
-                    NAME = model.NameOfSpecialty,
-                    DESCRIPTION = model.DescriptionOfSpecialty
-
-                };
-
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                //var expert = new Expert { Specialty = model.Specialty };
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+                user.MiddleInit = model.MiddleInt;
 
                 if (result.Succeeded)
                 {
-                    UserManager.AddToRole(user.Id, "Expert");
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

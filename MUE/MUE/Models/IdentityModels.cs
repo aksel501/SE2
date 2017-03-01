@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace MUE.Models
 {
@@ -18,18 +17,6 @@ namespace MUE.Models
         public string LastName { get; set; }
 
         public char MiddleInit { get; set; }
-
-        //public Collaborator Collaborator { get; set; }
-
-        public ICollection<Post> Post { get; set; }
-
-        //public ICollection<Message> Message { get; set; }
-
-        //public ICollection<Conversation> Conversation { get; set; }
-
-        
-
-        
 
 
 
@@ -51,11 +38,10 @@ namespace MUE.Models
         {
         }
 
-        public object AspNetRoles { get; internal set; }
-
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
     }
 }

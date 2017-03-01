@@ -7,8 +7,6 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MUE.Models;
-using System.Web.Routing;
-using System.Net;
 
 namespace MUE.Controllers
 {
@@ -44,8 +42,7 @@ namespace MUE.Controllers
         {
             get
             {
-                return _userManager ??
-                HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             }
             private set
             {
@@ -78,8 +75,6 @@ namespace MUE.Controllers
             return View(model);
         }
 
-        
-        
         //
         // POST: /Manage/RemoveLogin
         [HttpPost]
@@ -164,8 +159,7 @@ namespace MUE.Controllers
             }
             return RedirectToAction("Index", "Manage");
         }
-       
-       
+
         //
         // GET: /Manage/VerifyPhoneNumber
         public async Task<ActionResult> VerifyPhoneNumber(string phoneNumber)
