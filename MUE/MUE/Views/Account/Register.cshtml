@@ -23,6 +23,9 @@
         @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            <small>
+                *Password must include an uppercase letter, digit, unique character, and be a min. of six characters
+            </small>
         </div>
     </div>
     <div class="form-group">
@@ -37,24 +40,24 @@
             @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
         </div>
     </div>
-        @*<div class="form-group">
-            @Html.LabelFor(m => m.MiddleInt, new { @class = "col-md-2 control-label" })
-            <div class="col-md-1">
-                @Html.TextBoxFor(m => m.MiddleInt, new { @class = "form-control" })
-            </div>
-        </div>*@
-        <div class="form-group">
-            @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
         </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+        </div>
+    </div>
         <div class="form-group">
             <div>
                 <div class="g-recaptcha" data-sitekey="6LeLbRYUAAAAAPxxs9tO5ZQpClT3zFniIAl-uAsc"></div>
                 <div>
                     @if (TempData["recaptcha"] != null)
-                    { 
+                    {
                         <p>TempData["recaptcha"]</p>
                     }
                 </div>

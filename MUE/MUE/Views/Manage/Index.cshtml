@@ -1,44 +1,78 @@
 ﻿@using Microsoft.AspNet.Identity
-@*@using IdentitySample.Models*@
-@model MUE.Models.IndexViewModel
+@*@model MUE.Models.IndexViewModel*@
+@using MUE.Models
 @{
-    //var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
-    ViewBag.Title = "Manage Account";
+    //IdentitySample.Controllers.ManageController p = new IdentitySample.Controllers.ManageController();
+    var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
+    var currentUser = manager.FindById(User.Identity.GetUserId());
+
+    ViewBag.Title = "Manage your account";
+
 }
 
-<h2>@ViewBag.Title.</h2>
 
+<<h2>@ViewBag.Title.</h2>
 <p class="text-success">@ViewBag.StatusMessage</p>
-<div>
-    <h4>Change your account settings</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>Password:</dt>
-        <dd>
-            [
-            @if (Model.HasPassword)
-            {
-                @Html.ActionLink("Change your password", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("Create", "SetPassword")
-            }
-            ]
-        </dd>
-        <dt>External Logins:</dt>
-        <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("Manage", "ManageLogins") ]
-        </dd>
-  
-       
-    </dl>
+<div class="row">
+    @*<div class="col-md-8">
+            <em>To edit your account</em>
+            @Html.ActionLink("Click Here", "Edit", routeValues: null, htmlAttributes: new { id = "editAccountLink" })
+        </div>
+        <div class="col-md-8">*@
     <p>
-        @*First Name: @Html.Raw(currentuser)*@
-
+        <b>Email: @Html.Raw(currentUser.Email)</b>
+    </p>
+    <p>
+        <b>First Name: @Html.Raw(currentUser.FirstName)</b>
+    </p>
+    <p>
+        <b>Last Name: @Html.Raw(currentUser.LastName)</b>
+    </p>
+    <p>
+       <b> Phone Number: @Html.Raw(currentUser.PhoneNumber)</b>
+    </p>
+    @if (User.IsInRole("Expert"))
+    {
+    <p>
+        <b>1st Catagory: </b>
+        
+    </p>
+    <p>
+        <b>2nd Catagory: </b>
+    </p>
+    <p>
+        <b>3rd Catagory: </b>
+    </p>
+    <p>
+        <b>1st Specialty: </b>
     </p>
 
 
 
+    }
+
+
+    [
+    @if (Model.HasPassword)
+    {
+        @Html.ActionLink("Change your password", "ChangePassword")
+    }
+    else
+    {
+        @Html.ActionLink("Create", "SetPassword")
+    }
+    ]
+
+    @*<dt>External Logins:</dt>
+        <dd>
+            @Model.Logins.Count [
+            @Html.ActionLink("Manage", "ManageLogins") ]
+        </dd>*@
+
+
+    <p>
+
+
+
 </div>
+    </div>
