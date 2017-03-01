@@ -34,9 +34,9 @@ namespace MUE.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -77,9 +77,87 @@ namespace MUE.Controllers
             };
             return View(model);
         }
+        //
+        // GET: /Manage/Edit/1
+        public async Task<ActionResult> Edit(string Email)
+        {
+            if (Email == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user = await UserManager.FindByIdAsync(Email);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
 
+            var userRoles = await UserManager.GetRolesAsync(user.Id);
+
+            return View(new EditUserViewModel()
+            {
+
+
+                Id = user.Id,
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                PhoneNumber = user.PhoneNumber
+
+            });
+        }
+
+        //
+        // POST: /Manage/Edit/5
         
-        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit([Bind(Include = "Email, FirstName, LastName, PhonNumber")] EditUserViewModel editUser, params string[] selectedRole)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByIdAsync(editUser.Id);
+                if (user == null)
+                {
+                    return HttpNotFound();
+                }
+
+                user.UserName = editUser.Email;
+                user.Email = editUser.Email;
+                
+
+                var userRoles = await UserManager.GetRolesAsync(user.Id);
+
+                selectedRole = selectedRole ?? new string[] { };
+
+                var result = await UserManager.AddToRolesAsync(user.Id, selectedRole.Except(userRoles).ToArray<string>());
+
+                if (!result.Succeeded)
+                {
+                    ModelState.AddModelError("", result.Errors.First());
+                    return View();
+                }
+                result = await UserManager.RemoveFromRolesAsync(user.Id, userRoles.Except(selectedRole).ToArray<string>());
+
+                if (!result.Succeeded)
+                {
+                    ModelState.AddModelError("", result.Errors.First());
+                    return View();
+                }
+                if (User.IsInRole("Admin"))
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("Index", new RouteValueDictionary(new { controller = "Home", action = "Index" }));
+                }
+            }
+            ModelState.AddModelError("", "Something failed.");
+            return View();
+        }
+
+
+
         //
         // POST: /Manage/RemoveLogin
         [HttpPost]

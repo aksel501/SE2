@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MUE.Models
 {
@@ -17,6 +18,18 @@ namespace MUE.Models
         public string LastName { get; set; }
 
         public char MiddleInit { get; set; }
+
+        //public Collaborator Collaborator { get; set; }
+
+        
+
+        //public ICollection<Message> Message { get; set; }
+
+        //public ICollection<Conversation> Conversation { get; set; }
+
+
+
+
 
 
 
@@ -33,6 +46,10 @@ namespace MUE.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
+        public DbSet<SPECIALTY> SPECIALTY { get; set; }
+
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -40,10 +57,17 @@ namespace MUE.Models
 
         public object AspNetRoles { get; internal set; }
 
+
+        static ApplicationDbContext()
+        {
+            // Set the database intializer which is run once during application start
+            // This seeds the database with admin user credentials and admin role
+            Database.SetInitializer<ApplicationDbContext>(new ApplicatioDbInitializer());
+        }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
-
     }
 }
