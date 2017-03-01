@@ -38,6 +38,8 @@ namespace MUE.Models
         {
         }
 
+        public object AspNetRoles { get; internal set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

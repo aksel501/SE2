@@ -22,7 +22,7 @@ namespace MUE.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -34,9 +34,9 @@ namespace MUE.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set
-            {
-                _signInManager = value;
+            private set 
+            { 
+                _signInManager = value; 
             }
         }
 
@@ -120,7 +120,7 @@ namespace MUE.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -143,8 +143,7 @@ namespace MUE.Controllers
         }
         [AllowAnonymous]
         //added by nate
-        public ActionResult ExpertRegistration()
-        {
+        public ActionResult ExpertRegistration() {
 
             return View();
         }
@@ -154,35 +153,38 @@ namespace MUE.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(AccountRegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
+                
+                
                 //string EncodedResponse = Request.Form["g-Recaptcha-Response"];
                 //bool IsCaptchaValid=(ReCaptcha.Validate(EncodedResponse)=="True" ? true: false);
                 //if (IsCaptchaValid)
                 //{
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    MiddleInit = model.MiddleInt
-            };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName=model.FirstName, LastName=model.LastName,
+                      PhoneNumber=model.PhoneNumber
 
-              
+                    };
 
-                if (result.Succeeded)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+               
+                    var result = await UserManager.CreateAsync(user, model.Password);
+                    
+                   
+                    if (result.Succeeded)
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                        // Send an email with this link
+                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
-                }
-                AddErrors(result);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    AddErrors(result);
                 //}
                 //else {
 
@@ -191,7 +193,7 @@ namespace MUE.Controllers
                 //}
                 //AccountRegisterViewModel ARVM = new AccountRegisterViewModel();
 
-
+                
             }
 
             // If we got this far, something failed, redisplay form
@@ -202,21 +204,29 @@ namespace MUE.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         //added by nate
-        public async Task<ActionResult> ExpertRegistration(AccountRegisterViewModel model)
+        public async Task<ActionResult> ExpertRegistration(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
                 //AccountRegisterViewModel ARVM = new AccountRegisterViewModel();
 
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                //var expert = new Expert { Specialty = model.Specialty };
-                user.FirstName = model.FirstName;
-                user.LastName = model.LastName;
-                user.MiddleInit = model.MiddleInt;
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName=model.FirstName, LastName=model.LastName,
+                    PhoneNumber=model.PhoneNumber
 
+
+                };
+                var specialty = new SPECIALTY
+                {
+                    NAME = model.NameOfSpecialty,
+                    DESCRIPTION=model.DescriptionOfSpecialty
+
+                };
+
+                var result = await UserManager.CreateAsync(user, model.Password);
+                
                 if (result.Succeeded)
                 {
+                    UserManager.AddToRole(user.Id, "Expert");
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
