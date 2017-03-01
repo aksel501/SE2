@@ -215,10 +215,10 @@ namespace MUE.Controllers
 
 
                 };
-                var specialty = new Specialty
+                var specialty = new SPECIALTY
                 {
-                    nameOfSpecialty = model.NameOfSpecialty,
-                    descriptionOfSpecialty=model.DescriptionOfSpecialty
+                    NAME = model.NameOfSpecialty,
+                    DESCRIPTION=model.DescriptionOfSpecialty
 
                 };
 
