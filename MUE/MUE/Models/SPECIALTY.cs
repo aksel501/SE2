@@ -7,7 +7,7 @@ namespace MUE.Models
     using System.Data.Entity.Spatial;
 
     [Table("SPECIALTY")]
-    public partial class SPECIALTY
+    public partial class SPECIALTY 
     {
         [Key]
         [Column(Order = 0)]
