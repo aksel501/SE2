@@ -204,20 +204,57 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AspNetRole.cs" />
-    <Compile Include="Models\AspNetUser.cs" />
-    <Compile Include="Models\AspNetUserClaim.cs" />
-    <Compile Include="Models\AspNetUserLogin.cs" />
-    <Compile Include="Models\CATAGORY.cs" />
-    <Compile Include="Models\CONVERSATION.cs" />
-    <Compile Include="Models\EXPERT.cs" />
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>MARCOModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>MARCOModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>MARCOModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>MARCOModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CATAGORY.cs">
+      <DependentUpon>MARCOModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CONVERSATION.cs">
+      <DependentUpon>MARCOModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EXPERT.cs">
+      <DependentUpon>MARCOModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\MARCOModels.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MARCOModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MARCOModels.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MARCOModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MARCOModels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MARCOModels.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Message.cs">
+      <DependentUpon>MARCOModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Model1.cs" />
-    <Compile Include="Models\POST.cs" />
-    <Compile Include="Models\PROJECT.cs" />
-    <Compile Include="Models\SPECIALTY.cs" />
+    <Compile Include="Models\POST.cs">
+      <DependentUpon>MARCOModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PROJECT.cs">
+      <DependentUpon>MARCOModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SPECIALTY.cs">
+      <DependentUpon>MARCOModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -228,10 +265,28 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\MARCOModels.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MARCOModels.edmx</DependentUpon>
+      <LastGenOutput>MARCOModels.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\MARCOModels.edmx.sql" />
+    <Content Include="Models\MARCOModels.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MARCOModels.edmx</DependentUpon>
+      <LastGenOutput>MARCOModels.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\MARCOModels.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MARCOModels.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\MARCOModels.edmx.diagram">
+      <DependentUpon>MARCOModels.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

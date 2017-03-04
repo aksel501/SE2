@@ -47,10 +47,6 @@ namespace MUE.Models
                 .HasForeignKey(e => e.USERIDs);
 
             modelBuilder.Entity<AspNetUser>()
-                .HasOptional(e => e.EXPERT)
-                .WithRequired(e => e.AspNetUser);
-
-            modelBuilder.Entity<AspNetUser>()
                 .HasMany(e => e.Messages)
                 .WithRequired(e => e.AspNetUser)
                 .HasForeignKey(e => e.USERID)
@@ -67,19 +63,10 @@ namespace MUE.Models
                 .WithMany(e => e.CATAGORies)
                 .Map(m => m.ToTable("PROJECTTYPE").MapLeftKey("CATAGORYID").MapRightKey("PROJECTID"));
 
-            modelBuilder.Entity<EXPERT>()
-                .HasMany(e => e.SPECIALTies)
-                .WithRequired(e => e.EXPERT)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<Message>()
                 .HasMany(e => e.CONVERSATIONs)
                 .WithOptional(e => e.Message)
                 .HasForeignKey(e => e.MessageIDs);
-
-            modelBuilder.Entity<POST>()
-                .HasOptional(e => e.POST1)
-                .WithMany(e => e.POSTs);
 
             modelBuilder.Entity<PROJECT>()
                 .HasMany(e => e.AspNetUsers)
