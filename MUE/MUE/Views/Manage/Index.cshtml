@@ -12,9 +12,9 @@
 
 
 <<h2>@ViewBag.Title.</h2>
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div class="row">
-    @*<div class="col-md-8">
+<p class="text-success" @ViewBag.StatusMessage</p>
+<div class="row"
+     @*<div class="col-md-8">
             <em>To edit your account</em>
             @Html.ActionLink("Click Here", "Edit", routeValues: null, htmlAttributes: new { id = "editAccountLink" })
         </div>
@@ -34,20 +34,17 @@
     @if (User.IsInRole("Expert"))
     {
     <p>
-        <b>1st Catagory: </b>
-        
+        <b>Categories: </b>
     </p>
     <p>
-        <b>2nd Catagory: </b>
+        <b>Specialties: </b>
+    </p>
+        <p>
+    <em>To add a category</em> @Html.ActionLink("Click Here", "AddCategory", routeValues: null, htmlAttributes: new { id = "addACategoryLink" })
     </p>
     <p>
-        <b>3rd Catagory: </b>
-    </p>
-    <p>
-        <b>1st Specialty: </b>
-    </p>
-
-
+    <em> To add a specialty</em> @Html.ActionLink("Click Here", "AddSpecialty", routeValues: null, htmlAttributes: new { id = "addASpecialtyLink" })
+   </p>
 
     }
 
@@ -62,6 +59,7 @@
         @Html.ActionLink("Create", "SetPassword")
     }
     ]
+
 
     @*<dt>External Logins:</dt>
         <dd>

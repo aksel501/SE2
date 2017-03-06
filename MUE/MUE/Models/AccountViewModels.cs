@@ -116,9 +116,9 @@ namespace MUE.Models
         public string ConfirmPassword { get; set; }
 
         [Display(Name = "Name of Specialty")]
-        public string NameOfSpecialty { get; set; }
+        public string NAME { get; set; }
         [Display(Name = "Description of Specialty")]
-        public string DescriptionOfSpecialty { get; set; }
+        public string DESCRIPTION { get; set; }
     }
 
     public class ResetPasswordViewModel

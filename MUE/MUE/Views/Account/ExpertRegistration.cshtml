@@ -89,15 +89,15 @@
             </div>
             <em>Add a specialty</em>
             <div class="form-group">
-                @Html.LabelFor(m => m.NameOfSpecialty, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.NAME, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.NameOfSpecialty, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.NAME, new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(m => m.DescriptionOfSpecialty, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.DESCRIPTION, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
-                    @Html.TextAreaFor(m => m.DescriptionOfSpecialty, new { @class = "form-control" })
+                    @Html.TextAreaFor(m => m.DESCRIPTION, new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">

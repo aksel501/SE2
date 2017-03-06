@@ -17,9 +17,10 @@ namespace MUE.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        private ModelReferencesHere _dbContext;
         public ManageController()
         {
+            _dbContext = new ModelReferencesHere();
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -52,7 +53,30 @@ namespace MUE.Controllers
                 _userManager = value;
             }
         }
+        public ActionResult AddSpecialty() {
+            return View();
 
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddSpecialty(SPECIALTY model) {
+
+            var specialty = new SPECIALTY
+            {
+                expertID = User.Identity.GetUserId(),
+                NAME = model.NAME,
+                DESCRIPTION = model.DESCRIPTION
+
+            };
+            if (ModelState.IsValid)
+            {
+                _dbContext.SPECIALTies.Add(specialty);
+                _dbContext.SaveChanges();
+                return RedirectToAction("Home");
+            }
+
+            return View(specialty);
+        }
         //
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
