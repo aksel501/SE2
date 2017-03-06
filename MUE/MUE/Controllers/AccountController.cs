@@ -15,11 +15,13 @@ namespace MUE.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private ModelReferencesHere _context;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
         public AccountController()
         {
+            _context = new ModelReferencesHere();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -221,6 +223,15 @@ namespace MUE.Controllers
                     DESCRIPTION=model.DescriptionOfSpecialty
 
                 };
+
+                if (ModelState.IsValid)
+                {
+                    _context.SPECIALTies.Add(specialty);
+                    _context.SaveChanges();
+                    return RedirectToAction("Home");
+
+
+                }
 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 

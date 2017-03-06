@@ -38,6 +38,7 @@ namespace MUE.Models
         {
         }
 
+        public DbSet<SPECIALTY> Specialties { get; set; }
         public object AspNetRoles { get; internal set; }
 
         public static ApplicationDbContext Create()
