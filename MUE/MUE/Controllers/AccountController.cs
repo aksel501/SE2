@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MUE.Models;
+using System.Data.Entity.Validation;
 
 namespace MUE.Controllers
 {
@@ -212,27 +213,28 @@ namespace MUE.Controllers
             {
                 //AccountRegisterViewModel ARVM = new AccountRegisterViewModel();
 
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName=model.FirstName, LastName=model.LastName,
-                    PhoneNumber=model.PhoneNumber
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName,
+                    PhoneNumber = model.PhoneNumber
 
 
                 };
-                var specialty = new SPECIALTY
-                {
-                    NAME = model.NameOfSpecialty,
-                    DESCRIPTION=model.DescriptionOfSpecialty
-
-                };
-
-                if (ModelState.IsValid)
-                {
-                    _context.SPECIALTies.Add(specialty);
-                    _context.SaveChanges();
-                    return RedirectToAction("Home");
-
-
-                }
-
+               
+                 var specialty = new SPECIALTY
+                 {
+                   expertID = User.Identity.GetUserId(),
+                   NAME = model.NameOfSpecialty,
+                   DESCRIPTION = model.DescriptionOfSpecialty
+                   };
+                
+                 if (ModelState.IsValid)
+                 {
+                        _context.SPECIALTies.Add(specialty);
+                        _context.SaveChanges();
+                        return RedirectToAction("Index");
+                  }
+               
+                return View(model);
+            
                 var result = await UserManager.CreateAsync(user, model.Password);
                 
                 if (result.Succeeded)

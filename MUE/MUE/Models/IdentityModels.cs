@@ -33,12 +33,14 @@ namespace MUE.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<SPECIALTY> SPECIALties { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
-        public DbSet<SPECIALTY> Specialties { get; set; }
+        
         public object AspNetRoles { get; internal set; }
 
         public static ApplicationDbContext Create()
