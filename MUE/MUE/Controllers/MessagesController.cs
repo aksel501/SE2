@@ -12,7 +12,7 @@ namespace MUE.Controllers
 {
     public class MessagesController : Controller
     {
-        private ReverseEnginModels db = new ReverseEnginModels();
+        private ModelReferencesHere db = new ModelReferencesHere();
 
         // GET: Messages
         public ActionResult Index()

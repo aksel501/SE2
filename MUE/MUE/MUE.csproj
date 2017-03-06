@@ -215,9 +215,9 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\ModelReferencesHere.cs" />
     <Compile Include="Models\POST.cs" />
     <Compile Include="Models\PROJECT.cs" />
-    <Compile Include="Models\ReverseEnginModels.cs" />
     <Compile Include="Models\SPECIALTY.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
