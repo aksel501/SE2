@@ -5,10 +5,10 @@ namespace MUE.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class Model1 : DbContext
+    public partial class ModelReferencesHere : DbContext
     {
-        public Model1()
-            : base("name=ModelsForDatabase")
+        public ModelReferencesHere()
+            : base("name=ModelReferencesHere")
         {
         }
 
@@ -47,10 +47,6 @@ namespace MUE.Models
                 .HasForeignKey(e => e.USERIDs);
 
             modelBuilder.Entity<AspNetUser>()
-                .HasOptional(e => e.EXPERT)
-                .WithRequired(e => e.AspNetUser);
-
-            modelBuilder.Entity<AspNetUser>()
                 .HasMany(e => e.Messages)
                 .WithRequired(e => e.AspNetUser)
                 .HasForeignKey(e => e.USERID)
@@ -60,6 +56,12 @@ namespace MUE.Models
                 .HasMany(e => e.POSTs)
                 .WithRequired(e => e.AspNetUser)
                 .HasForeignKey(e => e.USERID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<AspNetUser>()
+                .HasMany(e => e.EXPERTs)
+                .WithRequired(e => e.AspNetUser)
+                .HasForeignKey(e => e.PARENTID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CATAGORY>()
