@@ -228,9 +228,9 @@ namespace MUE.Controllers
                 
                  if (ModelState.IsValid)
                  {
-                        _context.SPECIALTies.Add(specialty);
-                        _context.SaveChanges();
-                        return RedirectToAction("Index");
+                     _context.SPECIALTies.Add(specialty);
+                     _context.SaveChanges();
+                     return RedirectToAction("Index");
                   }
                
                 return View(model);
