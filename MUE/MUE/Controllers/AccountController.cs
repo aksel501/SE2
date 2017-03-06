@@ -225,16 +225,14 @@ namespace MUE.Controllers
                    NAME = model.NameOfSpecialty,
                    DESCRIPTION = model.DescriptionOfSpecialty
                    };
-                
-                 if (ModelState.IsValid)
-                 {
-                     _context.SPECIALTies.Add(specialty);
-                     _context.SaveChanges();
-                     return RedirectToAction("Index");
-                  }
-               
-                return View(model);
-            
+
+                if (ModelState.IsValid)
+                {
+                    _context.SPECIALTies.Add(specialty);
+                    _context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 
                 if (result.Succeeded)
