@@ -17,6 +17,10 @@ namespace MUE.Models
 
         public string ID { get; set; }
 
+        [Required]
+        [StringLength(128)]
+        public string PARENTID { get; set; }
+
         public bool? VALIDATED { get; set; }
 
         public virtual AspNetUser AspNetUser { get; set; }
