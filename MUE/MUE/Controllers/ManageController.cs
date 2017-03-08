@@ -53,10 +53,13 @@ namespace MUE.Controllers
                 _userManager = value;
             }
         }
-        public ActionResult AddSpecialty() {
+        public ActionResult AddSpecialty()
+        {
             return View();
 
         }
+        //GEt: Posts/Create
+        [Authorize (Roles = "Expert, Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AddSpecialty(SPECIALTY model) {
@@ -72,10 +75,9 @@ namespace MUE.Controllers
             {
                 _dbContext.SPECIALTies.Add(specialty);
                 _dbContext.SaveChanges();
-                return RedirectToAction("Home");
+                return RedirectToAction("Index", "Manage");
             }
-
-            return View(specialty);
+            return RedirectToAction("Index", "Manage");
         }
         //
         // GET: /Manage/Index
