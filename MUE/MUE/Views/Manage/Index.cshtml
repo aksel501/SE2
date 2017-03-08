@@ -14,11 +14,11 @@
 <<h2>@ViewBag.Title.</h2>
 <p class="text-success" @ViewBag.StatusMessage</p>
 <div class="row"
-     @*<div class="col-md-8">
-            <em>To edit your account</em>
+     <div class="col-md-8">
+            <em>To edit your basic account information</em>
             @Html.ActionLink("Click Here", "Edit", routeValues: null, htmlAttributes: new { id = "editAccountLink" })
         </div>
-        <div class="col-md-8">*@
+        <div class="col-md-8">
     <p>
         <b>Email: @Html.Raw(currentUser.Email)</b>
     </p>

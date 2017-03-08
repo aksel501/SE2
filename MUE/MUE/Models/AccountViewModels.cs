@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
+using System.Web.Mvc;
 
 namespace MUE.Models
 {
@@ -10,7 +10,6 @@ namespace MUE.Models
     {
         public string Id { get; set; }
 
-        
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
@@ -20,8 +19,11 @@ namespace MUE.Models
 
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
+
+        public IEnumerable<SelectListItem> RolesList { get; set; }
 
     }
     public class ExternalLoginConfirmationViewModel
@@ -110,11 +112,6 @@ namespace MUE.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-        public string ConfirmPassword { get; set; }
-
         [Display(Name = "Name of Specialty")]
         public string NAME { get; set; }
         [Display(Name = "Description of Specialty")]
@@ -136,7 +133,7 @@ namespace MUE.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.Web.Mvc.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

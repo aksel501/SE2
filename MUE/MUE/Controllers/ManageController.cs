@@ -59,10 +59,11 @@ namespace MUE.Controllers
 
         }
         //GEt: Posts/Create
-        [Authorize (Roles = "Expert, Admin")]
+        [Authorize(Roles = "Expert, Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddSpecialty(SPECIALTY model) {
+        public ActionResult AddSpecialty(SPECIALTY model)
+        {
 
             var specialty = new SPECIALTY
             {
@@ -77,8 +78,28 @@ namespace MUE.Controllers
                 _dbContext.SaveChanges();
                 return RedirectToAction("Index", "Manage");
             }
-            return RedirectToAction("Index", "Manage");
+
+
+
+            //using (var ctx = new ModelReferencesHere())
+            //    {
+            //    var specialty = new SPECIALTY
+            //    {
+            //        expertID = User.Identity.GetUserId(),
+            //        NAME = model.NAME,
+            //        DESCRIPTION = model.DESCRIPTION
+
+            //    };
+
+            //    ctx.SPECIALTies.SqlQuery("Insert into SPECIALTY (expertID, ID, NAME, DESCRIPTION) values(expertID, 2, NAME, DESCRIPTION)").ToList();
+
+            //    }
+
+                return RedirectToAction("Index", "Manage");
+            
         }
+                
+        
         //
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
@@ -103,9 +124,93 @@ namespace MUE.Controllers
             };
             return View(model);
         }
+        //
+        // POST: /Users/Edit/1
+        //public async Task<ActionResult> Edit(string id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    var user = await UserManager.FindByIdAsync(id);
+        //    if (user == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
 
-        
-        
+        //    var userRoles = await UserManager.GetRolesAsync(user.Id);
+
+        //    return View(new EditUserViewModel()
+        //    {
+        //        Id = user.Id,
+        //        Email = user.Email,
+        //        FirstName = user.FirstName,
+        //        LastName= user.LastName,
+        //        RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
+        //        {
+        //            Selected = userRoles.Contains(x.Name),
+        //            Text = x.Name,
+        //            Value = x.Name
+        //        })
+        //    });
+        //}
+
+        ////
+        //// POST: /Users/Edit/5
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> Edit([Bind(Include = "Email,Id,prefix, Address, City, State,PostalCode,firstName,lastName,number,register, isDeleted, expertise,expertise2,expertise3")] EditUserViewModel editUser, params string[] selectedRole)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = await UserManager.FindByIdAsync(editUser.Id);
+        //        if (user == null)
+        //        {
+        //            return HttpNotFound();
+        //        }
+
+        //        user.UserName = editUser.Email;
+        //        user.Email = editUser.Email;
+        //        user.FirstName = editUser.FirstName;
+        //        user.LastName = editUser.LastName;
+        //        user.PhoneNumber = editUser.PhoneNumber;
+
+        //        var userRoles = await UserManager.GetRolesAsync(user.Id);
+
+        //        selectedRole = selectedRole ?? new string[] { };
+
+        //        var result = await UserManager.AddToRolesAsync(user.Id, selectedRole.Except(userRoles).ToArray<string>());
+
+        //        if (!result.Succeeded)
+        //        {
+        //            ModelState.AddModelError("", result.Errors.First());
+        //            return View();
+        //        }
+        //        if (User.IsInRole("Admin"))
+        //        {
+        //            result = await UserManager.RemoveFromRolesAsync(user.Id, userRoles.Except(selectedRole).ToArray<string>());
+        //        }
+
+        //        if (!result.Succeeded)
+        //        {
+        //            ModelState.AddModelError("", result.Errors.First());
+        //            return View();
+        //        }
+        //        if (User.IsInRole("Admin"))
+        //        {
+        //            return RedirectToAction("Index");
+        //        }
+        //        else
+        //        {
+        //            return RedirectToAction("Index", new RouteValueDictionary(new { controller = "Home", action = "Index" }));
+        //        }
+        //    }
+        //    ModelState.AddModelError("", "Something failed.");
+        //    return View();
+        //}
+
+
+
         //
         // POST: /Manage/RemoveLogin
         [HttpPost]
