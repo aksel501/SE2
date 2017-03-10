@@ -1,42 +1,64 @@
-﻿
+﻿@model MUE.Models.Message
+
 @{
-    ViewBag.Title = "New Message";
+    ViewBag.Title = "Create";
 }
 
-<div class="container">
-    <div class="row">
-        <h2 align="center">New message</h2>
-        <hr style="border-bottom : 5px" />
-        
-    </div>
-    <div class="row">
-        <div class="col-md-12" align="center">
-            <form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
-                <div class="row">
-                    <label for="Receiver">Receiver: </label><br />
-                    <input id="Receiver" class="input" receiver="receiver" type="text" value="" size="80" /><br />
-                </div>
-                <div class="row">
-                    <label for="Subject">Message subject:</label><br />
-                    <input id="name" class="input" name="name" type="text" value="" size="80" /><br />
-                </div>
-              
-                <div class="row">
-                    <label for="email">Your email:</label><br />
-                    <input id="email" class="input" name="email" type="text" value="" size="80" /><br />
-                </div>
-                <div class="row">
-                    <label for="message">Your message:</label><br />
-                    <textarea id="message" class="input" name="message" rows="7" cols="80"></textarea><br />
-                </div>
-                <input id="submit_button" type="submit" value="Send Message" />
-            </form>						
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Message</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
+            </div>
         </div>
-        <div class="row">
-            <div>
-                <a href="Index">Back to messages</a>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.USERID, "USERID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("USERID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.USERID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DATETIMEMADE, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DATETIMEMADE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DATETIMEMADE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TEXT, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TEXT, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TEXT, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
 </div>
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

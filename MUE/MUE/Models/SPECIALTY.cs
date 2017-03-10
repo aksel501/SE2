@@ -7,11 +7,16 @@ namespace MUE.Models
     using System.Data.Entity.Spatial;
 
     [Table("SPECIALTY")]
-    public partial class SPECIALTY
+    public partial class SPECIALTY 
     {
+        [Required]
+        [StringLength(128)]
+        public string expertID { get; set; }
+
         [Key]
         [Column(Order = 0)]
-        public string ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ID { get; set; }
 
         [Key]
         [Column(Order = 1)]
