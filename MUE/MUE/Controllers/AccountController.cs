@@ -216,8 +216,7 @@ namespace MUE.Controllers
         {
             if (ModelState.IsValid)
             {
-                //AccountRegisterViewModel ARVM = new AccountRegisterViewModel();
-
+                
                 var user = new ApplicationUser
                 {
                     UserName = model.Email,

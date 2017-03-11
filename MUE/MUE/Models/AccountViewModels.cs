@@ -112,6 +112,11 @@ namespace MUE.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [System.Web.Mvc.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+
         [Display(Name = "Name of Specialty")]
         public string NAME { get; set; }
         [Display(Name = "Description of Specialty")]

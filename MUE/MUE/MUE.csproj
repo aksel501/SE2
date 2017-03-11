@@ -289,6 +289,8 @@
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Manage\AddSpecialty.cshtml" />
     <Content Include="Views\Manage\Edit.cshtml" />
+    <Content Include="Views\Manage\ChangeDepartments.cshtml" />
+    <Content Include="Views\Account\ExpertRegistration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

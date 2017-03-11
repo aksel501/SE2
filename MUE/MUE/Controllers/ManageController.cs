@@ -18,6 +18,7 @@ namespace MUE.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private ModelReferencesHere _dbContext;
+        
         public ManageController()
         {
             _dbContext = new ModelReferencesHere();
@@ -53,6 +54,12 @@ namespace MUE.Controllers
                 _userManager = value;
             }
         }
+
+        public ActionResult ChangeDepartments()
+        {
+            return View();
+        }
+
         public ActionResult AddSpecialty()
         {
             return View();
@@ -67,7 +74,7 @@ namespace MUE.Controllers
 
             var specialty = new SPECIALTY
             {
-                expertID = User.Identity.GetUserId(),
+                //expertID = User.Identity.GetUserId(),
                 NAME = model.NAME,
                 DESCRIPTION = model.DESCRIPTION
 
@@ -78,6 +85,8 @@ namespace MUE.Controllers
                 _dbContext.SaveChanges();
                 return RedirectToAction("Index", "Manage");
             }
+            _dbContext.SPECIALTies.Add(specialty);
+            _dbContext.SaveChanges();
 
 
 
@@ -95,145 +104,149 @@ namespace MUE.Controllers
 
             //    }
 
-                return RedirectToAction("Index", "Manage");
+            return RedirectToAction("Index", "Manage");
             
         }
-                
-        
+
+
         //
         // GET: /Manage/Index
-        //public async Task<ActionResult> Index(ManageMessageId? message)
-        //{
-        //    ViewBag.StatusMessage =
-        //        message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-        //        : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-        //        : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
-        //        : message == ManageMessageId.Error ? "An error has occurred."
-        //        : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
-        //        : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
-        //        : "";
+        public async Task<ActionResult> Index(ManageMessageId? message)
+        {
+            ViewBag.StatusMessage =
+                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
+                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
+                : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
+                : message == ManageMessageId.Error ? "An error has occurred."
+                : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
+                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                : "";
 
-        //    var userId = User.Identity.GetUserId();
-        //    var model = new IndexViewModel
-        //    {
-        //        HasPassword = HasPassword(),
-        //        PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
-        //        TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
-        //        Logins = await UserManager.GetLoginsAsync(userId),
-        //        BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
-        //    };
-        //    return View(model);
-        //}
-        ////
-        //// POST: /Users/Edit/1
-        //public async Task<ActionResult> Edit(string id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    var user = await UserManager.FindByIdAsync(id);
-        //    if (user == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-
-        //    var userRoles = await UserManager.GetRolesAsync(user.Id);
-
-        //    return View(new EditUserViewModel()
-        //    {
-        //        Id = user.Id,
-        //        Email = user.Email,
-        //        FirstName = user.FirstName,
-        //        LastName = user.LastName,
-        //        RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
-        //        {
-        //            Selected = userRoles.Contains(x.Name),
-        //            Text = x.Name,
-        //            Value = x.Name
-        //        })
-        //    });
-        //}
-
-        ////
-        //// POST: /Users/Edit/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> Edit([Bind(Include = "Email,Id,prefix, Address, City, State,PostalCode,firstName,lastName,number,register, isDeleted, expertise,expertise2,expertise3")] EditUserViewModel editUser, params string[] selectedRole)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = await UserManager.FindByIdAsync(editUser.Id);
-        //        if (user == null)
-        //        {
-        //            return HttpNotFound();
-        //        }
-
-        //        user.UserName = editUser.Email;
-        //        user.Email = editUser.Email;
-        //        user.FirstName = editUser.FirstName;
-        //        user.LastName = editUser.LastName;
-        //        user.PhoneNumber = editUser.PhoneNumber;
-
-        //        var userRoles = await UserManager.GetRolesAsync(user.Id);
-
-        //        selectedRole = selectedRole ?? new string[] { };
-
-        //        var result = await UserManager.AddToRolesAsync(user.Id, selectedRole.Except(userRoles).ToArray<string>());
-
-        //        if (!result.Succeeded)
-        //        {
-        //            ModelState.AddModelError("", result.Errors.First());
-        //            return View();
-        //        }
-        //        if (User.IsInRole("Admin"))
-        //        {
-        //            result = await UserManager.RemoveFromRolesAsync(user.Id, userRoles.Except(selectedRole).ToArray<string>());
-        //        }
-
-        //        if (!result.Succeeded)
-        //        {
-        //            ModelState.AddModelError("", result.Errors.First());
-        //            return View();
-        //        }
-        //        if (User.IsInRole("Admin"))
-        //        {
-        //            return RedirectToAction("Index");
-        //        }
-        //        else
-        //        {
-        //            return RedirectToAction("Index", new RouteValueDictionary(new { controller = "Home", action = "Index" }));
-        //        }
-        //    }
-        //    ModelState.AddModelError("", "Something failed.");
-        //    return View();
-        //}
+            var userId = User.Identity.GetUserId();
+            var model = new IndexViewModel
+            {
+                HasPassword = HasPassword(),
+                PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
+                TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
+                Logins = await UserManager.GetLoginsAsync(userId),
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+            };
+            return View(model);
+        }
+        //
+        // POST: /Users/Edit/1
+        public async Task<ActionResult> Edit(string id)
+        {
 
 
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-        ////
-        //// POST: /Manage/RemoveLogin
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> RemoveLogin(string loginProvider, string providerKey)
-        //{
-        //    ManageMessageId? message;
-        //    var result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
-        //    if (result.Succeeded)
-        //    {
-        //        var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-        //        if (user != null)
-        //        {
-        //            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-        //        }
-        //        message = ManageMessageId.RemoveLoginSuccess;
-        //    }
-        //    else
-        //    {
-        //        message = ManageMessageId.Error;
-        //    }
-        //    return RedirectToAction("ManageLogins", new { Message = message });
-        //}
+            var user = await UserManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+
+            var userRoles = await UserManager.GetRolesAsync(user.Id);
+
+            return View(new EditUserViewModel()
+            {
+                Id = user.Id,
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                //RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
+                //{
+                //    Selected = userRoles.Contains(x.Name),
+                //    Text = x.Name,
+                //    Value = x.Name
+                //})
+            });
+        }
+
+        //
+        // POST: /Users/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit([Bind(Include = "Email,Id, FirstName,LastName, PhoneNumber")] EditUserViewModel editUser, params string[] selectedRole)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByIdAsync(editUser.Id);
+                if (user == null)
+                {
+                    return HttpNotFound();
+                }
+
+                user.UserName = editUser.Email;
+                user.Email = editUser.Email;
+                user.FirstName = editUser.FirstName;
+                user.LastName = editUser.LastName;
+                user.PhoneNumber = editUser.PhoneNumber;
+
+                var userRoles = await UserManager.GetRolesAsync(user.Id);
+
+                selectedRole = selectedRole ?? new string[] { };
+
+                var result = await UserManager.AddToRolesAsync(user.Id, selectedRole.Except(userRoles).ToArray<string>());
+
+                if (!result.Succeeded)
+                {
+                    ModelState.AddModelError("", result.Errors.First());
+                    return View();
+                }
+                if (User.IsInRole("Admin"))
+                {
+                    result = await UserManager.RemoveFromRolesAsync(user.Id, userRoles.Except(selectedRole).ToArray<string>());
+                }
+
+                if (!result.Succeeded)
+                {
+                    ModelState.AddModelError("", result.Errors.First());
+                    return View();
+                }
+                if (User.IsInRole("Admin"))
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("Index", new RouteValueDictionary(new { controller = "Home", action = "Index" }));
+                }
+            }
+            ModelState.AddModelError("", "Something failed.");
+            return View();
+        }
+
+
+
+        //
+        // POST: /Manage/RemoveLogin
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RemoveLogin(string loginProvider, string providerKey)
+        {
+            ManageMessageId? message;
+            var result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
+            if (result.Succeeded)
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                if (user != null)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                }
+                message = ManageMessageId.RemoveLoginSuccess;
+            }
+            else
+            {
+                message = ManageMessageId.Error;
+            }
+            return RedirectToAction("ManageLogins", new { Message = message });
+        }
 
         //
         // GET: /Manage/AddPhoneNumber
