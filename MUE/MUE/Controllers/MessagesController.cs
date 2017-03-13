@@ -15,9 +15,23 @@ namespace MUE.Controllers
         private ModelReferencesHere db = new ModelReferencesHere();
 
         // GET: Messages
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
-            var messages = db.Messages.Include(m => m.AspNetUser);
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "FirstName" : "";
+            var messages = from m in db.Messages select m;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                messages = messages.Where(m => m.TEXT.Contains(searchString) || m.AspNetUser.FirstName.Contains(searchString));
+            }
+            switch(sortOrder)
+            {
+                case "FirstName":
+                    messages = messages.OrderBy(m => m.AspNetUser.FirstName);
+                    break;
+                default:
+                    messages = messages.OrderByDescending(m => m.DATETIMEMADE);
+                    break;
+            }
             return View(messages.ToList());
         }
 
