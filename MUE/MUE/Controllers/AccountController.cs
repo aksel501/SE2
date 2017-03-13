@@ -156,7 +156,7 @@ namespace MUE.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, params string[] selectedRoles)
         {
             if (ModelState.IsValid)
             {
@@ -183,6 +183,8 @@ namespace MUE.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    
+
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -227,21 +229,21 @@ namespace MUE.Controllers
 
 
                 };
-                var specialty = new SPECIALTY
-                {
-                    expertID = User.Identity.GetUserId(),
-                    NAME = model.NAME,
-                    DESCRIPTION = model.DESCRIPTION
+                //var specialty = new SPECIALTY
+                //{
+                //    expertID = User.Identity.GetUserId(),
+                //    NAME = model.NAME,
+                //    DESCRIPTION = model.DESCRIPTION
 
-                };
-                if (ModelState.IsValid)
-                {
-                    _dbContext.SPECIALTies.Add(specialty);
-                    _dbContext.SaveChanges();
-                    return RedirectToAction("Index", "Manage");
-                }
-                _dbContext.SPECIALTies.Add(specialty);
-                _dbContext.SaveChanges();
+                //};
+                //if (ModelState.IsValid)
+                //{
+                //    _dbContext.SPECIALTies.Add(specialty);
+                //    _dbContext.SaveChanges();
+                //    return RedirectToAction("Index", "Manage");
+                //}
+                //_dbContext.SPECIALTies.Add(specialty);
+                //_dbContext.SaveChanges();
 
                 var result = await UserManager.CreateAsync(user, model.Password);
 
