@@ -1,8 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
-@*@model MUE.Models.IndexViewModel*@
 @using MUE.Models
 @{
-    //IdentitySample.Controllers.ManageController p = new IdentitySample.Controllers.ManageController();
     var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
     var currentUser = manager.FindById(User.Identity.GetUserId());
 
@@ -43,7 +41,7 @@
 
             <p>
  
-        <em>To add a category</em> @Html.ActionLink("Click Here", "ChangeDepartments", routeValues: null, htmlAttributes: new { id = "changeDepartmentsLink" })
+        <em>To update your categories</em> @Html.ActionLink("Click Here", "ChangeDepartments", routeValues: null, htmlAttributes: new { id = "changeDepartmentsLink" })
         </p>
  
 
@@ -80,8 +78,6 @@
 
 
     <p>
-
-
 
 </div>
     </div>

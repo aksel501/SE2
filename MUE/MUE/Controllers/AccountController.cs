@@ -182,6 +182,7 @@ namespace MUE.Controllers
 
                 if (result.Succeeded)
                 {
+                    UserManager.AddToRole(user.Id, "User");
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     
 
