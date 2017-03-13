@@ -13,37 +13,56 @@
     
     <div class="form-horizontal">
         <h4>Message</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
+        <hr>
+        
+        <input data-val="true" data-val-number="The field ID must be a number." data-val-required="The ID field is required." id="ID" name="ID" type="hidden" value="1">
 
         <div class="form-group">
-            @Html.LabelFor(model => model.USERID, "USERID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2" for="USERID">USExpert</label>
             <div class="col-md-10">
-                @Html.DropDownList("USERID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.USERID, "", new { @class = "text-danger" })
+                <select class="form-control valid" id="USERID" name="USERID"><option value="062c73fd-bccc-4288-8103-e66f0eb64502">Anthony</option>
+<option value="11ef5730-096d-4507-8d90-aea8d62d5e1a">no</option>
+<option value="1dfaab93-adc0-4322-8881-9d2748015356">Aleks</option>
+<option value="1fe9f9fa-98a0-475d-be7e-65084361909f">Aleks</option>
+<option value="3bd7e134-6aba-42cc-8a83-4c9339927311">Clarence</option>
+<option value="5224f832-7666-4d73-8bd4-abf8bcd55b6a">Nathaniel</option>
+<option value="811f2788-a3f0-4ef5-baac-91ab84e977f0">Clarence</option>
+<option selected="selected" value="8ce7772c-f2d2-4ee0-b7ab-9f7d1afc8bab">don</option>
+<option value="93818b0d-a7df-4c4e-9a21-bfc31973733c">Clarence</option>
+<option value="97f456f0-f63f-42bd-a293-972879349001">James</option>
+<option value="a33e5332-a42f-4b56-86fb-a2430e371002">Nate</option>
+<option value="a6139d13-4c3b-4f66-909a-e129167d9545">Calrence</option>
+<option value="ab3dd68c-fd14-45d9-ba18-855e6f87fcda">Nathaniel</option>
+<option value="adae6cdb-45b1-494b-bfe7-f5e6f49f21ec">Ray</option>
+<option value="bd59a517-80a7-44f2-b360-15ee2bb7ca4f">jon</option>
+<option value="d0eae0c6-a37e-4ccf-b89d-c0969d4ed8ac">Nathaniel</option>
+<option value="d3c130f7-3dbf-459d-9fa1-bb5b41ab06f4">Nathaniel</option>
+<option value="d6a6fda0-36cf-43e1-8103-dd01d83acf45">hi</option>
+<option value="f9887d32-c2c4-4f76-bda4-efc1687259b9">jon </option>
+</select>
+                <span class="field-validation-valid text-danger" data-valmsg-for="USERID" data-valmsg-replace="true"></span>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DATETIMEMADE, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2" for="DATETIMEMADE">Date</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DATETIMEMADE, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DATETIMEMADE, "", new { @class = "text-danger" })
+                <input class="form-control text-box single-line valid" data-val="true" data-val-date="The field DATETIMEMADE must be a date." data-val-required="The DATETIMEMADE field is required." id="DATETIMEMADE" name="DATETIMEMADE" type="datetime" value="12/13/2017 12:00:00 AM">
+                <span class="text-danger field-validation-valid" data-valmsg-for="DATETIMEMADE" data-valmsg-replace="true"></span>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TEXT, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2" for="TEXT">Message</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TEXT, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TEXT, "", new { @class = "text-danger" })
+                <input class="form-control text-box single-line valid" id="TEXT" name="TEXT" type="text" value="tetetst">
+                <span class="field-validation-valid text-danger" data-valmsg-for="TEXT" data-valmsg-replace="true"></span>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default">
             </div>
         </div>
     </div>

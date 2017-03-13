@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<MUE.Models.Message>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Inbox";
 }
 
-<h2>Index</h2>
+<h2>Inbox</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,34 +12,38 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.AspNetUser.FirstName)
+            Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DATETIMEMADE)
+            Date
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TEXT)
+            Message
         </th>
         <th></th>
     </tr>
+    </table>
+    <hr />
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DATETIMEMADE)
+            </td>
+            <td>
+                &nbsp;&nbsp; @Html.DisplayFor(modelItem => item.TEXT)
+            </td>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DATETIMEMADE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TEXT)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.ActionLink("Message", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>
