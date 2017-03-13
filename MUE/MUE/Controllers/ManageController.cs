@@ -77,7 +77,7 @@ namespace MUE.Controllers
 
             var specialty = new SPECIALTY
             {
-                //expertID = User.Identity.GetUserId(),
+                expertID = User.Identity.GetUserId(),
                 NAME = model.NAME,
                 DESCRIPTION = model.DESCRIPTION
 

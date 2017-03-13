@@ -227,18 +227,21 @@ namespace MUE.Controllers
 
 
                 };
-                //var specialty = new SPECIALTY
-                //{
-                //    expertID=User.Identity.GetUserId(),
-                //    NAME = model.NAME,
-                //    DESCRIPTION = model.DESCRIPTION
+                var specialty = new SPECIALTY
+                {
+                    expertID = User.Identity.GetUserId(),
+                    NAME = model.NAME,
+                    DESCRIPTION = model.DESCRIPTION
 
-                //};
-                //if (ModelState.IsValid) {
-                //    _dbContext.SPECIALTies.Add(specialty);
-                //    _dbContext.SaveChanges();
-                //    return RedirectToAction("Index");
-                //}
+                };
+                if (ModelState.IsValid)
+                {
+                    _dbContext.SPECIALTies.Add(specialty);
+                    _dbContext.SaveChanges();
+                    return RedirectToAction("Index", "Manage");
+                }
+                _dbContext.SPECIALTies.Add(specialty);
+                _dbContext.SaveChanges();
 
                 var result = await UserManager.CreateAsync(user, model.Password);
 
