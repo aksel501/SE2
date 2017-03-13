@@ -7,7 +7,7 @@ namespace MUE.Models
     using System.Data.Entity.Spatial;
 
     [Table("SPECIALTY")]
-    public partial class SPECIALTY
+    public partial class SPECIALTY 
     {
         [Required]
         [StringLength(128)]
@@ -26,6 +26,6 @@ namespace MUE.Models
         [Required]
         public string DESCRIPTION { get; set; }
 
-        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual EXPERT EXPERT { get; set; }
     }
 }

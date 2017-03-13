@@ -16,7 +16,6 @@ namespace MUE.Models
             CONVERSATIONs = new HashSet<CONVERSATION>();
             Messages = new HashSet<Message>();
             POSTs = new HashSet<POST>();
-            SPECIALTies = new HashSet<SPECIALTY>();
             EXPERTs = new HashSet<EXPERT>();
             AspNetRoles = new HashSet<AspNetRole>();
             PROJECTs = new HashSet<PROJECT>();
@@ -73,9 +72,6 @@ namespace MUE.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<POST> POSTs { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SPECIALTY> SPECIALTies { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EXPERT> EXPERTs { get; set; }

@@ -22,6 +22,7 @@ namespace MUE.Models
         [StringLength(64)]
         public string NAME { get; set; }
 
+        [Required]
         public string DESCRIPTION { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
