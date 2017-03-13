@@ -9,6 +9,7 @@ using Microsoft.Owin.Security;
 using MUE.Models;
 using System.Web.Routing;
 using System.Net;
+using System.Security.Principal;
 
 namespace MUE.Controllers
 {
@@ -18,10 +19,12 @@ namespace MUE.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private ModelReferencesHere _dbContext;
+        private ApplicationDbContext _forEdit;
         
         public ManageController()
         {
             _dbContext = new ModelReferencesHere();
+            _forEdit = new ApplicationDbContext();
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -133,96 +136,43 @@ namespace MUE.Controllers
             };
             return View(model);
         }
-        //
-        // POST: /Users/Edit/1
-        public async Task<ActionResult> Edit(string id)
+       
+  
+        
+        public ActionResult Edit()
         {
-
-
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            var user = await UserManager.FindByIdAsync(id);
-
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-
-            var userRoles = await UserManager.GetRolesAsync(user.Id);
-
-            return View(new EditUserViewModel()
-            {
-                Id = user.Id,
-                Email = user.Email,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                //RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
-                //{
-                //    Selected = userRoles.Contains(x.Name),
-                //    Text = x.Name,
-                //    Value = x.Name
-                //})
-            });
+            return View(getCurrentUser());
         }
 
-        //
-        // POST: /Users/Edit/5
+       
+        //POST: /Manage/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Email,Id, FirstName,LastName, PhoneNumber")] EditUserViewModel editUser, params string[] selectedRole)
+        public ActionResult Edit(EditUserViewModel model)
         {
+            string id = model.Id;
+            ApplicationUser user = _forEdit.Users.Find(model.Id);
+
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.Email = model.Email;
+            user.PhoneNumber = model.PhoneNumber;
+
+            _dbContext.SaveChanges();
+
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindByIdAsync(editUser.Id);
-                if (user == null)
-                {
-                    return HttpNotFound();
-                }
-
-                user.UserName = editUser.Email;
-                user.Email = editUser.Email;
-                user.FirstName = editUser.FirstName;
-                user.LastName = editUser.LastName;
-                user.PhoneNumber = editUser.PhoneNumber;
-
-                var userRoles = await UserManager.GetRolesAsync(user.Id);
-
-                selectedRole = selectedRole ?? new string[] { };
-
-                var result = await UserManager.AddToRolesAsync(user.Id, selectedRole.Except(userRoles).ToArray<string>());
-
-                if (!result.Succeeded)
-                {
-                    ModelState.AddModelError("", result.Errors.First());
-                    return View();
-                }
-                if (User.IsInRole("Admin"))
-                {
-                    result = await UserManager.RemoveFromRolesAsync(user.Id, userRoles.Except(selectedRole).ToArray<string>());
-                }
-
-                if (!result.Succeeded)
-                {
-                    ModelState.AddModelError("", result.Errors.First());
-                    return View();
-                }
-                if (User.IsInRole("Admin"))
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    return RedirectToAction("Index", new RouteValueDictionary(new { controller = "Home", action = "Index" }));
-                }
+                //FormsAuthentication.SignOut();
+                //Response.Redirect("login.aspx?mode=logout");
+                return RedirectToAction("Index");
             }
-            ModelState.AddModelError("", "Something failed.");
-            return View();
+            return View(model);
         }
 
-
+        public ApplicationUser getCurrentUser()
+        {
+            return _forEdit.Users.Find(System.Web.HttpContext.Current.User.Identity.GetUserId());
+        }
 
         //
         // POST: /Manage/RemoveLogin
