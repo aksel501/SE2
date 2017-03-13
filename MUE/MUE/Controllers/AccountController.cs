@@ -141,6 +141,12 @@ namespace MUE.Controllers
         {
             return View();
         }
+        [AllowAnonymous]
+        //added by nate
+        public ActionResult ExpertRegistration() {
+
+            return View();
+        }
 
         //
         // POST: /Account/Register
@@ -151,12 +157,78 @@ namespace MUE.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                
+                
+                //string EncodedResponse = Request.Form["g-Recaptcha-Response"];
+                //bool IsCaptchaValid=(ReCaptcha.Validate(EncodedResponse)=="True" ? true: false);
+                //if (IsCaptchaValid)
+                //{
+                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName=model.FirstName, LastName=model.LastName,
+                      PhoneNumber=model.PhoneNumber
+
+                    };
+
+               
+                    var result = await UserManager.CreateAsync(user, model.Password);
+                    
+                   
+                    if (result.Succeeded)
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                        // Send an email with this link
+                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                        return RedirectToAction("Index", "Home");
+                    }
+                    AddErrors(result);
+                //}
+                //else {
+
+                //    TempData["recaptcha"] = "Please verify that you are not a robot";
+
+                //}
+                //AccountRegisterViewModel ARVM = new AccountRegisterViewModel();
+
+                
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+        //for registering an expert account
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        //added by nate
+        public async Task<ActionResult> ExpertRegistration(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //AccountRegisterViewModel ARVM = new AccountRegisterViewModel();
+
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName=model.FirstName, LastName=model.LastName,
+                    PhoneNumber=model.PhoneNumber
+
+
+                };
+                var specialty = new SPECIALTY
+                {
+                    NAME = model.NameOfSpecialty,
+                    DESCRIPTION=model.DescriptionOfSpecialty
+
+                };
+
                 var result = await UserManager.CreateAsync(user, model.Password);
+                
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    UserManager.AddToRole(user.Id, "Expert");
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
