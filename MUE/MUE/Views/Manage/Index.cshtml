@@ -18,23 +18,23 @@
             <em>To edit your basic account information</em>
             @Html.ActionLink("Click Here", "Edit", routeValues: null, htmlAttributes: new { id = "editAccountLink" })
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8"
     <p>
-        <b>Email: @Html.Raw(currentUser.Email)</b>
+        <b>Email: </b> @Html.Raw(currentUser.Email)
     </p>
     <p>
-        <b>First Name: @Html.Raw(currentUser.FirstName)</b>
+        <b>First Name: </b> @Html.Raw(currentUser.FirstName)
     </p>
     <p>
-        <b>Last Name: @Html.Raw(currentUser.LastName)</b>
+        <b>Last Name: </b> @Html.Raw(currentUser.LastName)
     </p>
     <p>
-       <b> Phone Number: @Html.Raw(currentUser.PhoneNumber)</b>
+       <b> Phone Number: </b> @Html.Raw(currentUser.PhoneNumber)
     </p>
     @if (User.IsInRole("Expert"))
     {
     <p>
-        <b>Categories: </b>
+        <b>Categories: </b> 
     </p>
     <p>
         <b>Specialties: </b>

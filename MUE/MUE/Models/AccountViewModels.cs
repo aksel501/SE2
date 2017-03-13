@@ -119,6 +119,7 @@ namespace MUE.Models
 
         [Display(Name = "Name of Specialty")]
         public string NAME { get; set; }
+
         [Display(Name = "Description of Specialty")]
         public string DESCRIPTION { get; set; }
     }
