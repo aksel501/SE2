@@ -57,6 +57,13 @@ namespace MUE.Controllers
                 _userManager = value;
             }
         }
+        public ActionResult ViewSpecialties()
+        {
+            var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            var adam = from s in _dbContext.SPECIALTies.Where(s => s.expertID == currentUser.Id) select s;
+            return View(adam.ToList());
+        }
 
         public ActionResult ChangeDepartments()
         {
