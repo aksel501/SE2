@@ -1,7 +1,7 @@
 ﻿@model MUE.Models.Message
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Reply";
 }
 
 <h2>Edit</h2>
@@ -13,12 +13,14 @@
     
     <div class="form-horizontal">
         <h4>Message</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
+        <hr>
+        
+        <input data-val="true" data-val-number="The field ID must be a number." data-val-required="The ID field is required." id="ID" name="ID" type="hidden" value="1">
 
         <div class="form-group">
-            @Html.LabelFor(model => model.USERID, "USERID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2">
+                Expert:
+            </div>
             <div class="col-md-10">
                 @Html.DropDownList("USERID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.USERID, "", new { @class = "text-danger" })
@@ -26,24 +28,24 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DATETIMEMADE, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2" for="DATETIMEMADE">Date</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DATETIMEMADE, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DATETIMEMADE, "", new { @class = "text-danger" })
+                <input class="form-control text-box single-line valid" data-val="true" data-val-date="The field DATETIMEMADE must be a date." data-val-required="The DATETIMEMADE field is required." id="DATETIMEMADE" name="DATETIMEMADE" type="datetime" value="12/13/2017 12:00:00 AM">
+                <span class="text-danger field-validation-valid" data-valmsg-for="DATETIMEMADE" data-valmsg-replace="true"></span>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TEXT, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2" for="TEXT">Reply</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TEXT, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TEXT, "", new { @class = "text-danger" })
+                <input class="form-control text-box single-line valid" id="TEXT" name="TEXT" type="text" value="">
+                <span class="field-validation-valid text-danger" data-valmsg-for="TEXT" data-valmsg-replace="true"></span>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default">
             </div>
         </div>
     </div>
