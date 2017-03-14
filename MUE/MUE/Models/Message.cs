@@ -15,7 +15,7 @@ namespace MUE.Models
             CONVERSATIONs = new HashSet<CONVERSATION>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         [Required]
