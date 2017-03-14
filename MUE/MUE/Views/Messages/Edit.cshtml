@@ -18,6 +18,9 @@
         <input data-val="true" data-val-number="The field ID must be a number." data-val-required="The ID field is required." id="ID" name="ID" type="hidden" value="1">
 
         <div class="form-group">
+            <div class="control-label col-md-2">
+                Expert:
+            </div>
             <div class="col-md-10">
                 @Html.DropDownList("USERID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.USERID, "", new { @class = "text-danger" })
@@ -33,9 +36,9 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2" for="TEXT">Message</label>
+            <label class="control-label col-md-2" for="TEXT">Reply</label>
             <div class="col-md-10">
-                <input class="form-control text-box single-line valid" id="TEXT" name="TEXT" type="text" value="tetetst">
+                <input class="form-control text-box single-line valid" id="TEXT" name="TEXT" type="text" value="">
                 <span class="field-validation-valid text-danger" data-valmsg-for="TEXT" data-valmsg-replace="true"></span>
             </div>
         </div>
