@@ -20,6 +20,7 @@ namespace MUE.Controllers
         private ApplicationUserManager _userManager;
         private ModelReferencesHere _dbContext;
         private ApplicationDbContext _forEdit;
+      
         
         public ManageController()
         {
@@ -147,7 +148,7 @@ namespace MUE.Controllers
   
         
         public ActionResult Edit()
-        {
+        {  
             return View(getCurrentUser());
         }
 
