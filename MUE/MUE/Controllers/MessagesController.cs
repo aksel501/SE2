@@ -15,6 +15,7 @@ namespace MUE.Controllers
         private ModelReferencesHere db = new ModelReferencesHere();
 
         // GET: Messages
+        [Authorize(Roles = "Expert, User")]
         public ActionResult Index(string sortOrder, string searchString)
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "FirstName" : "";
@@ -34,7 +35,7 @@ namespace MUE.Controllers
             }
             return View(messages.ToList());
         }
-
+    
         // GET: Messages/Details/5
         public ActionResult Details(int? id)
         {
@@ -51,6 +52,7 @@ namespace MUE.Controllers
         }
 
         // GET: Messages/Create
+       
         public ActionResult Create()
         {
             ViewBag.USERID = new SelectList(db.AspNetUsers, "Id", "FirstName");
