@@ -38,6 +38,20 @@ namespace MUE
                 role.Name = "Admin";
                 roleManager.Create(role);
             }
+
+            if (!roleManager.RoleExists("Disabled"))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "Disabled";
+                roleManager.Create(role);
+            }
+
+            if (!roleManager.RoleExists("User"))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "User";
+                roleManager.Create(role);
+            }
         }
 
 

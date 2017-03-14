@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "ViewSpecialties";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<h2>Your Specialties</h2>
+<ul>
+    @foreach (var specialty in Model)
+    {
+        <li><b>Specialty: </b>@specialty.NAME <b>Description: </b>@specialty.DESCRIPTION</li>
+    }
+</ul>
