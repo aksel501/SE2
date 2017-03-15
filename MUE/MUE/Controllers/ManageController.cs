@@ -98,22 +98,6 @@ namespace MUE.Controllers
             _dbContext.SPECIALTies.Add(specialty);
             _dbContext.SaveChanges();
 
-
-
-            //using (var ctx = new ModelReferencesHere())
-            //    {
-            //    var specialty = new SPECIALTY
-            //    {
-            //        expertID = User.Identity.GetUserId(),
-            //        NAME = model.NAME,
-            //        DESCRIPTION = model.DESCRIPTION
-
-            //    };
-
-            //    ctx.SPECIALTies.SqlQuery("Insert into SPECIALTY (expertID, ID, NAME, DESCRIPTION) values(expertID, 2, NAME, DESCRIPTION)").ToList();
-
-            //    }
-
             return RedirectToAction("Index", "Manage");
             
         }
