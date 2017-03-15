@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    
 }
 
 <h2>Index</h2>
@@ -12,15 +13,7 @@
 <table class="table">
     <tr>
         <th>
-            <div class="form-group">
-                @Html.LabelFor(model => model.disabled, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.disabled)
-                        @Html.ValidationMessageFor(model => model.disabled, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
+
             @Html.DisplayNameFor(model => model.disabled)
         </th>
         <th>
