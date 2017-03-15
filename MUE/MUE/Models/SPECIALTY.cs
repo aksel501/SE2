@@ -21,9 +21,11 @@ namespace MUE.Models
         [Key]
         [Column(Order = 1)]
         [StringLength(64)]
+        [Display(Name ="Name of Specialty")]
         public string NAME { get; set; }
 
         [Required]
+        [Display(Name = "Description of Specialty")]
         public string DESCRIPTION { get; set; }
 
         public virtual EXPERT EXPERT { get; set; }
