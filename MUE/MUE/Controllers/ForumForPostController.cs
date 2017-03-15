@@ -11,23 +11,18 @@ using MUE.Models;
 namespace MUE.Controllers
 {
     [Authorize]
-    public class POSTsController : Controller
+    public class ForumForPostController : Controller
     {
         private ModelReferencesHere db = new ModelReferencesHere();
 
-        // GET: POSTs
+        // GET: ForumForPost
         public ActionResult Index()
         {
-            return View();
-            // var pOSTs = db.POSTs.Include(p => p.AspNetUser);
-            //return View(pOSTs.ToList());
+            var pOSTs = db.POSTs.Include(p => p.AspNetUser);
+            return View(pOSTs.ToList());
         }
 
-        public ActionResult IndexList()
-        {
-            return View();
-        } 
-        // GET: POSTs/Details/5
+        // GET: ForumForPost/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -42,14 +37,14 @@ namespace MUE.Controllers
             return View(pOST);
         }
 
-        // GET: POSTs/Create
+        // GET: ForumForPost/Create
         public ActionResult Create()
         {
             ViewBag.USERID = new SelectList(db.AspNetUsers, "Id", "FirstName");
             return View();
         }
 
-        // POST: POSTs/Create
+        // POST: ForumForPost/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -67,7 +62,7 @@ namespace MUE.Controllers
             return View(pOST);
         }
 
-        // GET: POSTs/Edit/5
+        // GET: ForumForPost/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -83,7 +78,7 @@ namespace MUE.Controllers
             return View(pOST);
         }
 
-        // POST: POSTs/Edit/5
+        // POST: ForumForPost/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -100,7 +95,7 @@ namespace MUE.Controllers
             return View(pOST);
         }
 
-        // GET: POSTs/Delete/5
+        // GET: ForumForPost/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -115,7 +110,7 @@ namespace MUE.Controllers
             return View(pOST);
         }
 
-        // POST: POSTs/Delete/5
+        // POST: ForumForPost/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

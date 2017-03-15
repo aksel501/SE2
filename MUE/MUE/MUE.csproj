@@ -200,6 +200,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AspNetUsersController.cs" />
+    <Compile Include="Controllers\ForumForPostController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
@@ -300,6 +301,11 @@
     <Content Include="Views\Manage\ChangeDepartments.cshtml" />
     <Content Include="Views\Manage\Edit.cshtml" />
     <Content Include="Views\Manage\ViewSpecialties.cshtml" />
+    <Content Include="Views\ForumForPost\Create.cshtml" />
+    <Content Include="Views\ForumForPost\Delete.cshtml" />
+    <Content Include="Views\ForumForPost\Details.cshtml" />
+    <Content Include="Views\ForumForPost\Edit.cshtml" />
+    <Content Include="Views\ForumForPost\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
