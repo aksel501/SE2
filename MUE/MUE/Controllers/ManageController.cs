@@ -9,6 +9,7 @@ using Microsoft.Owin.Security;
 using MUE.Models;
 using System.Web.Routing;
 using System.Net;
+using System.Security.Principal;
 
 namespace MUE.Controllers
 {
@@ -17,9 +18,14 @@ namespace MUE.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        private ModelReferencesHere _dbContext;
+        private ApplicationDbContext _forEdit;
+      
+        
         public ManageController()
         {
+            _dbContext = new ModelReferencesHere();
+            _forEdit = new ApplicationDbContext();
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -52,6 +58,67 @@ namespace MUE.Controllers
                 _userManager = value;
             }
         }
+        public ActionResult ViewSpecialties()
+        {
+            var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            var adam = from s in _dbContext.SPECIALTies.Where(s => s.expertID == currentUser.Id) select s;
+            return View(adam.ToList());
+        }
+
+        public ActionResult ChangeDepartments()
+        {
+            return View();
+        }
+
+        public ActionResult AddSpecialty()
+        {
+            return View();
+
+        }
+        //GEt: Posts/Create
+        [Authorize(Roles = "Expert, Admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddSpecialty(SPECIALTY model)
+        {
+
+            var specialty = new SPECIALTY
+            {
+                expertID = User.Identity.GetUserId(),
+                NAME = model.NAME,
+                DESCRIPTION = model.DESCRIPTION
+
+            };
+            if (ModelState.IsValid)
+            {
+                _dbContext.SPECIALTies.Add(specialty);
+                _dbContext.SaveChanges();
+                return RedirectToAction("Index", "Manage");
+            }
+            _dbContext.SPECIALTies.Add(specialty);
+            _dbContext.SaveChanges();
+
+
+
+            //using (var ctx = new ModelReferencesHere())
+            //    {
+            //    var specialty = new SPECIALTY
+            //    {
+            //        expertID = User.Identity.GetUserId(),
+            //        NAME = model.NAME,
+            //        DESCRIPTION = model.DESCRIPTION
+
+            //    };
+
+            //    ctx.SPECIALTies.SqlQuery("Insert into SPECIALTY (expertID, ID, NAME, DESCRIPTION) values(expertID, 2, NAME, DESCRIPTION)").ToList();
+
+            //    }
+
+            return RedirectToAction("Index", "Manage");
+            
+        }
+
 
         //
         // GET: /Manage/Index
@@ -77,9 +144,44 @@ namespace MUE.Controllers
             };
             return View(model);
         }
+       
+  
+        
+        public ActionResult Edit()
+        {  
+            return View(getCurrentUser());
+        }
 
-        
-        
+       
+        //POST: /Manage/Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(EditUserViewModel model)
+        {
+            string id = model.Id;
+            ApplicationUser user = _forEdit.Users.Find(model.Id);
+
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.Email = model.Email;
+            user.PhoneNumber = model.PhoneNumber;
+
+            _dbContext.SaveChanges();
+
+            if (ModelState.IsValid)
+            {
+                //FormsAuthentication.SignOut();
+                //Response.Redirect("login.aspx?mode=logout");
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
+        public ApplicationUser getCurrentUser()
+        {
+            return _forEdit.Users.Find(System.Web.HttpContext.Current.User.Identity.GetUserId());
+        }
+
         //
         // POST: /Manage/RemoveLogin
         [HttpPost]

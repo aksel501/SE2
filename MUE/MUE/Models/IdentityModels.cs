@@ -31,13 +31,18 @@ namespace MUE.Models
         }
     }
 
+    
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
+        
         public object AspNetRoles { get; internal set; }
 
         public static ApplicationDbContext Create()
