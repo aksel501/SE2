@@ -73,7 +73,7 @@ namespace MUE.Controllers
                 var mes = new Message
                 {
                     USERID = message.USERID,
-                    DATETIMEMADE = DateTime.Today,
+                    DATETIMEMADE = DateTime.Now,
                     TEXT = message.TEXT
                 };
                 db.Messages.Add(mes);
