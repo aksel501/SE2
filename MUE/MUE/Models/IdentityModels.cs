@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MUE.Models
 {
@@ -11,9 +12,10 @@ namespace MUE.Models
     public class ApplicationUser : IdentityUser
     {
         public bool disabled { get; set; }
-
+        
+        [Display(Name="First Name")]
         public string FirstName { get; set; }
-
+        [Display(Name ="Last Name")]
         public string LastName { get; set; }
 
         public char MiddleInit { get; set; }

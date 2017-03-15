@@ -24,7 +24,7 @@ namespace MUE.Models
         public string Id { get; set; }
 
         public bool disabled { get; set; }
-
+        [Display(Name ="First Name")]
         public string FirstName { get; set; }
 
         public string LastName { get; set; }

@@ -18,12 +18,12 @@ namespace MUE.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private ModelReferencesHere _dbContext;
+        private ModelReferencesHere _ForEdit;
         private ApplicationDbContext _forEdit;
         
         public ManageController()
         {
-            _dbContext = new ModelReferencesHere();
+            _ForEdit = new ModelReferencesHere();
             _forEdit = new ApplicationDbContext();
         }
 
@@ -61,7 +61,7 @@ namespace MUE.Controllers
         {
             var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
             var currentUser = manager.FindById(User.Identity.GetUserId());
-            var adam = from s in _dbContext.SPECIALTies.Where(s => s.expertID == currentUser.Id) select s;
+            var adam = from s in _ForEdit.SPECIALTies.Where(s => s.expertID == currentUser.Id) select s;
             return View(adam.ToList());
         }
 
@@ -91,12 +91,12 @@ namespace MUE.Controllers
             };
             if (ModelState.IsValid)
             {
-                _dbContext.SPECIALTies.Add(specialty);
-                _dbContext.SaveChanges();
+                _ForEdit.SPECIALTies.Add(specialty);
+                _ForEdit.SaveChanges();
                 return RedirectToAction("Index", "Manage");
             }
-            _dbContext.SPECIALTies.Add(specialty);
-            _dbContext.SaveChanges();
+            _ForEdit.SPECIALTies.Add(specialty);
+            _ForEdit.SaveChanges();
 
             return RedirectToAction("Index", "Manage");
             
@@ -139,7 +139,7 @@ namespace MUE.Controllers
         //POST: /Manage/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(EditUserViewModel model)
+        public ActionResult Edit(ApplicationUser model)
         {
             string id = model.Id;
             ApplicationUser user = _forEdit.Users.Find(model.Id);
@@ -149,12 +149,10 @@ namespace MUE.Controllers
             user.Email = model.Email;
             user.PhoneNumber = model.PhoneNumber;
 
-            _dbContext.SaveChanges();
+            _ForEdit.SaveChanges();
 
             if (ModelState.IsValid)
             {
-                //FormsAuthentication.SignOut();
-                //Response.Redirect("login.aspx?mode=logout");
                 return RedirectToAction("Index");
             }
             return View(model);
