@@ -24,7 +24,7 @@ namespace MUE.Controllers
             var messages = from m in db.Messages where m.USERID == userId  select m;
             if (!String.IsNullOrEmpty(searchString))
             {
-                messages = messages.Where(m => m.TEXT.Contains(searchString) || m.AspNetUser.FirstName.Contains(searchString));
+                messages = messages.Where(m => m.TEXT.Contains(searchString) || m.AspNetUser.Email.Contains(searchString));
             }
             switch(sortOrder)
             {
