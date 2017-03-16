@@ -10,6 +10,10 @@
 <ul>
     @foreach (var specialty in Model)
     {
-        <li><b>Specialty: </b>@specialty.NAME <b>Description: </b>@specialty.DESCRIPTION</li>
+        <li>
+            <b>Specialty: </b>@specialty.NAME
+            <b>Description: </b>@specialty.DESCRIPTION
+            @Html.ActionLink("Delete", "DeleteSpecialty", new { ID = specialty.ID})
+        </li>
     }
 </ul>

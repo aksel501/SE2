@@ -18,12 +18,12 @@ namespace MUE.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private ModelReferencesHere _ForEdit;
+        private ModelReferencesHere _DbContext;
         private ApplicationDbContext _forEdit;
         
         public ManageController()
         {
-            _ForEdit = new ModelReferencesHere();
+            _DbContext = new ModelReferencesHere();
             _forEdit = new ApplicationDbContext();
         }
 
@@ -61,10 +61,21 @@ namespace MUE.Controllers
         {
             var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
             var currentUser = manager.FindById(User.Identity.GetUserId());
-            var adam = from s in _ForEdit.SPECIALTies.Where(s => s.expertID == currentUser.Id) select s;
+            var adam = from s in _DbContext.SPECIALTies.Where(s => s.expertID == currentUser.Id) select s;
             return View(adam.ToList());
         }
 
+        public ActionResult DeleteSpecialty(int ID)
+        {
+            var specialty = _DbContext.SPECIALTies.FirstOrDefault(s => s.ID == ID);
+            if (specialty == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(specialty);
+
+        }
         public ActionResult ChangeDepartments()
         {
             return View();
@@ -91,12 +102,12 @@ namespace MUE.Controllers
             };
             if (ModelState.IsValid)
             {
-                _ForEdit.SPECIALTies.Add(specialty);
-                _ForEdit.SaveChanges();
+                _DbContext.SPECIALTies.Add(specialty);
+                _DbContext.SaveChanges();
                 return RedirectToAction("Index", "Manage");
             }
-            _ForEdit.SPECIALTies.Add(specialty);
-            _ForEdit.SaveChanges();
+            _DbContext.SPECIALTies.Add(specialty);
+            _DbContext.SaveChanges();
 
             return RedirectToAction("Index", "Manage");
             
@@ -149,7 +160,7 @@ namespace MUE.Controllers
             user.Email = model.Email;
             user.PhoneNumber = model.PhoneNumber;
 
-            _ForEdit.SaveChanges();
+            _forEdit.SaveChanges();
 
             if (ModelState.IsValid)
             {
