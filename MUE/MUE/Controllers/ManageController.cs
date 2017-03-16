@@ -76,6 +76,19 @@ namespace MUE.Controllers
             return View(specialty);
 
         }
+        [HttpPost]
+        public ActionResult DoDeleteSpecialty(int ID)
+        {
+            var specialty = _DbContext.SPECIALTies.FirstOrDefault(s => s.ID == ID);
+            if (specialty == null)
+            {
+                return HttpNotFound();
+            }
+            _DbContext.SPECIALTies.Remove(specialty);
+            _DbContext.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
         public ActionResult ChangeDepartments()
         {
             return View();

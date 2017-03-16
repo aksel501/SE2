@@ -10,14 +10,13 @@
 <br />
 <br />
 <h2>@ViewBag.Title.</h2>
-<p class="text-success" @ViewBag.StatusMessage</p>
-<div class="row"
+<p class="text-success"> @ViewBag.StatusMessage</p>
+<div class="row">
      <div class="col-md-8">
             <em>To edit your basic account information</em>
             @Html.ActionLink("Click Here", "Edit", routeValues: null, htmlAttributes: new { id = "editAccountLink" })
         </div>
-    <br />
-        <div class="col-md-8"
+    </div>
     <p>
         <b>Email: </b> @Html.Raw(currentUser.Email)
     </p>
@@ -32,30 +31,16 @@
     </p>
     @if (User.IsInRole("Expert"))
     {
-    <p>
-        <b>Categories: </b>
- 
-        </p>
         <p>
             <em>To view your specialties</em> @Html.ActionLink("Click Here", "ViewSpecialties", routeValues: null, htmlAttributes: new { id = "viewSpecialtiesLink" })
-
         </p>
-
+        <p>
+            <em> To add a specialty</em> @Html.ActionLink("Click Here", "AddSpecialty", routeValues: null, htmlAttributes: new { id = "addASpecialtyLink" })
+        </p>
             <p>
- 
         <em>To update your categories</em> @Html.ActionLink("Click Here", "ChangeDepartments", routeValues: null, htmlAttributes: new { id = "changeDepartmentsLink" })
         </p>
- 
-
-
-
-        <p>
- 
-
-
-
-        <em> To add a specialty</em> @Html.ActionLink("Click Here", "AddSpecialty", routeValues: null, htmlAttributes: new { id = "addASpecialtyLink" })
-       </p>
+        
 
     }
 
@@ -81,5 +66,3 @@
 
     <p>
 
-</div>
-    </div>
