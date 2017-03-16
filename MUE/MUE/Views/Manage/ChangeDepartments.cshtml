@@ -5,11 +5,11 @@
 }
 <br />
 <br />
-<h2>Update Your Selected Departments</h2>
+<h2>Update Your Selected Field Of Studies</h2>
 @using (Html.BeginForm("ExpertRegistration", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
 <div class="form-group">
-    @Html.Label("Select a department", new { @class = "col-md-2 control-label" })
+    @Html.Label("Select a field of study", new { @class = "col-md-2 control-label" })
     <div class="col-md-10">
         @Html.DropDownList("1st Departmnet", new List<SelectListItem>{
 
@@ -21,7 +21,7 @@
     </div>
 </div>
 <div class="form-group">
-    @Html.Label("Select a department", new { @class = "col-md-2 control-label" })
+    @Html.Label("Select a field of study", new { @class = "col-md-2 control-label" })
     <div class="col-md-10">
         @Html.DropDownList("2nd Department", new List<SelectListItem>{
 
@@ -33,7 +33,7 @@
     </div>
 </div>
 <div class="form-group">
-    @Html.Label("Select a department", new { @class = "col-md-2 control-label" })
+    @Html.Label("Select a field of study", new { @class = "col-md-2 control-label" })
     <div class="col-md-10">
         @Html.DropDownList("3rd Department", new List<SelectListItem>{
 
