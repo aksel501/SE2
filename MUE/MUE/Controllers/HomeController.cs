@@ -12,7 +12,7 @@ namespace MUE.Controllers
         {
             return View();
         }
-
+//about the project to view 
         public ActionResult About()
         {
             ViewBag.Message = "";

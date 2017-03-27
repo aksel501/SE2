@@ -59,11 +59,13 @@
                 @*  @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
-                @*<ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>*@
+                <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Messages", "Index", "Messages")</li>
+                    <li>@Html.ActionLink("Projects", "Index", "Projects")</li>
+
+                        @*<li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                    </ul>
 
 
                 @Html.Partial("_LoginPartial")
@@ -83,13 +85,15 @@
     *@
     
 
-
+    @* list of staff*@
     <div class="list-Of-ORCA">
         <ul class="nav navbar-nav">
             <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("Experts", "Expert", "Home")</li>
+            <li>@Html.ActionLink("Experts", "ListOfExperts", "AspNetUsers")</li>
             <li>@Html.ActionLink("About", "About", "Home")</li>
             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            <li>@Html.ActionLink("Forum", "Create", "ForumForPost")</li>
+
         </ul>
     </div>
     <div class="container body-content">

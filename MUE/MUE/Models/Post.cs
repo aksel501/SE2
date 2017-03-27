@@ -15,7 +15,7 @@ namespace MUE.Models
             POSTs = new HashSet<POST>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         [Required]
