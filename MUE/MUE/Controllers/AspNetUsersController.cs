@@ -31,7 +31,7 @@ namespace MUE.Controllers
             }
 
         }
-
+        [AllowAnonymous]
         public ActionResult ListOfExperts()
         {
             var experts = from s in db.AspNetUsers.Where(s => s.AspNetRoles.Select(y => y.Name).Contains("Expert")) select s;

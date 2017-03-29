@@ -200,6 +200,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AspNetUsersController.cs" />
+    <Compile Include="Controllers\ForumForPostController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
@@ -250,6 +251,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -288,7 +290,6 @@
     <Content Include="Views\Messages\Details.cshtml" />
     <Content Include="Views\Messages\Edit.cshtml" />
     <Content Include="Views\Messages\Index.cshtml" />
-    <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\AspNetUsers\Create.cshtml" />
     <Content Include="Views\AspNetUsers\Delete.cshtml" />
     <Content Include="Views\AspNetUsers\Details.cshtml" />
@@ -300,6 +301,20 @@
     <Content Include="Views\Manage\ChangeDepartments.cshtml" />
     <Content Include="Views\Manage\Edit.cshtml" />
     <Content Include="Views\Manage\ViewSpecialties.cshtml" />
+    <Content Include="Views\ForumForPost\Create.cshtml" />
+    <Content Include="Views\ForumForPost\Delete.cshtml" />
+    <Content Include="Views\ForumForPost\Details.cshtml" />
+    <Content Include="Views\ForumForPost\Edit.cshtml" />
+    <Content Include="Views\ForumForPost\Index.cshtml" />
+    <Content Include="Views\POSTs\Create.cshtml" />
+    <Content Include="Views\POSTs\Delete.cshtml" />
+    <Content Include="Views\POSTs\Details.cshtml" />
+    <Content Include="Views\POSTs\Edit.cshtml" />
+    <Content Include="Views\POSTs\Index.cshtml" />
+    <Content Include="Views\Projects\Create.cshtml" />
+    <Content Include="Views\Projects\Delete.cshtml" />
+    <Content Include="Views\Projects\Details.cshtml" />
+    <Content Include="Views\Projects\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
