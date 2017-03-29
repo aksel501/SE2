@@ -1,53 +1,60 @@
 ﻿@using Microsoft.AspNet.Identity
-@*@model MUE.Models.IndexViewModel*@
 @using MUE.Models
 @{
-    //IdentitySample.Controllers.ManageController p = new IdentitySample.Controllers.ManageController();
     var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
     var currentUser = manager.FindById(User.Identity.GetUserId());
 
     ViewBag.Title = "Manage your account";
 
 }
-
-
-<<h2>@ViewBag.Title.</h2>
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div class="row">
-    @*<div class="col-md-8">
-            <em>To edit your account</em>
+<br />
+<br />
+<h2>@ViewBag.Title.</h2>
+<p class="text-success" @ViewBag.StatusMessage</p>
+<div class="row"
+     <div class="col-md-8">
+            <em>To edit your basic account information</em>
             @Html.ActionLink("Click Here", "Edit", routeValues: null, htmlAttributes: new { id = "editAccountLink" })
         </div>
-        <div class="col-md-8">*@
+        <div class="col-md-8"
     <p>
-        <b>Email: @Html.Raw(currentUser.Email)</b>
+        <b>Email: </b> @Html.Raw(currentUser.Email)
     </p>
     <p>
-        <b>First Name: @Html.Raw(currentUser.FirstName)</b>
+        <b>First Name: </b> @Html.Raw(currentUser.FirstName)
     </p>
     <p>
-        <b>Last Name: @Html.Raw(currentUser.LastName)</b>
+        <b>Last Name: </b> @Html.Raw(currentUser.LastName)
     </p>
     <p>
-       <b> Phone Number: @Html.Raw(currentUser.PhoneNumber)</b>
+       <b> Phone Number: </b> @Html.Raw(currentUser.PhoneNumber)
     </p>
     @if (User.IsInRole("Expert"))
     {
     <p>
-        <b>1st Catagory: </b>
-        
-    </p>
-    <p>
-        <b>2nd Catagory: </b>
-    </p>
-    <p>
-        <b>3rd Catagory: </b>
-    </p>
-    <p>
-        <b>1st Specialty: </b>
-    </p>
+        <b>Categories: </b>
+ 
+        </p>
+        <p>
+            <em>To view your specialties</em> @Html.ActionLink("Click Here", "ViewSpecialties", routeValues: null, htmlAttributes: new { id = "viewSpecialtiesLink" })
+
+        </p>
+
+            <p>
+ 
+        <em>To update your categories</em> @Html.ActionLink("Click Here", "ChangeDepartments", routeValues: null, htmlAttributes: new { id = "changeDepartmentsLink" })
+        </p>
+ 
 
 
+
+        <p>
+ 
+
+
+
+        <em> To add a specialty</em> @Html.ActionLink("Click Here", "AddSpecialty", routeValues: null, htmlAttributes: new { id = "addASpecialtyLink" })
+       </p>
 
     }
 
@@ -63,6 +70,7 @@
     }
     ]
 
+
     @*<dt>External Logins:</dt>
         <dd>
             @Model.Logins.Count [
@@ -71,8 +79,6 @@
 
 
     <p>
-
-
 
 </div>
     </div>

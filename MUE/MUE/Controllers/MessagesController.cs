@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MUE.Models;
+using Microsoft.AspNet.Identity;
 
 namespace MUE.Controllers
 {
@@ -15,12 +16,28 @@ namespace MUE.Controllers
         private ModelReferencesHere db = new ModelReferencesHere();
 
         // GET: Messages
-        public ActionResult Index()
+        [Authorize(Roles = "Expert, User")]
+        public ActionResult Index(string sortOrder, string searchString)
         {
-            var messages = db.Messages.Include(m => m.AspNetUser);
+            var userId = User.Identity.GetUserId();
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "FirstName" : "";
+            var messages = from m in db.Messages where m.USERID == userId  select m;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                messages = messages.Where(m => m.TEXT.Contains(searchString) || m.AspNetUser.FirstName.Contains(searchString));
+            }
+            switch(sortOrder)
+            {
+                case "FirstName":
+                    messages = messages.OrderBy(m => m.AspNetUser.FirstName);
+                    break;
+                default:
+                    messages = messages.OrderByDescending(m => m.DATETIMEMADE);
+                    break;
+            }
             return View(messages.ToList());
         }
-
+    
         // GET: Messages/Details/5
         public ActionResult Details(int? id)
         {
@@ -37,6 +54,7 @@ namespace MUE.Controllers
         }
 
         // GET: Messages/Create
+       
         public ActionResult Create()
         {
             ViewBag.USERID = new SelectList(db.AspNetUsers, "Id", "FirstName");
@@ -48,11 +66,17 @@ namespace MUE.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,USERID,DATETIMEMADE,TEXT")] Message message)
+        public ActionResult Create([Bind(Include = "ID,USERID,TEXT")] Message message)
         {
             if (ModelState.IsValid)
             {
-                db.Messages.Add(message);
+                var mes = new Message
+                {
+                    USERID = message.USERID,
+                    DATETIMEMADE = DateTime.Today,
+                    TEXT = message.TEXT
+                };
+                db.Messages.Add(mes);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
