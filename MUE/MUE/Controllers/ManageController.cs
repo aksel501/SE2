@@ -18,13 +18,13 @@ namespace MUE.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private ModelReferencesHere _DbContext;
+        private ModelReferencesHere _dbContext;
         private ApplicationDbContext _forEdit;
       
         
         public ManageController()
         {
-            _DbContext = new ModelReferencesHere();
+            _dbContext = new ModelReferencesHere();
             _forEdit = new ApplicationDbContext();
         }
 
@@ -58,17 +58,24 @@ namespace MUE.Controllers
                 _userManager = value;
             }
         }
+
+        public ActionResult AddFieldOfStudy()
+        {
+            ViewBag.CATAGORYID = new SelectList(_dbContext.CATAGORies, "ID", "NAME");
+            return View();
+
+        }
         public ActionResult ViewSpecialties()
         {
             var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
             var currentUser = manager.FindById(User.Identity.GetUserId());
-            var adam = from s in _DbContext.SPECIALTies.Where(s => s.expertID == currentUser.Id) select s;
+            var adam = from s in _dbContext.SPECIALTies.Where(s => s.expertID == currentUser.Id) select s;
             return View(adam.ToList());
         }
 
         public ActionResult DeleteSpecialty(int ID)
         {
-            var specialty = _DbContext.SPECIALTies.FirstOrDefault(s => s.ID == ID);
+            var specialty = _dbContext.SPECIALTies.FirstOrDefault(s => s.ID == ID);
             if (specialty == null)
             {
                 return HttpNotFound();
@@ -80,13 +87,13 @@ namespace MUE.Controllers
         [HttpPost]
         public ActionResult DoDeleteSpecialty(int ID)
         {
-            var specialty = _DbContext.SPECIALTies.FirstOrDefault(s => s.ID == ID);
+            var specialty = _dbContext.SPECIALTies.FirstOrDefault(s => s.ID == ID);
             if (specialty == null)
             {
                 return HttpNotFound();
             }
-            _DbContext.SPECIALTies.Remove(specialty);
-            _DbContext.SaveChanges();
+            _dbContext.SPECIALTies.Remove(specialty);
+            _dbContext.SaveChanges();
             return RedirectToAction("Index");
 
         }
@@ -116,12 +123,12 @@ namespace MUE.Controllers
             };
             if (ModelState.IsValid)
             {
-                _DbContext.SPECIALTies.Add(specialty);
-                _DbContext.SaveChanges();
+                _dbContext.SPECIALTies.Add(specialty);
+                _dbContext.SaveChanges();
                 return RedirectToAction("Index", "Manage");
             }
-            _DbContext.SPECIALTies.Add(specialty);
-            _DbContext.SaveChanges();
+            _dbContext.SPECIALTies.Add(specialty);
+            _dbContext.SaveChanges();
 
             return RedirectToAction("Index", "Manage");
             
@@ -171,7 +178,7 @@ namespace MUE.Controllers
 
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
-            user.Email = model.Email;
+            //user.Email = model.Email;
             user.PhoneNumber = model.PhoneNumber;
 
             _forEdit.SaveChanges();
