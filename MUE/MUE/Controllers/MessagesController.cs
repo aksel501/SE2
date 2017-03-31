@@ -66,14 +66,14 @@ namespace MUE.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,USERID,TEXT")] Message message)
+        public ActionResult Create([Bind(Include = "USERID,TEXT")] Message message)
         {
             if (ModelState.IsValid)
             {
                 var mes = new Message
                 {
                     USERID = message.USERID,
-                    DATETIMEMADE = DateTime.Today,
+                    DATETIMEMADE = DateTime.Now,
                     TEXT = message.TEXT
                 };
                 db.Messages.Add(mes);
