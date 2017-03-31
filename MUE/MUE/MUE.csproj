@@ -214,10 +214,10 @@
     <Compile Include="Models\CATAGORY.cs" />
     <Compile Include="Models\CONVERSATION.cs" />
     <Compile Include="Models\EXPERT.cs" />
+    <Compile Include="Models\ExpertsDatabase.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Message.cs" />
-    <Compile Include="Models\ModelReferencesHere.cs" />
     <Compile Include="Models\POST.cs" />
     <Compile Include="Models\PROJECT.cs" />
     <Compile Include="Models\ReCaptcha.cs" />
