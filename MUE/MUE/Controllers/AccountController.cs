@@ -15,13 +15,13 @@ namespace MUE.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private ModelReferencesHere _dbContext;
+        private ExpertsDatabase _dbContext;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
         public AccountController()
         {
-            _dbContext = new ModelReferencesHere();
+            _dbContext = new ExpertsDatabase();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)

@@ -13,7 +13,7 @@ namespace MUE.Controllers
 {
     public class MessagesController : Controller
     {
-        private ModelReferencesHere db = new ModelReferencesHere();
+        private ExpertsDatabase db = new ExpertsDatabase();
 
         // GET: Messages
         [Authorize(Roles = "Expert, User")]
@@ -21,7 +21,7 @@ namespace MUE.Controllers
         {
             var userId = User.Identity.GetUserId();
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "FirstName" : "";
-            var messages = from m in db.Messages where m.USERID == userId  select m;
+            var messages = from m in db.Messages where m.SenderID == userId  select m;
             if (!String.IsNullOrEmpty(searchString))
             {
                 messages = messages.Where(m => m.TEXT.Contains(searchString) || m.AspNetUser.FirstName.Contains(searchString));
@@ -57,7 +57,7 @@ namespace MUE.Controllers
        
         public ActionResult Create()
         {
-            ViewBag.USERID = new SelectList(db.AspNetUsers, "Id", "FirstName");
+            ViewBag.SenderID = new SelectList(db.AspNetUsers, "Id", "FirstName");
             return View();
         }
 
@@ -72,7 +72,7 @@ namespace MUE.Controllers
             {
                 var mes = new Message
                 {
-                    USERID = message.USERID,
+                    SenderID = message.SenderID,
                     DATETIMEMADE = DateTime.Now,
                     TEXT = message.TEXT
                 };
@@ -81,7 +81,7 @@ namespace MUE.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.USERID = new SelectList(db.AspNetUsers, "Id", "FirstName", message.USERID);
+            ViewBag.USERID = new SelectList(db.AspNetUsers, "Id", "FirstName", message.SenderID);
             return View(message);
         }
 
@@ -97,7 +97,7 @@ namespace MUE.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.USERID = new SelectList(db.AspNetUsers, "Id", "FirstName", message.USERID);
+            ViewBag.USERID = new SelectList(db.AspNetUsers, "Id", "FirstName", message.SenderID);
             return View(message);
         }
 
@@ -114,7 +114,7 @@ namespace MUE.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.USERID = new SelectList(db.AspNetUsers, "Id", "FirstName", message.USERID);
+            ViewBag.USERID = new SelectList(db.AspNetUsers, "Id", "FirstName", message.SenderID);
             return View(message);
         }
 

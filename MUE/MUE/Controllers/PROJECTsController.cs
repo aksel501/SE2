@@ -12,7 +12,7 @@ namespace MUE.Controllers
 {
     public class PROJECTsController : Controller
     {
-        private ModelReferencesHere db = new ModelReferencesHere();
+        private ExpertsDatabase db = new ExpertsDatabase();
 
         // GET: PROJECTs
         public ActionResult Index()

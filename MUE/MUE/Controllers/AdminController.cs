@@ -12,7 +12,7 @@ namespace MUE.Controllers
 {
     public class AdminController : Controller
     {
-        private ModelReferencesHere db = new ModelReferencesHere();
+        private ExpertsDatabase db = new ExpertsDatabase();
 
         // GET: AspNetUsers
         public ActionResult Index()
