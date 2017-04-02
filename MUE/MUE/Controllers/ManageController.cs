@@ -18,13 +18,13 @@ namespace MUE.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private ModelReferencesHere _dbContext;
+        private ExpertsDatabase _dbContext;
         private ApplicationDbContext _forEdit;
       
         
         public ManageController()
         {
-            _dbContext = new ModelReferencesHere();
+            _dbContext = new ExpertsDatabase();
             _forEdit = new ApplicationDbContext();
         }
 

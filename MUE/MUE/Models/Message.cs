@@ -9,18 +9,15 @@ namespace MUE.Models
     [Table("Message")]
     public partial class Message
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Message()
-        {
-            CONVERSATIONs = new HashSet<CONVERSATION>();
-        }
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         [Required]
         [StringLength(128)]
-        public string USERID { get; set; }
+        public string SenderID { get; set; }
+
+        [Required]
+        [StringLength(128)]
+        public string RecieverID { get; set; }
 
         public DateTime DATETIMEMADE { get; set; }
 
@@ -28,7 +25,6 @@ namespace MUE.Models
 
         public virtual AspNetUser AspNetUser { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CONVERSATION> CONVERSATIONs { get; set; }
+        public virtual AspNetUser AspNetUser1 { get; set; }
     }
 }

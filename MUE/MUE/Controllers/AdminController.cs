@@ -10,38 +10,15 @@ using MUE.Models;
 
 namespace MUE.Controllers
 {
-    public class AspNetUsersController : Controller
+    public class AdminController : Controller
     {
-        private ModelReferencesHere db = new ModelReferencesHere();
+        private ExpertsDatabase db = new ExpertsDatabase();
 
         // GET: AspNetUsers
-        public ActionResult Index(string searchBy, string search)
+        public ActionResult Index()
         {
-
-            // var experts = from s in db.AspNetUsers.Where(s => s.AspNetRoles.Select(y => y.Name).Contains("Expert")) select s;
-            // var Users = db.ModelReferencesHere.Include(c => c.AspNetUsers
-            if (searchBy == "FirstName")
-            {
-                return View(db.AspNetUsers.Where(x => x.FirstName == search || search == null).ToList());
-
-            }
-            else
-            {
-                return View(db.AspNetUsers.Where(x => x.Email.StartsWith(search) || search == null).ToList());
-            }
-
+            return View(db.AspNetUsers.ToList());
         }
-        [AllowAnonymous]
-        public ActionResult ListOfExperts()
-        {
-            var experts = from s in db.AspNetUsers.Where(s => s.AspNetRoles.Select(y => y.Name).Contains("Expert")) select s;
-           return View(experts.ToList());
-        }
-
-
-
-
-
 
         // GET: AspNetUsers/Details/5
         public ActionResult Details(string id)
@@ -101,7 +78,7 @@ namespace MUE.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,disabled,FirstName,LastName,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,Discriminator")] AspNetUser aspNetUser)
+        public ActionResult Edit([Bind(Include = "Id,disabled,FirstName,LastName,Email,EmailConfirmed,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount")] AspNetUser aspNetUser)
         {
             if (ModelState.IsValid)
             {
