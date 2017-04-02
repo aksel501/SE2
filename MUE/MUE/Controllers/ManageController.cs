@@ -10,6 +10,7 @@ using MUE.Models;
 using System.Web.Routing;
 using System.Net;
 using System.Security.Principal;
+using System.Collections.Generic;
 
 namespace MUE.Controllers
 {
@@ -59,12 +60,30 @@ namespace MUE.Controllers
             }
         }
 
-        public ActionResult AddFieldOfStudy()
+        //public ActionResult AddFieldOfStudy()
+        //{
+        //    ViewBag.CATAGORYID = new SelectList(_dbContext.CATAGORies, "ID", "NAME");
+        //    return View();
+
+        //}
+
+        [Authorize(Roles = "Expert, Admin")]
+        public ViewResult AddFieldOfStudy()
         {
-            ViewBag.CATAGORYID = new SelectList(_dbContext.CATAGORies, "ID", "NAME");
+            //Create db context object here 
+            
+            //Get the value from database and then set it to ViewBag to pass it View
+            IEnumerable<SelectListItem> items = _dbContext.CATAGORies.Select(c => new SelectListItem
+            {
+                Value = c.NAME,
+                Text = c.NAME
+
+            });
+            ViewBag.NAMe = items;
             return View();
 
         }
+        [Authorize(Roles = "Expert, Admin")]
         public ActionResult ViewSpecialties()
         {
             var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
@@ -97,11 +116,8 @@ namespace MUE.Controllers
             return RedirectToAction("Index");
 
         }
-        public ActionResult ChangeDepartments()
-        {
-            return View();
-        }
 
+        [Authorize(Roles = "Expert, Admin")]
         public ActionResult AddSpecialty()
         {
             return View();
