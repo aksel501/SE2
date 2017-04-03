@@ -69,9 +69,7 @@ namespace MUE.Controllers
 
         [Authorize(Roles = "Expert, Admin")]
         public ViewResult AddFieldOfStudy()
-        {
-            //Create db context object here 
-            
+        {   
             //Get the value from database and then set it to ViewBag to pass it View
             IEnumerable<SelectListItem> items = _dbContext.CATAGORies.Select(c => new SelectListItem
             {
@@ -83,6 +81,25 @@ namespace MUE.Controllers
             return View();
 
         }
+        //[Authorize(Roles = "Expert, Admin")]
+        //public ActionResult AddFieldOfStudy([Bind(Include = "NAME")] )
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var cat = new CATAGORY
+        //        {
+        //            ID = catagory.ID,
+        //            NAME = catagory.NAME,
+        //        };
+        //        _dbContext.CATAGORies.Add(cat);
+        //        _dbContext.SaveChanges();
+        //        return RedirectToAction("Index");
+
+        //    }
+
+
+        //}
+
         [Authorize(Roles = "Expert, Admin")]
         public ActionResult ViewSpecialties()
         {
