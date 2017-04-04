@@ -21,10 +21,8 @@
 
         <img src="http://asktherestaurantcoach.com/wp-content/uploads/2014/08/Ask-an-Expert.jpg" width="900" height="400" />
     </p>
-    @if (User.IsInRole("Admin"))
-    {
     <input type="button" value="Admin Views" onclick="location.href=' @Url.Action("Index", "Admin") '" />
-    }
+    
 
 </body>
 

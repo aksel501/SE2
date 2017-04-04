@@ -15,7 +15,7 @@ namespace MUE.Controllers
         private ExpertsDatabase db = new ExpertsDatabase();
 
         // GET: AspNetUsers
-        [Authorize(Roles = "Admin")]
+        
         public ActionResult Index()
         {
             return View(db.AspNetUsers.ToList());
