@@ -68,7 +68,7 @@ namespace MUE.Controllers
             {
                 var mes = new Message
                 {
-                    RecieverID = message.SenderID,
+                    RecieverID = message.RecieverID,
                     SenderID = User.Identity.GetUserId(),
                     DATETIMEMADE = DateTime.Now,
                     TEXT = message.TEXT
@@ -78,6 +78,7 @@ namespace MUE.Controllers
                 return RedirectToAction("Index");
              }
             ViewBag.ReceiverID = new SelectList(db.AspNetUsers, "Id", "Email", message.RecieverID);
+
             return View(message);
         }
 
