@@ -5,15 +5,14 @@ namespace MUE.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class ExpertsDatabase : DbContext
+    public partial class ExpertsDatabase1 : DbContext
     {
-        public ExpertsDatabase()
-            : base("name=ExpertsDatabase")
+        public ExpertsDatabase1()
+            : base("name=ExpertsDatabase1")
         {
         }
 
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
-
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
