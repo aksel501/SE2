@@ -14,21 +14,21 @@ namespace MUE.Controllers
     public class MessagesController : Controller
     {
         private ExpertsDatabase db = new ExpertsDatabase();
-        
+
         // GET: Messages
         public ActionResult Index(string sortOrder, string searchString)
         {
             var userId = User.Identity.GetUserId();
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "FirstName" : "";
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Email" : "";
             var messages = from m in db.Messages where m.RecieverID == userId select m;
             if (!String.IsNullOrEmpty(searchString))
             {
-                messages = messages.Where(m => m.TEXT.Contains(searchString) || m.AspNetUser.FirstName.Contains(searchString));
+                messages = messages.Where(m => m.TEXT.Contains(searchString) || m.AspNetUser.Email.Contains(searchString));
             }
             switch (sortOrder)
             {
-                case "FirstName":
-                    messages = messages.OrderBy(m => m.AspNetUser.FirstName);
+                case "Email":
+                    messages = messages.OrderBy(m => m.AspNetUser.Email);
                     break;
                 default:
                     messages = messages.OrderByDescending(m => m.DATETIMEMADE);
@@ -45,6 +45,8 @@ namespace MUE.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Message message = db.Messages.Find(id);
+         
+
             if (message == null)
             {
                 return HttpNotFound();
@@ -56,29 +58,33 @@ namespace MUE.Controllers
         public ActionResult Create()
         {
             ViewBag.RecieverID = new SelectList(db.AspNetUsers, "Id", "Email");
+           ViewBag.SenderID = new SelectList(db.AspNetUsers, "Id", "Email");
             return View();
         }
 
-
+        // POST: Messages/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RecieverID,TEXT")] Message message)
+        public ActionResult Create([Bind(Include = "ID,SenderID,RecieverID,TEXT")] Message message)
         {
             if (ModelState.IsValid)
             {
                 var mes = new Message
                 {
+                    SenderID = message.SenderID,
                     RecieverID = message.RecieverID,
-                    SenderID = User.Identity.GetUserId(),
                     DATETIMEMADE = DateTime.Now,
                     TEXT = message.TEXT
                 };
                 db.Messages.Add(mes);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-             }
-            ViewBag.ReceiverID = new SelectList(db.AspNetUsers, "Id", "Email", message.RecieverID);
+            }
 
+            ViewBag.RecieverID = new SelectList(db.AspNetUsers, "Id", "FirstName", message.RecieverID);
+            ViewBag.SenderID = new SelectList(db.AspNetUsers, "Id", "FirstName", message.SenderID);
             return View(message);
         }
 
@@ -94,7 +100,7 @@ namespace MUE.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.RecieverID = new SelectList(db.AspNetUsers, "Id", "Email", message.RecieverID);
+            ViewBag.RecieverID = new SelectList(db.AspNetUsers, "Id", "FirstName", message.RecieverID);
             ViewBag.SenderID = new SelectList(db.AspNetUsers, "Id", "FirstName", message.SenderID);
             return View(message);
         }

@@ -8,51 +8,40 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
-</p>@using (Html.BeginForm())
-{
-    <p>
-        Find by name or by message: @Html.TextBox("SearchString")
-        <input type="submit" value="Search" />
-    </p>
-}
+</p>
 <table class="table">
     <tr>
+
         <th>
-            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+            User
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AspNetUser1.FirstName)
+            Date
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DATETIMEMADE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TEXT)
+            Message
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AspNetUser1.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DATETIMEMADE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TEXT)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser1.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DATETIMEMADE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TEXT)
+        </td>
+        <td>
+            
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) 
+         
+        </td>
+    </tr>
+}
 
 </table>
