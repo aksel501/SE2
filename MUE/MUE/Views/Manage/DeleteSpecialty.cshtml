@@ -11,24 +11,26 @@
 <h3>Are you sure you want to delete this?</h3>
 <div>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
+    <div class="row">
+        @*<dt>
             @Html.DisplayNameFor(model => model.EXPERT.PARENTID)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.EXPERT.PARENTID)
-        </dd>
+        </dd>*@
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DESCRIPTION)
-        </dt>
+        <p>
+            <b>@Html.DisplayNameFor(model => model.NAME):</b> @Html.DisplayFor(model => model.NAME)
+        </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.DESCRIPTION)
-        </dd>
+        <p>
+           <b> @Html.DisplayNameFor(model => model.DESCRIPTION):</b> @Html.DisplayFor(model => model.DESCRIPTION)
+        </p>
 
-    </dl>
+        
+
+    </div>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
