@@ -13,12 +13,21 @@ namespace MUE.Models
     {
         public bool disabled { get; set; }
         
+        [Required]
         [Display(Name="First Name")]
         public string FirstName { get; set; }
+
+        [Required]
         [Display(Name ="Last Name")]
         public string LastName { get; set; }
 
         public char MiddleInit { get; set; }
+
+        
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
+        [Display(Name = "Phone Number")]
+        public override string PhoneNumber { get; set; }
 
 
 
