@@ -199,6 +199,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
@@ -214,10 +215,10 @@
     <Compile Include="Models\CATAGORY.cs" />
     <Compile Include="Models\CONVERSATION.cs" />
     <Compile Include="Models\EXPERT.cs" />
+    <Compile Include="Models\ExpertsDatabase.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Message.cs" />
-    <Compile Include="Models\ModelReferencesHere.cs" />
     <Compile Include="Models\POST.cs" />
     <Compile Include="Models\PROJECT.cs" />
     <Compile Include="Models\ReCaptcha.cs" />
@@ -289,6 +290,11 @@
     <Content Include="Views\Messages\Edit.cshtml" />
     <Content Include="Views\Messages\Index.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
