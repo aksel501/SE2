@@ -12,11 +12,8 @@
 <h2>@ViewBag.Title.</h2>
 <p class="text-success"> @ViewBag.StatusMessage</p>
 <div class="row">
-     <div class="col-md-8">
-            <em>To edit your basic account information</em>
-            @Html.ActionLink("Click Here", "Edit", routeValues: null, htmlAttributes: new { id = "editAccountLink" })
-        </div>
-    </div>
+</div>
+
     <p>
         <b>Email: </b> @Html.Raw(currentUser.Email)
     </p>
@@ -27,7 +24,7 @@
         <b>Last Name: </b> @Html.Raw(currentUser.LastName)
     </p>
     <p>
-       <b> Phone Number: </b> @Html.Raw(currentUser.PhoneNumber)
+        <b> Phone Number: </b> @Html.Raw(currentUser.PhoneNumber)
     </p>
     @if (User.IsInRole("Expert"))
     {
@@ -37,12 +34,16 @@
         <p>
             <em> To add a specialty</em> @Html.ActionLink("Click Here", "AddSpecialty", routeValues: null, htmlAttributes: new { id = "addASpecialtyLink" })
         </p>
-            <p>
-        <em>To add a field of study</em> @Html.ActionLink("Click Here", "AddFieldOfStudy", routeValues: null, htmlAttributes: new { id = "changeDepartmentsLink" })
+        <p>
+            <em>To add a field of study</em> @Html.ActionLink("Click Here", "AddFieldOfStudy", routeValues: null, htmlAttributes: new { id = "changeDepartmentsLink" })
         </p>
-        
+
 
     }
+
+
+
+
 
 
     [
@@ -55,6 +56,12 @@
         @Html.ActionLink("Create", "SetPassword")
     }
     ]
+    <div class="row">
+         <div class="col-md-8">
+        <em>To edit your basic account information</em>
+        @Html.ActionLink("Click Here", "Edit", routeValues: null, htmlAttributes: new { id = "editAccountLink" })
+    </div>
+    </div>
 
 
     @*<dt>External Logins:</dt>
