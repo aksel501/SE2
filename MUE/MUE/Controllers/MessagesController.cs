@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using MUE.Models;
 using Microsoft.AspNet.Identity;
+using System.Web.Security;
 
 namespace MUE.Controllers
 {
@@ -57,8 +58,10 @@ namespace MUE.Controllers
         // GET: Messages/Create
         public ActionResult Create()
         {
+            String test = "ChooseWhateverWeGottaFixThisItWillWork";
+            var email = User.Identity.GetUserName();
             ViewBag.RecieverID = new SelectList(db.AspNetUsers, "Id", "Email");
-           ViewBag.SenderID = new SelectList(db.AspNetUsers, "Id", "Email");
+            ViewBag.SenderID = new SelectList(test);
             return View();
         }
 
@@ -73,18 +76,18 @@ namespace MUE.Controllers
             {
                 var mes = new Message
                 {
-                    SenderID = message.SenderID,
+                    SenderID = User.Identity.GetUserId(),
                     RecieverID = message.RecieverID,
                     DATETIMEMADE = DateTime.Now,
                     TEXT = message.TEXT
                 };
                 db.Messages.Add(mes);
-                db.SaveChanges();
+               db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.RecieverID = new SelectList(db.AspNetUsers, "Id", "FirstName", message.RecieverID);
-            ViewBag.SenderID = new SelectList(db.AspNetUsers, "Id", "FirstName", message.SenderID);
+            ViewBag.RecieverID = new SelectList(db.AspNetUsers, "Id", "Email", message.RecieverID);
+            ViewBag.SenderID = new SelectList(User.Identity.GetUserName(), "Id", "Email", message.SenderID);
             return View(message);
         }
 
@@ -119,7 +122,7 @@ namespace MUE.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.RecieverID = new SelectList(db.AspNetUsers, "Id", "FirstName", message.RecieverID);
-            ViewBag.SenderID = new SelectList(db.AspNetUsers, "Id", "FirstName", message.SenderID);
+            ViewBag.SenderID = new SelectList(User.Identity.GetUserId(), "Id", "FirstName", User.Identity.GetUserId());
             return View(message);
         }
 
