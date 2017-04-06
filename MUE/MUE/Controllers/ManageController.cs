@@ -81,24 +81,6 @@ namespace MUE.Controllers
             return View();
 
         }
-        //[Authorize(Roles = "Expert, Admin")]
-        //public ActionResult AddFieldOfStudy([Bind(Include = "NAME")] )
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var cat = new CATAGORY
-        //        {
-        //            ID = catagory.ID,
-        //            NAME = catagory.NAME,
-        //        };
-        //        _dbContext.CATAGORies.Add(cat);
-        //        _dbContext.SaveChanges();
-        //        return RedirectToAction("Index");
-
-        //    }
-
-
-        //}
 
         [Authorize(Roles = "Expert, Admin")]
         public ActionResult ViewSpecialties()
@@ -107,6 +89,13 @@ namespace MUE.Controllers
             var currentUser = manager.FindById(User.Identity.GetUserId());
             var adam = from s in _dbContext.SPECIALTies.Where(s => s.expertID == currentUser.Id) select s;
             return View(adam.ToList());
+        }
+
+        [Authorize(Roles = "Expert, Admin")]
+        public ActionResult AddSpecialty()
+        {
+            return View();
+
         }
 
         public ActionResult DeleteSpecialty(int ID)
@@ -134,12 +123,7 @@ namespace MUE.Controllers
 
         }
 
-        [Authorize(Roles = "Expert, Admin")]
-        public ActionResult AddSpecialty()
-        {
-            return View();
-
-        }
+        
         //GEt: Posts/Create
         [Authorize(Roles = "Expert, Admin")]
         [HttpPost]
