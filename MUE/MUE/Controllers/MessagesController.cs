@@ -13,7 +13,7 @@ namespace MUE.Controllers
 {
     public class MessagesController : Controller
     {
-        private ExpertsDatabase1 db = new ExpertsDatabase1();
+        private ExpertsDatabase2 db = new ExpertsDatabase2();
 
         // GET: Messages
         [Authorize(Roles = "Expert, User")]

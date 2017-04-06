@@ -214,7 +214,7 @@
     <Compile Include="Models\CATAGORY.cs" />
     <Compile Include="Models\CONVERSATION.cs" />
     <Compile Include="Models\EXPERT.cs" />
-    <Compile Include="Models\ExpertsDatabase1.cs" />
+    <Compile Include="Models\ExpertsDatabase2.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Message.cs" />

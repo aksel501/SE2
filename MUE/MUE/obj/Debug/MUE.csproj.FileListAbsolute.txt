@@ -570,4 +570,3 @@ C:\Users\Damian\Source\Repos\SE25\MUE\MUE\bin\Microsoft.Owin.Security.Twitter.xm
 C:\Users\Damian\Source\Repos\SE25\MUE\MUE\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Damian\Source\Repos\SE25\MUE\MUE\obj\Debug\MUE.dll
 C:\Users\Damian\Source\Repos\SE25\MUE\MUE\obj\Debug\MUE.pdb
-C:\Users\Damian\Source\Repos\SE25\MUE\MUE\obj\Debug\MUE.csprojResolveAssemblyReference.cache

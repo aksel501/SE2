@@ -5,10 +5,10 @@ namespace MUE.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class ExpertsDatabase1 : DbContext
+    public partial class ExpertsDatabase2 : DbContext
     {
-        public ExpertsDatabase1()
-            : base("name=ExpertsDatabase1")
+        public ExpertsDatabase2()
+            : base("name=ExpertsDatabase2")
         {
         }
 
@@ -74,8 +74,9 @@ namespace MUE.Models
                 .Map(m => m.ToTable("UserCatagories").MapLeftKey("CATAGORYID").MapRightKey("USERID"));
 
             modelBuilder.Entity<POST>()
-                .HasOptional(e => e.POST1)
-                .WithMany(e => e.POSTs);
+                .HasMany(e => e.POST1)
+                .WithOptional(e => e.POST2)
+                .HasForeignKey(e => e.REPLIED_TO_POST_ID);
 
             modelBuilder.Entity<PROJECT>()
                 .HasMany(e => e.AspNetUsers)

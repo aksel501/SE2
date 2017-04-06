@@ -12,7 +12,7 @@ namespace MUE.Controllers
 {
     public class AdminController : Controller
     {
-        private ExpertsDatabase1 db = new ExpertsDatabase1();
+        private ExpertsDatabase2 db = new ExpertsDatabase2();
 
         // GET: Admin
         public ActionResult Index()
