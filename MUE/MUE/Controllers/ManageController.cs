@@ -60,12 +60,16 @@ namespace MUE.Controllers
             }
         }
 
-        //public ActionResult AddFieldOfStudy()
-        //{
-        //    ViewBag.CATAGORYID = new SelectList(_dbContext.CATAGORies, "ID", "NAME");
-        //    return View();
+        public ActionResult AddFieldOfStudy(AddCatagoryViewModel model)
+        {
+            //var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
+            ViewBag.CATAGORYID = new SelectList(_dbContext.CATAGORies, "ID", "NAME");
+            var catID = ViewBag.CatagoryID;
+            //_dbContext.CATAGORies.Add(new { USERID = manager.FindById(User.Identity.GetUserId()), CATAGORYID = catID });
+            _dbContext.CATAGORies.Add(catID);
+            return View(model);
 
-        //}
+        }
 
         [Authorize(Roles = "Expert, Admin")]
         public ViewResult AddFieldOfStudy()
@@ -81,6 +85,40 @@ namespace MUE.Controllers
             return View();
 
         }
+        [Authorize(Roles = "Expert, Admin")]
+        public ActionResult AddSpecialty()
+        {
+            return View();
+
+        }
+
+        //GEt: Posts/Create
+        [Authorize(Roles = "Expert, Admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddSpecialty(SPECIALTY model)
+        {
+
+            var specialty = new SPECIALTY
+            {
+                expertID = User.Identity.GetUserId(),
+                NAME = model.NAME,
+                DESCRIPTION = model.DESCRIPTION
+
+            };
+            if (ModelState.IsValid)
+            {
+                _dbContext.SPECIALTies.Add(specialty);
+                _dbContext.SaveChanges();
+                return RedirectToAction("Index", "Manage");
+            }
+            _dbContext.SPECIALTies.Add(specialty);
+            _dbContext.SaveChanges();
+
+            return RedirectToAction("Index", "Manage");
+
+        }
+
 
         [Authorize(Roles = "Expert, Admin")]
         public ActionResult ViewSpecialties()
@@ -91,12 +129,7 @@ namespace MUE.Controllers
             return View(adam.ToList());
         }
 
-        [Authorize(Roles = "Expert, Admin")]
-        public ActionResult AddSpecialty()
-        {
-            return View();
-
-        }
+        
 
         public ActionResult DeleteSpecialty(int ID)
         {
@@ -124,33 +157,6 @@ namespace MUE.Controllers
         }
 
         
-        //GEt: Posts/Create
-        [Authorize(Roles = "Expert, Admin")]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult AddSpecialty(SPECIALTY model)
-        {
-
-            var specialty = new SPECIALTY
-            {
-                expertID = User.Identity.GetUserId(),
-                NAME = model.NAME,
-                DESCRIPTION = model.DESCRIPTION
-
-            };
-            if (ModelState.IsValid)
-            {
-                _dbContext.SPECIALTies.Add(specialty);
-                _dbContext.SaveChanges();
-                return RedirectToAction("Index", "Manage");
-            }
-            _dbContext.SPECIALTies.Add(specialty);
-            _dbContext.SaveChanges();
-
-            return RedirectToAction("Index", "Manage");
-            
-        }
-
 
         //
         // GET: /Manage/Index

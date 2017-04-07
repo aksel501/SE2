@@ -32,7 +32,7 @@
 
     </div>
 
-    @using (Html.BeginForm()) {
+    using (Html.BeginForm("DoDeleteSpecialty", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
