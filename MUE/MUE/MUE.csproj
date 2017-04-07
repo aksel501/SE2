@@ -217,6 +217,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AddCatagoryViewModel.cs" />
     <Compile Include="Models\AspNetRole.cs" />
     <Compile Include="Models\AspNetUser.cs" />
     <Compile Include="Models\AspNetUserClaim.cs" />
@@ -327,6 +328,7 @@
     <Content Include="Views\Account\ExpertRegistration.cshtml" />
     <Content Include="Views\Manage\AddFieldOfStudy.cshtml" />
     <Content Include="Views\Manage\DeleteSpecialty.cshtml" />
+    <Content Include="Views\Home\Bug.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
