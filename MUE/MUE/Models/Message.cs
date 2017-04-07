@@ -18,6 +18,7 @@ namespace MUE.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
+
         [Required]
         [StringLength(128)]
         public string USERID { get; set; }
