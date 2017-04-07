@@ -12,6 +12,7 @@ using System.Web.Security;
 
 namespace MUE.Controllers
 {
+    [Authorize]
     public class MessagesController : Controller
     {
         private ExpertsDatabase2 db = new ExpertsDatabase2();

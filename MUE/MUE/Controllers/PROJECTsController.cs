@@ -10,6 +10,7 @@ using MUE.Models;
 
 namespace MUE.Controllers
 {
+    [Authorize]
     public class PROJECTsController : Controller
     {
         private ExpertsDatabase2 db = new ExpertsDatabase2();
