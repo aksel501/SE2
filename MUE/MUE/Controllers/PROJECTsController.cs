@@ -15,6 +15,7 @@ namespace MUE.Controllers
         private ModelReferencesHere db = new ModelReferencesHere();
 
         // GET: PROJECTs
+        [Authorize(Roles = "Expert, User")]
         public ActionResult Index()
         {
             return View(db.PROJECTs.ToList());
@@ -54,7 +55,6 @@ namespace MUE.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(pROJECT);
         }
 
