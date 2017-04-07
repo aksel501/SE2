@@ -77,7 +77,6 @@ C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\bin\Microsoft.Owin.Security.OAuth.xm
 C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\obj\Debug\MUE.csprojResolveAssemblyReference.cache
 C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\obj\Debug\MUE.dll
 C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\obj\Debug\MUE.pdb
 C:\Users\Damian\Source\Repos\SE22\MUE\MUE\bin\ApplicationInsights.config
@@ -571,3 +570,5 @@ C:\Users\stagg\Source\Repos\Updated\MUE\MUE\bin\Microsoft.Owin.Security.Microsof
 C:\Users\stagg\Source\Repos\Updated\MUE\MUE\obj\Debug\MUE.csprojResolveAssemblyReference.cache
 C:\Users\stagg\Source\Repos\Updated\MUE\MUE\obj\Debug\MUE.dll
 C:\Users\stagg\Source\Repos\Updated\MUE\MUE\obj\Debug\MUE.pdb
+C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\obj\Debug\MUE.Migrations.init.resources
+C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\obj\Debug\MUE.csproj.GenerateResource.Cache
