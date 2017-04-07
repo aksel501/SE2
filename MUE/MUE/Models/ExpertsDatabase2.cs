@@ -5,10 +5,10 @@ namespace MUE.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class ModelReferencesHere : DbContext
+    public partial class ExpertsDatabase2 : DbContext
     {
-        public ModelReferencesHere()
-            : base("name=ModelReferencesHere")
+        public ExpertsDatabase2()
+            : base("name=ExpertsDatabase2")
         {
         }
 
@@ -17,8 +17,6 @@ namespace MUE.Models
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<CATAGORY> CATAGORies { get; set; }
-        public virtual DbSet<CONVERSATION> CONVERSATIONs { get; set; }
-        public virtual DbSet<EXPERT> EXPERTs { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<POST> POSTs { get; set; }
         public virtual DbSet<PROJECT> PROJECTs { get; set; }
@@ -42,26 +40,27 @@ namespace MUE.Models
                 .HasForeignKey(e => e.UserId);
 
             modelBuilder.Entity<AspNetUser>()
-                .HasMany(e => e.CONVERSATIONs)
-                .WithOptional(e => e.AspNetUser)
-                .HasForeignKey(e => e.USERIDs);
-
-            modelBuilder.Entity<AspNetUser>()
-                .HasMany(e => e.Messages)
-                .WithRequired(e => e.AspNetUser)
-                .HasForeignKey(e => e.USERID)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<AspNetUser>()
                 .HasMany(e => e.POSTs)
                 .WithRequired(e => e.AspNetUser)
                 .HasForeignKey(e => e.USERID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<AspNetUser>()
-                .HasMany(e => e.EXPERTs)
+                .HasMany(e => e.SPECIALTies)
                 .WithRequired(e => e.AspNetUser)
-                .HasForeignKey(e => e.PARENTID)
+                .HasForeignKey(e => e.expertID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<AspNetUser>()
+                .HasMany(e => e.Messages)
+                .WithRequired(e => e.AspNetUser)
+                .HasForeignKey(e => e.RecieverID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<AspNetUser>()
+                .HasMany(e => e.Messages1)
+                .WithRequired(e => e.AspNetUser1)
+                .HasForeignKey(e => e.SenderID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CATAGORY>()
@@ -69,19 +68,15 @@ namespace MUE.Models
                 .WithMany(e => e.CATAGORies)
                 .Map(m => m.ToTable("PROJECTTYPE").MapLeftKey("CATAGORYID").MapRightKey("PROJECTID"));
 
-            modelBuilder.Entity<EXPERT>()
-                .HasMany(e => e.SPECIALTies)
-                .WithRequired(e => e.EXPERT)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Message>()
-                .HasMany(e => e.CONVERSATIONs)
-                .WithOptional(e => e.Message)
-                .HasForeignKey(e => e.MessageIDs);
+            modelBuilder.Entity<CATAGORY>()
+                .HasMany(e => e.AspNetUsers)
+                .WithMany(e => e.CATAGORies)
+                .Map(m => m.ToTable("UserCatagories").MapLeftKey("CATAGORYID").MapRightKey("USERID"));
 
             modelBuilder.Entity<POST>()
-                .HasOptional(e => e.POST1)
-                .WithMany(e => e.POSTs);
+                .HasMany(e => e.POST1)
+                .WithOptional(e => e.POST2)
+                .HasForeignKey(e => e.REPLIED_TO_POST_ID);
 
             modelBuilder.Entity<PROJECT>()
                 .HasMany(e => e.AspNetUsers)

@@ -7,7 +7,7 @@ namespace MUE.Models
     using System.Data.Entity.Spatial;
 
     [Table("SPECIALTY")]
-    public partial class SPECIALTY 
+    public partial class SPECIALTY
     {
         [Required]
         [StringLength(128)]
@@ -15,19 +15,16 @@ namespace MUE.Models
 
         [Key]
         [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [StringLength(64)]
-        [Display(Name ="Name of Specialty")]
         public string NAME { get; set; }
 
         [Required]
-        [Display(Name = "Description of Specialty")]
         public string DESCRIPTION { get; set; }
 
-        public virtual EXPERT EXPERT { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

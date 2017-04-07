@@ -12,11 +12,12 @@ namespace MUE.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public POST()
         {
-            POSTs = new HashSet<POST>();
+            POST1 = new HashSet<POST>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
+
+        public int? REPLIED_TO_POST_ID { get; set; }
 
         [Required]
         [StringLength(128)]
@@ -34,9 +35,9 @@ namespace MUE.Models
 
         public virtual AspNetUser AspNetUser { get; set; }
 
-        public virtual POST POST1 { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<POST> POSTs { get; set; }
+        public virtual ICollection<POST> POST1 { get; set; }
+
+        public virtual POST POST2 { get; set; }
     }
 }

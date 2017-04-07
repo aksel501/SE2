@@ -78,7 +78,6 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
-    <Reference Include="System.Activities" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -199,8 +198,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AspNetUsersController.cs" />
-    <Compile Include="Controllers\ForumForPostController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
@@ -221,10 +219,10 @@
     <Compile Include="Models\CATAGORY.cs" />
     <Compile Include="Models\CONVERSATION.cs" />
     <Compile Include="Models\EXPERT.cs" />
+    <Compile Include="Models\ExpertsDatabase2.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Message.cs" />
-    <Compile Include="Models\ModelReferencesHere.cs" />
     <Compile Include="Models\POST.cs" />
     <Compile Include="Models\PROJECT.cs" />
     <Compile Include="Models\ReCaptcha.cs" />
@@ -256,7 +254,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -283,6 +280,7 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Manage\ManageLogins.cshtml" />
@@ -295,31 +293,12 @@
     <Content Include="Views\Messages\Details.cshtml" />
     <Content Include="Views\Messages\Edit.cshtml" />
     <Content Include="Views\Messages\Index.cshtml" />
-    <Content Include="Views\AspNetUsers\Create.cshtml" />
-    <Content Include="Views\AspNetUsers\Delete.cshtml" />
-    <Content Include="Views\AspNetUsers\Details.cshtml" />
-    <Content Include="Views\AspNetUsers\Edit.cshtml" />
-    <Content Include="Views\AspNetUsers\Index.cshtml" />
-    <Content Include="Views\AspNetUsers\ListOfExperts.cshtml" />
-    <Content Include="Views\Account\ExpertRegistration.cshtml" />
-    <Content Include="Views\Manage\AddSpecialty.cshtml" />
-    <Content Include="Views\Manage\ChangeDepartments.cshtml" />
-    <Content Include="Views\Manage\Edit.cshtml" />
-    <Content Include="Views\Manage\ViewSpecialties.cshtml" />
-    <Content Include="Views\ForumForPost\Create.cshtml" />
-    <Content Include="Views\ForumForPost\Delete.cshtml" />
-    <Content Include="Views\ForumForPost\Details.cshtml" />
-    <Content Include="Views\ForumForPost\Edit.cshtml" />
-    <Content Include="Views\ForumForPost\Index.cshtml" />
-    <Content Include="Views\POSTs\Create.cshtml" />
-    <Content Include="Views\POSTs\Delete.cshtml" />
-    <Content Include="Views\POSTs\Details.cshtml" />
-    <Content Include="Views\POSTs\Edit.cshtml" />
-    <Content Include="Views\POSTs\Index.cshtml" />
-    <Content Include="Views\Projects\Create.cshtml" />
-    <Content Include="Views\Projects\Delete.cshtml" />
-    <Content Include="Views\Projects\Details.cshtml" />
-    <Content Include="Views\Projects\Edit.cshtml" />
+    <Content Include="Views\Projects\Index.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

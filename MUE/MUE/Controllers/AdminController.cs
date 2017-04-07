@@ -10,40 +10,17 @@ using MUE.Models;
 
 namespace MUE.Controllers
 {
-    public class AspNetUsersController : Controller
+    public class AdminController : Controller
     {
-        private ModelReferencesHere db = new ModelReferencesHere();
+        private ExpertsDatabase2 db = new ExpertsDatabase2();
 
-        // GET: AspNetUsers
-        public ActionResult Index(string searchBy, string search)
+        // GET: Admin
+        public ActionResult Index()
         {
-
-            // var experts = from s in db.AspNetUsers.Where(s => s.AspNetRoles.Select(y => y.Name).Contains("Expert")) select s;
-            // var Users = db.ModelReferencesHere.Include(c => c.AspNetUsers
-            if (searchBy == "FirstName")
-            {
-                return View(db.AspNetUsers.Where(x => x.FirstName == search || search == null).ToList());
-
-            }
-            else
-            {
-                return View(db.AspNetUsers.Where(x => x.Email.StartsWith(search) || search == null).ToList());
-            }
-
-        }
-        [AllowAnonymous]
-        public ActionResult ListOfExperts()
-        {
-            var experts = from s in db.AspNetUsers.Where(s => s.AspNetRoles.Select(y => y.Name).Contains("Expert")) select s;
-           return View(experts.ToList());
+            return View(db.AspNetUsers.ToList());
         }
 
-
-
-
-
-
-        // GET: AspNetUsers/Details/5
+        // GET: Admin/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -58,30 +35,30 @@ namespace MUE.Controllers
             return View(aspNetUser);
         }
 
-        // GET: AspNetUsers/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+        //// GET: Admin/Create
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
-        // POST: AspNetUsers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,disabled,FirstName,LastName,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,Discriminator")] AspNetUser aspNetUser)
-        {
-            if (ModelState.IsValid)
-            {
-                db.AspNetUsers.Add(aspNetUser);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //// POST: Admin/Create
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "Id,disabled,FirstName,LastName,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,Discriminator")] AspNetUser aspNetUser)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.AspNetUsers.Add(aspNetUser);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-            return View(aspNetUser);
-        }
+        //    return View(aspNetUser);
+        //}
 
-        // GET: AspNetUsers/Edit/5
+        // GET: Admin/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -96,7 +73,7 @@ namespace MUE.Controllers
             return View(aspNetUser);
         }
 
-        // POST: AspNetUsers/Edit/5
+        // POST: Admin/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -112,7 +89,7 @@ namespace MUE.Controllers
             return View(aspNetUser);
         }
 
-        // GET: AspNetUsers/Delete/5
+        // GET: Admin/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -127,7 +104,7 @@ namespace MUE.Controllers
             return View(aspNetUser);
         }
 
-        // POST: AspNetUsers/Delete/5
+        // POST: Admin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
