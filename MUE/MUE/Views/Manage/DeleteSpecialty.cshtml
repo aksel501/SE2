@@ -32,11 +32,11 @@
 
     </div>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm("DoDeleteSpecialty", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
         @Html.AntiForgeryToken()
-
+        @Html.HiddenFor(m => m.ID)
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }
