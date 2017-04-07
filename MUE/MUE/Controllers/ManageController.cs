@@ -60,16 +60,7 @@ namespace MUE.Controllers
             }
         }
 
-        public ActionResult AddFieldOfStudy(AddCatagoryViewModel model)
-        {
-            //var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
-            ViewBag.CATAGORYID = new SelectList(_dbContext.CATAGORies, "ID", "NAME");
-            var catID = ViewBag.CatagoryID;
-            //_dbContext.CATAGORies.Add(new { USERID = manager.FindById(User.Identity.GetUserId()), CATAGORYID = catID });
-            _dbContext.CATAGORies.Add(catID);
-            return View(model);
-
-        }
+        
 
         [Authorize(Roles = "Expert, Admin")]
         public ViewResult AddFieldOfStudy()
@@ -85,6 +76,23 @@ namespace MUE.Controllers
             return View();
 
         }
+        [HttpPost]
+        public ActionResult AddFieldOfStudy(AddCatagoryViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
+                //_dbContext.CATAGORies.Add(new { USERID = manager.FindById(User.Identity.GetUserId()), CATAGORYID = catID });
+                ViewBag.CATAGORYID = new SelectList(_dbContext.CATAGORies, "ID", "NAME");
+                var catID = ViewBag.CatagoryID;
+                _dbContext.CATAGORies.Add(catID);
+                return View(model);
+            }
+
+            else { return RedirectToAction("Index", "Manage"); }
+
+        }
+
         [Authorize(Roles = "Expert, Admin")]
         public ActionResult AddSpecialty()
         {
@@ -143,9 +151,9 @@ namespace MUE.Controllers
 
         }
         [HttpPost]
-        public ActionResult DoDeleteSpecialty(int ID)
+        public ActionResult DoDeleteSpecialty(int Id)
         {
-            var specialty = _dbContext.SPECIALTies.FirstOrDefault(s => s.ID == ID);
+            var specialty = _dbContext.SPECIALTies.SingleOrDefault(s => s.ID == Id);
             if (specialty == null)
             {
                 return HttpNotFound();
