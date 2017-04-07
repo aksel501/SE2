@@ -572,3 +572,4 @@ C:\Users\stagg\Source\Repos\Updated\MUE\MUE\obj\Debug\MUE.dll
 C:\Users\stagg\Source\Repos\Updated\MUE\MUE\obj\Debug\MUE.pdb
 C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\obj\Debug\MUE.Migrations.initial.resources
 C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\obj\Debug\MUE.csproj.GenerateResource.Cache
+C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\obj\Debug\MUE.csprojResolveAssemblyReference.cache
