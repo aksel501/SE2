@@ -61,7 +61,7 @@ namespace MUE.Controllers
             String test = "ChooseWhateverWeGottaFixThisItWillWork";
             var email = User.Identity.GetUserName();
             ViewBag.RecieverID = new SelectList(db.AspNetUsers, "Id", "Email");
-            ViewBag.SenderID = new SelectList(test);
+            //ViewBag.SenderID = new SelectList(test);
             return View();
         }
 
@@ -70,10 +70,9 @@ namespace MUE.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,SenderID,RecieverID,TEXT")] Message message)
+        public ActionResult Create([Bind(Include = "RecieverID,TEXT")] Message message)
         {
-            if (ModelState.IsValid)
-            {
+            
                 var mes = new Message
                 {
                     SenderID = User.Identity.GetUserId(),
@@ -81,6 +80,8 @@ namespace MUE.Controllers
                     DATETIMEMADE = DateTime.Now,
                     TEXT = message.TEXT
                 };
+            if (ModelState.IsValid)
+            {
                 db.Messages.Add(mes);
                db.SaveChanges();
                 return RedirectToAction("Index");

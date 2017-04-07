@@ -570,4 +570,5 @@ C:\Users\stagg\Source\Repos\Updated\MUE\MUE\bin\Microsoft.Owin.Security.Microsof
 C:\Users\stagg\Source\Repos\Updated\MUE\MUE\obj\Debug\MUE.csprojResolveAssemblyReference.cache
 C:\Users\stagg\Source\Repos\Updated\MUE\MUE\obj\Debug\MUE.dll
 C:\Users\stagg\Source\Repos\Updated\MUE\MUE\obj\Debug\MUE.pdb
-C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\obj\Debug\MUE.csprojResolveAssemblyReference.cache
+C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\obj\Debug\MUE.Migrations.initial.resources
+C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\obj\Debug\MUE.csproj.GenerateResource.Cache
