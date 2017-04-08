@@ -8,28 +8,29 @@ using System.Web;
 using System.Web.Mvc;
 using MUE.Models;
 using Microsoft.AspNet.Identity;
+using System.Web.Security;
 
 namespace MUE.Controllers
 {
+    [Authorize]
     public class MessagesController : Controller
     {
-        private ExpertsDatabase db = new ExpertsDatabase();
+        private ExpertsDatabase2 db = new ExpertsDatabase2();
 
         // GET: Messages
-        [Authorize(Roles = "Expert, User")]
         public ActionResult Index(string sortOrder, string searchString)
         {
             var userId = User.Identity.GetUserId();
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "FirstName" : "";
-            var messages = from m in db.Messages where m.SenderID == userId  select m;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Email" : "";
+            var messages = from m in db.Messages where m.RecieverID == userId select m;
             if (!String.IsNullOrEmpty(searchString))
             {
-                messages = messages.Where(m => m.TEXT.Contains(searchString) || m.AspNetUser.FirstName.Contains(searchString));
+                messages = messages.Where(m => m.TEXT.Contains(searchString) || m.AspNetUser.Email.Contains(searchString));
             }
-            switch(sortOrder)
+            switch (sortOrder)
             {
-                case "FirstName":
-                    messages = messages.OrderBy(m => m.AspNetUser.FirstName);
+                case "Email":
+                    messages = messages.OrderBy(m => m.AspNetUser.Email);
                     break;
                 default:
                     messages = messages.OrderByDescending(m => m.DATETIMEMADE);
@@ -37,7 +38,7 @@ namespace MUE.Controllers
             }
             return View(messages.ToList());
         }
-    
+
         // GET: Messages/Details/5
         public ActionResult Details(int? id)
         {
@@ -46,6 +47,8 @@ namespace MUE.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Message message = db.Messages.Find(id);
+         
+
             if (message == null)
             {
                 return HttpNotFound();
@@ -54,34 +57,39 @@ namespace MUE.Controllers
         }
 
         // GET: Messages/Create
-       
         public ActionResult Create()
         {
-            ViewBag.SenderID = new SelectList(db.AspNetUsers, "Id", "FirstName");
+            String test = "ChooseWhateverWeGottaFixThisItWillWork";
+            var email = User.Identity.GetUserName();
+            ViewBag.RecieverID = new SelectList(db.AspNetUsers, "Id", "Email");
+            //ViewBag.SenderID = new SelectList(test);
             return View();
         }
 
         // POST: Messages/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "USERID,TEXT")] Message message)
+        public ActionResult Create([Bind(Include = "RecieverID,TEXT")] Message message)
         {
-            if (ModelState.IsValid)
-            {
+            
                 var mes = new Message
                 {
-                    SenderID = message.SenderID,
+                    SenderID = User.Identity.GetUserId(),
+                    RecieverID = message.RecieverID,
                     DATETIMEMADE = DateTime.Now,
                     TEXT = message.TEXT
                 };
+            if (ModelState.IsValid)
+            {
                 db.Messages.Add(mes);
-                db.SaveChanges();
+               db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.USERID = new SelectList(db.AspNetUsers, "Id", "FirstName", message.SenderID);
+            ViewBag.RecieverID = new SelectList(db.AspNetUsers, "Id", "Email", message.RecieverID);
+            ViewBag.SenderID = new SelectList(User.Identity.GetUserName(), "Id", "Email", message.SenderID);
             return View(message);
         }
 
@@ -97,16 +105,17 @@ namespace MUE.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.USERID = new SelectList(db.AspNetUsers, "Id", "FirstName", message.SenderID);
+            ViewBag.RecieverID = new SelectList(db.AspNetUsers, "Id", "FirstName", message.RecieverID);
+            ViewBag.SenderID = new SelectList(db.AspNetUsers, "Id", "FirstName", message.SenderID);
             return View(message);
         }
 
         // POST: Messages/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,USERID,DATETIMEMADE,TEXT")] Message message)
+        public ActionResult Edit([Bind(Include = "ID,SenderID,RecieverID,DATETIMEMADE,TEXT")] Message message)
         {
             if (ModelState.IsValid)
             {
@@ -114,7 +123,8 @@ namespace MUE.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.USERID = new SelectList(db.AspNetUsers, "Id", "FirstName", message.SenderID);
+            ViewBag.RecieverID = new SelectList(db.AspNetUsers, "Id", "FirstName", message.RecieverID);
+            ViewBag.SenderID = new SelectList(User.Identity.GetUserId(), "Id", "FirstName", User.Identity.GetUserId());
             return View(message);
         }
 

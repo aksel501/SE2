@@ -10,17 +10,18 @@ using MUE.Models;
 
 namespace MUE.Controllers
 {
+    [Authorize (Roles = "Admin")]
     public class AdminController : Controller
     {
-        private ExpertsDatabase db = new ExpertsDatabase();
+        private ExpertsDatabase2 db = new ExpertsDatabase2();
 
-        // GET: AspNetUsers
+        // GET: Admin
         public ActionResult Index()
         {
             return View(db.AspNetUsers.ToList());
         }
 
-        // GET: AspNetUsers/Details/5
+        // GET: Admin/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -35,30 +36,30 @@ namespace MUE.Controllers
             return View(aspNetUser);
         }
 
-        // GET: AspNetUsers/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+        //// GET: Admin/Create
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
-        // POST: AspNetUsers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,disabled,FirstName,LastName,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,Discriminator")] AspNetUser aspNetUser)
-        {
-            if (ModelState.IsValid)
-            {
-                db.AspNetUsers.Add(aspNetUser);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //// POST: Admin/Create
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "Id,disabled,FirstName,LastName,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,Discriminator")] AspNetUser aspNetUser)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.AspNetUsers.Add(aspNetUser);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-            return View(aspNetUser);
-        }
+        //    return View(aspNetUser);
+        //}
 
-        // GET: AspNetUsers/Edit/5
+        // GET: Admin/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -73,12 +74,12 @@ namespace MUE.Controllers
             return View(aspNetUser);
         }
 
-        // POST: AspNetUsers/Edit/5
+        // POST: Admin/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,disabled,FirstName,LastName,Email,EmailConfirmed,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount")] AspNetUser aspNetUser)
+        public ActionResult Edit([Bind(Include = "Id,disabled,FirstName,LastName,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,Discriminator")] AspNetUser aspNetUser)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +90,7 @@ namespace MUE.Controllers
             return View(aspNetUser);
         }
 
-        // GET: AspNetUsers/Delete/5
+        // GET: Admin/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -104,7 +105,7 @@ namespace MUE.Controllers
             return View(aspNetUser);
         }
 
-        // POST: AspNetUsers/Delete/5
+        // POST: Admin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)

@@ -5,15 +5,14 @@ namespace MUE.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class ExpertsDatabase : DbContext
+    public partial class ExpertsDatabase2 : DbContext
     {
-        public ExpertsDatabase()
-            : base("name=ExpertsDatabase")
+        public ExpertsDatabase2()
+            : base("name=ExpertsDatabase2")
         {
         }
 
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
-
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
@@ -22,6 +21,7 @@ namespace MUE.Models
         public virtual DbSet<POST> POSTs { get; set; }
         public virtual DbSet<PROJECT> PROJECTs { get; set; }
         public virtual DbSet<SPECIALTY> SPECIALTies { get; set; }
+        //public virtual DbSet<UserCatagories> USERCATAGORY { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -75,8 +75,9 @@ namespace MUE.Models
                 .Map(m => m.ToTable("UserCatagories").MapLeftKey("CATAGORYID").MapRightKey("USERID"));
 
             modelBuilder.Entity<POST>()
-                .HasOptional(e => e.POST1)
-                .WithMany(e => e.POSTs);
+                .HasMany(e => e.POST1)
+                .WithOptional(e => e.POST2)
+                .HasForeignKey(e => e.REPLIED_TO_POST_ID);
 
             modelBuilder.Entity<PROJECT>()
                 .HasMany(e => e.AspNetUsers)

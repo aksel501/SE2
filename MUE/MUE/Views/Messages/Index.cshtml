@@ -1,25 +1,19 @@
 ﻿@model IEnumerable<MUE.Models.Message>
 
 @{
-    ViewBag.Title = "Inbox";
+    ViewBag.Title = "Index";
 }
 
-<h2>Inbox</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
-@using (Html.BeginForm())
-{
-    <p>
-        Find by name or by message: @Html.TextBox("SearchString")
-        <input type="submit" value="Search" />
-    </p>
-}
 <table class="table">
     <tr>
+
         <th>
-            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+            User
         </th>
         <th>
             Date
@@ -29,28 +23,25 @@
         </th>
         <th></th>
     </tr>
-    </table>
-    <hr />
-<table class="table">
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DATETIMEMADE)
-            </td>
-            <td>
-                &nbsp;&nbsp; @Html.DisplayFor(modelItem => item.TEXT)
-            </td>
 
-            <td>
-                @Html.ActionLink("Message", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser1.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DATETIMEMADE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TEXT)
+        </td>
+        <td>
+            
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) 
+         
+        </td>
+    </tr>
+}
 
 </table>
