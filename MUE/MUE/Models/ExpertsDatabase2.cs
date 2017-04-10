@@ -21,7 +21,7 @@ namespace MUE.Models
         public virtual DbSet<POST> POSTs { get; set; }
         public virtual DbSet<PROJECT> PROJECTs { get; set; }
         public virtual DbSet<SPECIALTY> SPECIALTies { get; set; }
-        //public virtual DbSet<UserCatagories> USERCATAGORY { get; set; }
+        //public virtual DbSet<AddCatagoryViewModel> USERCATAGORY { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
