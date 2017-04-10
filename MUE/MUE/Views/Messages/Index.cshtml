@@ -12,14 +12,14 @@
 @using (Html.BeginForm())
 {
     <p>
-        Find by name or by message: @Html.TextBox("SearchString")
+        Find by email or by message: @Html.TextBox("SearchString")
         <input type="submit" value="Search" />
     </p>
 }
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+            @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
         <th>
             Date
@@ -36,7 +36,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                @Html.DisplayFor(modelItem => item.AspNetUser.Email)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DATETIMEMADE)

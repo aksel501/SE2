@@ -16,20 +16,20 @@ namespace MUE.Controllers
         private ModelReferencesHere db = new ModelReferencesHere();
 
         // GET: Messages
-        [Authorize(Roles = "Expert, User")]
+       
         public ActionResult Index(string sortOrder, string searchString)
         {
             var userId = User.Identity.GetUserId();
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "FirstName" : "";
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Email" : "";
             var messages = from m in db.Messages where m.USERID == userId  select m;
             if (!String.IsNullOrEmpty(searchString))
             {
-                messages = messages.Where(m => m.TEXT.Contains(searchString) || m.AspNetUser.FirstName.Contains(searchString));
+                messages = messages.Where(m => m.TEXT.Contains(searchString) || m.AspNetUser.Email.Contains(searchString));
             }
             switch(sortOrder)
             {
-                case "FirstName":
-                    messages = messages.OrderBy(m => m.AspNetUser.FirstName);
+                case "Email":
+                    messages = messages.OrderBy(m => m.AspNetUser.Email);
                     break;
                 default:
                     messages = messages.OrderByDescending(m => m.DATETIMEMADE);
