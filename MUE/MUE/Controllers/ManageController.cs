@@ -201,6 +201,7 @@ namespace MUE.Controllers
         //POST: /Manage/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit(ApplicationUser model)
         {
             string id = model.Id;
@@ -375,6 +376,7 @@ namespace MUE.Controllers
         // POST: /Manage/ChangePassword
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
         {
             if (!ModelState.IsValid)

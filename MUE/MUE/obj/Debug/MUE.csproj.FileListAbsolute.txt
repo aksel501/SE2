@@ -659,3 +659,7 @@ C:\Users\Nate\Documents\Visual Studio 2015\Projects\SE2\MUE\MUE\obj\Debug\MUE.Mi
 C:\Users\Nate\Documents\Visual Studio 2015\Projects\SE2\MUE\MUE\obj\Debug\MUE.csproj.GenerateResource.Cache
 C:\Users\Nate\Documents\Visual Studio 2015\Projects\SE2\MUE\MUE\obj\Debug\MUE.dll
 C:\Users\Nate\Documents\Visual Studio 2015\Projects\SE2\MUE\MUE\obj\Debug\MUE.pdb
+C:\Users\Nate\Documents\Visual Studio 2015\Projects\SE2\MUE\MUE\bin\AntiXssLibrary.dll
+C:\Users\Nate\Documents\Visual Studio 2015\Projects\SE2\MUE\MUE\bin\HtmlSanitizationLibrary.dll
+C:\Users\Nate\Documents\Visual Studio 2015\Projects\SE2\MUE\MUE\bin\AntiXssLibrary.xml
+C:\Users\Nate\Documents\Visual Studio 2015\Projects\SE2\MUE\MUE\bin\HtmlSanitizationLibrary.xml
