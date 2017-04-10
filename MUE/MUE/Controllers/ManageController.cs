@@ -122,7 +122,7 @@ namespace MUE.Controllers
             _dbContext.SPECIALTies.Add(specialty);
             _dbContext.SaveChanges();
 
-            return RedirectToAction("Index", "Manage");
+            return RedirectToAction("ViewSpecialties", "Manage");
 
         }
 
@@ -159,7 +159,7 @@ namespace MUE.Controllers
             }
             _dbContext.SPECIALTies.Remove(specialty);
             _dbContext.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ViewSpecialties", "Manage");
 
         }
 
