@@ -50,6 +50,9 @@ audio:not([controls]) {
 [hidden] {
   display: none;
 }
+[hidden]#t{
+    display: none;
+}
 
 html {
   font-family: sans-serif;

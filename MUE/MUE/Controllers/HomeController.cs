@@ -26,5 +26,10 @@ namespace MUE.Controllers
 
             return View();
         }
+
+        public ActionResult Bug()
+        {
+            return View();
+        }
     }
 }

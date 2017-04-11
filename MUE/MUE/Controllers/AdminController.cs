@@ -10,6 +10,7 @@ using MUE.Models;
 
 namespace MUE.Controllers
 {
+    [Authorize (Roles = "Admin")]
     public class AdminController : Controller
     {
         private ExpertsDatabase2 db = new ExpertsDatabase2();
