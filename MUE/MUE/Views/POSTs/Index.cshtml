@@ -4,15 +4,34 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Discussion Forum </h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
+<style>
+    .right {
+        position: absolute;
+        right: 100px;
+        top: 150px;
+    }
+</style>
+
+<div class="right">
+    @using (Html.BeginForm("Index", "POSTs", FormMethod.Get))
+    {
+        <b>Search By: Subject </b>  <br />
+        @Html.TextBox("search")<input type="submit" value="Search" />
+    }
+</div>
+
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.AspNetUser.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DATETIMEPOSTED)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.SUBJECT)
@@ -20,9 +39,7 @@
         <th>
             @Html.DisplayNameFor(model => model.TITLE)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DATETIMEPOSTED)
-        </th>
+       
         <th></th>
     </tr>
 
@@ -32,18 +49,23 @@
             @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SUBJECT)
+            @Html.DisplayFor(modelItem => item.DATETIMEPOSTED)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TITLE)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DATETIMEPOSTED)
+            @Html.DisplayFor(modelItem => item.SUBJECT)
         </td>
+       
+       
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })|
+            @Html.ActionLink("Replay", "Create")*@
+
+
         </td>
     </tr>
 }
