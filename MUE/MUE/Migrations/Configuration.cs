@@ -5,14 +5,14 @@ namespace MUE.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<MUE.Models.ModelReferencesHere>
+    internal sealed class Configuration : DbMigrationsConfiguration<MUE.Models.ExpertsDatabase2>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(MUE.Models.ModelReferencesHere context)
+        protected override void Seed(MUE.Models.ExpertsDatabase2 context)
         {
             //  This method will be called after migrating to the latest version.
 

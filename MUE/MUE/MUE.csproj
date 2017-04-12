@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -78,7 +79,6 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
-    <Reference Include="System.Activities" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -199,21 +199,26 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AspNetUsersController.cs" />
-    <Compile Include="Controllers\ForumForPostController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\POSTsController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704070126452_init.cs" />
-    <Compile Include="Migrations\201704070126452_init.Designer.cs">
-      <DependentUpon>201704070126452_init.cs</DependentUpon>
+    <Compile Include="Migrations\201704071730186_initial.cs" />
+    <Compile Include="Migrations\201704071730186_initial.Designer.cs">
+      <DependentUpon>201704071730186_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704071854211_1.cs" />
+    <Compile Include="Migrations\201704071854211_1.Designer.cs">
+      <DependentUpon>201704071854211_1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AddCatagoryViewModel.cs" />
     <Compile Include="Models\AspNetRole.cs" />
     <Compile Include="Models\AspNetUser.cs" />
     <Compile Include="Models\AspNetUserClaim.cs" />
@@ -221,10 +226,10 @@
     <Compile Include="Models\CATAGORY.cs" />
     <Compile Include="Models\CONVERSATION.cs" />
     <Compile Include="Models\EXPERT.cs" />
+    <Compile Include="Models\ExpertsDatabase2.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Message.cs" />
-    <Compile Include="Models\ModelReferencesHere.cs" />
     <Compile Include="Models\POST.cs" />
     <Compile Include="Models\PROJECT.cs" />
     <Compile Include="Models\ReCaptcha.cs" />
@@ -233,8 +238,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -256,7 +261,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -291,21 +295,23 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Messages\Create.cshtml" />
-    <Content Include="Views\Messages\Delete.cshtml" />
     <Content Include="Views\Messages\Details.cshtml" />
-    <Content Include="Views\Messages\Edit.cshtml" />
     <Content Include="Views\Messages\Index.cshtml" />
+    <Content Include="Views\Projects\Index.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Manage\AddSpecialty.cshtml" />
+    <Content Include="Views\Manage\Edit.cshtml" />
+    <Content Include="Views\Manage\ViewSpecialties.cshtml" />
     <Content Include="Views\AspNetUsers\Create.cshtml" />
     <Content Include="Views\AspNetUsers\Delete.cshtml" />
     <Content Include="Views\AspNetUsers\Details.cshtml" />
     <Content Include="Views\AspNetUsers\Edit.cshtml" />
     <Content Include="Views\AspNetUsers\Index.cshtml" />
     <Content Include="Views\AspNetUsers\ListOfExperts.cshtml" />
-    <Content Include="Views\Account\ExpertRegistration.cshtml" />
-    <Content Include="Views\Manage\AddSpecialty.cshtml" />
-    <Content Include="Views\Manage\ChangeDepartments.cshtml" />
-    <Content Include="Views\Manage\Edit.cshtml" />
-    <Content Include="Views\Manage\ViewSpecialties.cshtml" />
     <Content Include="Views\ForumForPost\Create.cshtml" />
     <Content Include="Views\ForumForPost\Delete.cshtml" />
     <Content Include="Views\ForumForPost\Details.cshtml" />
@@ -320,6 +326,10 @@
     <Content Include="Views\Projects\Delete.cshtml" />
     <Content Include="Views\Projects\Details.cshtml" />
     <Content Include="Views\Projects\Edit.cshtml" />
+    <Content Include="Views\Account\ExpertRegistration.cshtml" />
+    <Content Include="Views\Manage\AddFieldOfStudy.cshtml" />
+    <Content Include="Views\Manage\DeleteSpecialty.cshtml" />
+    <Content Include="Views\Home\Bug.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -336,8 +346,11 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704070126452_init.resx">
-      <DependentUpon>201704070126452_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704071730186_initial.resx">
+      <DependentUpon>201704071730186_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704071854211_1.resx">
+      <DependentUpon>201704071854211_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -13,18 +13,19 @@ namespace MUE.Models
         {
             AspNetUserClaims = new HashSet<AspNetUserClaim>();
             AspNetUserLogins = new HashSet<AspNetUserLogin>();
-            CONVERSATIONs = new HashSet<CONVERSATION>();
-            Messages = new HashSet<Message>();
             POSTs = new HashSet<POST>();
-            EXPERTs = new HashSet<EXPERT>();
+            SPECIALTies = new HashSet<SPECIALTY>();
+            Messages = new HashSet<Message>();
+            Messages1 = new HashSet<Message>();
             AspNetRoles = new HashSet<AspNetRole>();
             PROJECTs = new HashSet<PROJECT>();
+            CATAGORies = new HashSet<CATAGORY>();
         }
 
         public string Id { get; set; }
 
         public bool disabled { get; set; }
-
+        [Display(Name ="First Name")]
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -54,7 +55,6 @@ namespace MUE.Models
         [StringLength(256)]
         public string UserName { get; set; }
 
-        [Required]
         [StringLength(128)]
         public string Discriminator { get; set; }
 
@@ -65,21 +65,24 @@ namespace MUE.Models
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CONVERSATION> CONVERSATIONs { get; set; }
+        public virtual ICollection<POST> POSTs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SPECIALTY> SPECIALTies { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Message> Messages { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<POST> POSTs { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EXPERT> EXPERTs { get; set; }
+        public virtual ICollection<Message> Messages1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PROJECT> PROJECTs { get; set;}
+        public virtual ICollection<PROJECT> PROJECTs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CATAGORY> CATAGORies { get; set; }
     }
 }

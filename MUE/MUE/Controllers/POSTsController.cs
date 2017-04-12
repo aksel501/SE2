@@ -10,19 +10,19 @@ using MUE.Models;
 
 namespace MUE.Controllers
 {
-    [Authorize]
-    public class ForumForPostController : Controller
+    
+    public class POSTsController : Controller
     {
-        private ModelReferencesHere db = new ModelReferencesHere();
+        private ExpertsDatabase2 db = new ExpertsDatabase2();
 
-        // GET: ForumForPost
+        // GET: POSTs
         public ActionResult Index()
         {
-            var pOSTs = db.POSTs.Include(p => p.AspNetUser);
+            var pOSTs = db.POSTs.Include(p => p.AspNetUser).Include(p => p.POST2);
             return View(pOSTs.ToList());
         }
 
-        // GET: ForumForPost/Details/5
+        // GET: POSTs/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,19 +37,20 @@ namespace MUE.Controllers
             return View(pOST);
         }
 
-        // GET: ForumForPost/Create
+        // GET: POSTs/Create
         public ActionResult Create()
         {
             ViewBag.USERID = new SelectList(db.AspNetUsers, "Id", "FirstName");
+            ViewBag.REPLIED_TO_POST_ID = new SelectList(db.POSTs, "ID", "USERID");
             return View();
         }
 
-        // POST: ForumForPost/Create
+        // POST: POSTs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,USERID,SUBJECT,TITLE,DATETIMEPOSTED")] POST pOST)
+        public ActionResult Create([Bind(Include = "ID,REPLIED_TO_POST_ID,USERID,SUBJECT,TITLE,DATETIMEPOSTED")] POST pOST)
         {
             if (ModelState.IsValid)
             {
@@ -59,10 +60,11 @@ namespace MUE.Controllers
             }
 
             ViewBag.USERID = new SelectList(db.AspNetUsers, "Id", "FirstName", pOST.USERID);
+            ViewBag.REPLIED_TO_POST_ID = new SelectList(db.POSTs, "ID", "USERID", pOST.REPLIED_TO_POST_ID);
             return View(pOST);
         }
 
-        // GET: ForumForPost/Edit/5
+        // GET: POSTs/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -75,15 +77,16 @@ namespace MUE.Controllers
                 return HttpNotFound();
             }
             ViewBag.USERID = new SelectList(db.AspNetUsers, "Id", "FirstName", pOST.USERID);
+            ViewBag.REPLIED_TO_POST_ID = new SelectList(db.POSTs, "ID", "USERID", pOST.REPLIED_TO_POST_ID);
             return View(pOST);
         }
 
-        // POST: ForumForPost/Edit/5
+        // POST: POSTs/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,USERID,SUBJECT,TITLE,DATETIMEPOSTED")] POST pOST)
+        public ActionResult Edit([Bind(Include = "ID,REPLIED_TO_POST_ID,USERID,SUBJECT,TITLE,DATETIMEPOSTED")] POST pOST)
         {
             if (ModelState.IsValid)
             {
@@ -92,10 +95,11 @@ namespace MUE.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.USERID = new SelectList(db.AspNetUsers, "Id", "FirstName", pOST.USERID);
+            ViewBag.REPLIED_TO_POST_ID = new SelectList(db.POSTs, "ID", "USERID", pOST.REPLIED_TO_POST_ID);
             return View(pOST);
         }
 
-        // GET: ForumForPost/Delete/5
+        // GET: POSTs/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -110,7 +114,7 @@ namespace MUE.Controllers
             return View(pOST);
         }
 
-        // POST: ForumForPost/Delete/5
+        // POST: POSTs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

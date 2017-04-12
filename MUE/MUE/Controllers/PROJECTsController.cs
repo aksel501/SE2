@@ -10,9 +10,10 @@ using MUE.Models;
 
 namespace MUE.Controllers
 {
+    [Authorize]
     public class PROJECTsController : Controller
     {
-        private ModelReferencesHere db = new ModelReferencesHere();
+        private ExpertsDatabase2 db = new ExpertsDatabase2();
 
         // GET: PROJECTs
         [Authorize(Roles = "Expert, User")]

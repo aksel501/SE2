@@ -10,6 +10,7 @@ using MUE.Models;
 using System.Web.Routing;
 using System.Net;
 using System.Security.Principal;
+using System.Collections.Generic;
 
 namespace MUE.Controllers
 {
@@ -18,13 +19,13 @@ namespace MUE.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private ModelReferencesHere _dbContext;
+        private ExpertsDatabase2 _dbContext;
         private ApplicationDbContext _forEdit;
       
         
         public ManageController()
         {
-            _dbContext = new ModelReferencesHere();
+            _dbContext = new ExpertsDatabase2();
             _forEdit = new ApplicationDbContext();
         }
 
@@ -58,24 +59,47 @@ namespace MUE.Controllers
                 _userManager = value;
             }
         }
-        public ActionResult ViewSpecialties()
-        {
-            var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
-            var currentUser = manager.FindById(User.Identity.GetUserId());
-            var adam = from s in _dbContext.SPECIALTies.Where(s => s.expertID == currentUser.Id) select s;
-            return View(adam.ToList());
-        }
 
-        public ActionResult ChangeDepartments()
-        {
+        
+
+        [Authorize(Roles = "Expert, Admin")]
+        public ViewResult AddFieldOfStudy()
+        {   
+            //Get the value from database and then set it to ViewBag to pass it View
+            IEnumerable<SelectListItem> items = _dbContext.CATAGORies.Select(c => new SelectListItem
+            {
+                Value = c.NAME,
+                Text = c.NAME
+
+            });
+            ViewBag.NAMe = items;
             return View();
+
+        }
+        [HttpPost]
+        public ActionResult AddFieldOfStudy(AddCatagoryViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
+                //_dbContext.CATAGORies.Add(new { USERID = manager.FindById(User.Identity.GetUserId()), CATAGORYID = catID });
+                ViewBag.CATAGORYID = new SelectList(_dbContext.CATAGORies, "ID", "NAME");
+                var catID = ViewBag.CatagoryID;
+                _dbContext.CATAGORies.Add(catID);
+                return View(model);
+            }
+
+            else { return RedirectToAction("Index", "Manage"); }
+
         }
 
+        [Authorize(Roles = "Expert, Admin")]
         public ActionResult AddSpecialty()
         {
             return View();
 
         }
+
         //GEt: Posts/Create
         [Authorize(Roles = "Expert, Admin")]
         [HttpPost]
@@ -99,26 +123,48 @@ namespace MUE.Controllers
             _dbContext.SPECIALTies.Add(specialty);
             _dbContext.SaveChanges();
 
-
-
-            //using (var ctx = new ModelReferencesHere())
-            //    {
-            //    var specialty = new SPECIALTY
-            //    {
-            //        expertID = User.Identity.GetUserId(),
-            //        NAME = model.NAME,
-            //        DESCRIPTION = model.DESCRIPTION
-
-            //    };
-
-            //    ctx.SPECIALTies.SqlQuery("Insert into SPECIALTY (expertID, ID, NAME, DESCRIPTION) values(expertID, 2, NAME, DESCRIPTION)").ToList();
-
-            //    }
-
             return RedirectToAction("Index", "Manage");
-            
+
         }
 
+
+        [Authorize(Roles = "Expert, Admin")]
+        public ActionResult ViewSpecialties()
+        {
+            var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            var adam = from s in _dbContext.SPECIALTies.Where(s => s.expertID == currentUser.Id) select s;
+            return View(adam.ToList());
+        }
+
+        
+
+        public ActionResult DeleteSpecialty(int ID)
+        {
+            var specialty = _dbContext.SPECIALTies.FirstOrDefault(s => s.ID == ID);
+            if (specialty == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(specialty);
+
+        }
+        [HttpPost]
+        public ActionResult DoDeleteSpecialty(int Id)
+        {
+            var specialty = _dbContext.SPECIALTies.SingleOrDefault(s => s.ID == Id);
+            if (specialty == null)
+            {
+                return HttpNotFound();
+            }
+            _dbContext.SPECIALTies.Remove(specialty);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
+
+        
 
         //
         // GET: /Manage/Index
@@ -156,22 +202,20 @@ namespace MUE.Controllers
         //POST: /Manage/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(EditUserViewModel model)
+        public ActionResult Edit(ApplicationUser model)
         {
             string id = model.Id;
             ApplicationUser user = _forEdit.Users.Find(model.Id);
 
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
-            user.Email = model.Email;
+            //user.Email = model.Email;
             user.PhoneNumber = model.PhoneNumber;
 
-            _dbContext.SaveChanges();
+            _forEdit.SaveChanges();
 
             if (ModelState.IsValid)
             {
-                //FormsAuthentication.SignOut();
-                //Response.Redirect("login.aspx?mode=logout");
                 return RedirectToAction("Index");
             }
             return View(model);
