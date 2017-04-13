@@ -80,12 +80,12 @@ public ActionResult Details(int? id)
                 {
                    // AspNetUser= User.Identity.Name,
                     USERID= User.Identity.Name,
-                   // DATETIMEPOSTED=System.DateTime.Now,
+                   DATETIMEPOSTED=System.DateTime.Now,
                     SUBJECT= pOST.SUBJECT,
                     TITLE=pOST.TITLE,
           
                 };
-                db.POSTs.Add(pOST);
+                db.POSTs.Add(Forms);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
