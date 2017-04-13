@@ -16,7 +16,6 @@ namespace MUE.Models
             AspNetUsers = new HashSet<AspNetUser>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
         [Required]

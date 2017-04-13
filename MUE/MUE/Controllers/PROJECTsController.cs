@@ -13,7 +13,7 @@ namespace MUE.Controllers
     [Authorize]
     public class PROJECTsController : Controller
     {
-        private ExpertsDatabase2 db = new ExpertsDatabase2();
+        private ExpertsDatabase3 db = new ExpertsDatabase3();
 
         // GET: PROJECTs
         public ActionResult Index()

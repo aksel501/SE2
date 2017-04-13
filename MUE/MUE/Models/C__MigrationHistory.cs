@@ -6,25 +6,24 @@ namespace MUE.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("SPECIALTY")]
-    public partial class SPECIALTY
+    [Table("__MigrationHistory")]
+    public partial class C__MigrationHistory
     {
         [Key]
         [Column(Order = 0)]
-        public int ID { get; set; }
+        [StringLength(150)]
+        public string MigrationId { get; set; }
 
         [Key]
         [Column(Order = 1)]
-        [StringLength(64)]
-        public string NAME { get; set; }
+        [StringLength(300)]
+        public string ContextKey { get; set; }
 
         [Required]
-        [StringLength(128)]
-        public string expertID { get; set; }
+        public byte[] Model { get; set; }
 
         [Required]
-        public string DESCRIPTION { get; set; }
-
-        public virtual AspNetUser AspNetUser { get; set; }
+        [StringLength(32)]
+        public string ProductVersion { get; set; }
     }
 }
