@@ -40,7 +40,8 @@ namespace MUE.Controllers
         // GET: PROJECTs/Create
         public ActionResult Create()
         {
-            return View();
+            var viewModel = new PROJECT { STARTDATE = DateTime.Now };
+            return View(viewModel);
         }
 
         // POST: PROJECTs/Create
