@@ -224,9 +224,11 @@
     <Compile Include="Models\AspNetUserClaim.cs" />
     <Compile Include="Models\AspNetUserLogin.cs" />
     <Compile Include="Models\CATAGORY.cs" />
+    <Compile Include="Models\CatSpecUserViewModel.cs" />
     <Compile Include="Models\CONVERSATION.cs" />
+    <Compile Include="Models\C__MigrationHistory.cs" />
     <Compile Include="Models\EXPERT.cs" />
-    <Compile Include="Models\ExpertsDatabase2.cs" />
+    <Compile Include="Models\ExpertsDatabase3.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Message.cs" />
@@ -261,7 +263,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

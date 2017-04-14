@@ -24,14 +24,13 @@ namespace MUE.Models
         public string USERID { get; set; }
 
         [Required]
-        [StringLength(20)]
         public string SUBJECT { get; set; }
 
         [Required]
-        [StringLength(20)]
+        [StringLength(50)]
         public string TITLE { get; set; }
 
-        public DateTime DATETIMEPOSTED { get; set; }
+        public DateTime? DATETIMEPOSTED { get; set; }
 
         public virtual AspNetUser AspNetUser { get; set; }
 

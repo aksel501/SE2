@@ -16,8 +16,10 @@ namespace MUE.Models
             CATAGORies = new HashSet<CATAGORY>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
+
+        [StringLength(128)]
+        public string PROJECTCREATORID { get; set; }
 
         public bool COMPLETED { get; set; }
 
@@ -33,6 +35,8 @@ namespace MUE.Models
 
         [Required]
         public string DESCRIPTION { get; set; }
+
+        public virtual AspNetUser AspNetUser { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
