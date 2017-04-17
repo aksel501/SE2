@@ -168,12 +168,13 @@ namespace MUE.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public async Task<ActionResult> Register(RegisterViewModel model, params string[] selectedRoles)
         {
             if (ModelState.IsValid)
             {
 
-
+                
                 //string EncodedResponse = Request.Form["g-Recaptcha-Response"];
                 //bool IsCaptchaValid=(ReCaptcha.Validate(EncodedResponse)=="True" ? true: false);
                 //if (IsCaptchaValid)
@@ -185,6 +186,8 @@ namespace MUE.Controllers
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     PhoneNumber = model.PhoneNumber
+
+                    
 
                 };
 
@@ -226,6 +229,7 @@ namespace MUE.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         //added by nate
         public async Task<ActionResult> ExpertRegistration(RegisterViewModel model)
         {

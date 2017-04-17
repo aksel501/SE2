@@ -17,7 +17,7 @@ namespace MUE.Models
 
         public int CATAGORYID { get; set; }
 
-        public int USERID { get; set; }
+        public String USERID { get; set; }
 
 
 
