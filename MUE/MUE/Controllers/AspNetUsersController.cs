@@ -12,7 +12,7 @@ namespace MUE.Controllers
 {
     public class AspNetUsersController : Controller
     {
-        private ExpertsDatabase2 db = new ExpertsDatabase2();
+        private ExpertsDatabase3 db = new ExpertsDatabase3();
 
         // GET: AspNetUsers
         public ActionResult Index(string searchBy, string search)
