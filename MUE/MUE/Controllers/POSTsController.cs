@@ -16,14 +16,29 @@ namespace MUE.Controllers
         private ExpertsDatabase3 db = new ExpertsDatabase3();
 
         // GET: POSTs
-        public ActionResult Index()
+        [AllowAnonymous]
+        //public ActionResult Index()
+        //{
+        //    var pOSTs = db.POSTs.Include(p => p.AspNetUser).Include(p => p.POST2);
+        //    return View(pOSTs.ToList());
+        //}
+        public ActionResult Index(string searchBy, string search)
         {
-            var pOSTs = db.POSTs.Include(p => p.AspNetUser).Include(p => p.POST2);
-            return View(pOSTs.ToList());
+             var pOSTs = db.POSTs.Include(p => p.AspNetUser).Include(p => p.POST2);
+
+            if (searchBy == "SUBJECT")
+            {
+                return View(db.POSTs.Where(x => x.TITLE.StartsWith( search) || search == null).ToList());
+
+            }
+            else
+            {
+                return View(db.POSTs.Where(x => x.SUBJECT.StartsWith(search) || search == null).ToList());
+            }
         }
 
-        // GET: POSTs/Details/5
-        public ActionResult Details(int? id)
+// GET: POSTs/Details/5
+public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -38,11 +53,18 @@ namespace MUE.Controllers
         }
 
         // GET: POSTs/Create
+        [Authorize]
         public ActionResult Create()
         {
+            
+               // var a = new POST();
+              //  a.DATETIMEPOSTED = DateTime.Now;
+            
             ViewBag.USERID = new SelectList(db.AspNetUsers, "Id", "FirstName");
             ViewBag.REPLIED_TO_POST_ID = new SelectList(db.POSTs, "ID", "USERID");
-            return View();
+             return View();
+           // return View(a);
+
         }
 
         // POST: POSTs/Create
@@ -54,7 +76,16 @@ namespace MUE.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.POSTs.Add(pOST);
+                var Forms = new POST
+                {
+                   // AspNetUser= User.Identity.Name,
+                    USERID= User.Identity.Name,
+                   DATETIMEPOSTED=System.DateTime.Now,
+                    SUBJECT= pOST.SUBJECT,
+                    TITLE=pOST.TITLE,
+          
+                };
+                db.POSTs.Add(Forms);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

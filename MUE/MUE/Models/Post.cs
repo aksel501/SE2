@@ -14,7 +14,9 @@ namespace MUE.Models
         {
             POST1 = new HashSet<POST>();
         }
-
+        [Key]
+        [Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         public int? REPLIED_TO_POST_ID { get; set; }
@@ -24,13 +26,14 @@ namespace MUE.Models
         public string USERID { get; set; }
 
         [Required]
+        [StringLength(20)]
         public string SUBJECT { get; set; }
 
         [Required]
-        [StringLength(50)]
+       [StringLength(20)]
         public string TITLE { get; set; }
 
-        public DateTime? DATETIMEPOSTED { get; set; }
+        public DateTime DATETIMEPOSTED { get; set; }
 
         public virtual AspNetUser AspNetUser { get; set; }
 
