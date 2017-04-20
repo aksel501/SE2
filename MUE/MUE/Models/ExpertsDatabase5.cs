@@ -10,6 +10,7 @@ namespace MUE.Models
         public ExpertsDatabase5()
             : base("name=ExpertsDatabase51")
         {
+
         }
 
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
