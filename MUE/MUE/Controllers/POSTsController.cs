@@ -13,7 +13,7 @@ namespace MUE.Controllers
     
     public class POSTsController : Controller
     {
-        private ExpertsDatabase2 db = new ExpertsDatabase2();
+        private ExpertsDatabase5 db = new ExpertsDatabase5();
 
         // GET: POSTs
         public ActionResult Index()
