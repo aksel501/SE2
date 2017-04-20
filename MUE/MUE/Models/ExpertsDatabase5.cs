@@ -10,7 +10,7 @@ namespace MUE.Models
         public ExpertsDatabase5()
             : base("name=ExpertsDatabase51")
         {
-
+            // chages to up
         }
 
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
