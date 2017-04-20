@@ -13,7 +13,7 @@ namespace MUE.Controllers
     [Authorize (Roles = "Admin")]
     public class AdminController : Controller
     {
-        private ExpertsDatabase3 db = new ExpertsDatabase3();
+        private ExpertsDatabase5 db = new ExpertsDatabase5();
 
         // GET: Admin
         public ActionResult Index()

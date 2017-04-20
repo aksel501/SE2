@@ -15,7 +15,7 @@ namespace MUE.Controllers
     [Authorize]
     public class MessagesController : Controller
     {
-        private ExpertsDatabase3 db = new ExpertsDatabase3();
+        private ExpertsDatabase5 db = new ExpertsDatabase5();
 
         // GET: Messages
         public ActionResult Index(string sortOrder, string searchString)

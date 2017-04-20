@@ -13,7 +13,7 @@ namespace MUE.Controllers
     
     public class POSTsController : Controller
     {
-        private ExpertsDatabase3 db = new ExpertsDatabase3();
+        private ExpertsDatabase5 db = new ExpertsDatabase5();
 
         // GET: POSTs
         [AllowAnonymous]

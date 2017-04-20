@@ -19,13 +19,13 @@ namespace MUE.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private ExpertsDatabase3 _dbContext;
+        private ExpertsDatabase5 _dbContext;
         private ApplicationDbContext _forEdit;
       
         
         public ManageController()
         {
-            _dbContext = new ExpertsDatabase3();
+            _dbContext = new ExpertsDatabase5();
             _forEdit = new ApplicationDbContext();
         }
 
@@ -76,21 +76,22 @@ namespace MUE.Controllers
             return View();
 
         }
-        //[HttpPost]
-        //public ActionResult AddFieldOfStudy(AddCatagoryViewModel model)
-        //{
-        //    //var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
-        //    //_dbContext.CATAGORies.Add(new { USERID = manager.FindById(User.Identity.GetUserId()), CATAGORYID = catID });
-        //    ViewBag.CATAGORYID = new SelectList(_dbContext.CATAGORies, "ID", "NAME");
-        //    var catID = ViewBag.CatagoryID;
-        //    var addFieldOfStudy = new AddCatagoryViewModel
-        //    {
-        //        CATAGORYID = catID,
-        //        USERID = User.Identity.GetUserId()
-        //    };
-        //    _dbContext.USERCATAGORY.Add(catID);
-        //    return View(model);
-        //}
+        [HttpPost]
+        public ActionResult AddFieldOfStudy(AddCatagoryViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
+                //_dbContext.CATAGORies.Add(new { USERID = manager.FindById(User.Identity.GetUserId()), CATAGORYID = catID });
+                ViewBag.CATAGORYID = new SelectList(_dbContext.CATAGORies, "ID", "NAME");
+                var catID = ViewBag.CatagoryID;
+                _dbContext.CATAGORies.Add(catID);
+                return View(model);
+            }
+
+            else { return RedirectToAction("Index", "Manage"); }
+
+        }
 
         [Authorize(Roles = "Expert, Admin")]
         public ActionResult AddSpecialty()
@@ -122,7 +123,7 @@ namespace MUE.Controllers
             _dbContext.SPECIALTies.Add(specialty);
             _dbContext.SaveChanges();
 
-            return RedirectToAction("ViewSpecialties", "Manage");
+            return RedirectToAction("Index", "Manage");
 
         }
 
@@ -159,7 +160,7 @@ namespace MUE.Controllers
             }
             _dbContext.SPECIALTies.Remove(specialty);
             _dbContext.SaveChanges();
-            return RedirectToAction("ViewSpecialties", "Manage");
+            return RedirectToAction("Index");
 
         }
 
@@ -201,7 +202,6 @@ namespace MUE.Controllers
         //POST: /Manage/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [ValidateInput(false)]
         public ActionResult Edit(ApplicationUser model)
         {
             string id = model.Id;
@@ -376,7 +376,6 @@ namespace MUE.Controllers
         // POST: /Manage/ChangePassword
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [ValidateInput(false)]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
         {
             if (!ModelState.IsValid)

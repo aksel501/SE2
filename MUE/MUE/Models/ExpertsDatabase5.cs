@@ -5,14 +5,14 @@ namespace MUE.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class ExpertsDatabase3 : DbContext
+    public partial class ExpertsDatabase5 : DbContext
     {
-        public ExpertsDatabase3()
-            : base("name=ExpertsDatabase3")
+        public ExpertsDatabase5()
+            : base("name=ExpertsDatabase51")
         {
+            // chages to up
         }
 
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
@@ -22,7 +22,6 @@ namespace MUE.Models
         public virtual DbSet<POST> POSTs { get; set; }
         public virtual DbSet<PROJECT> PROJECTs { get; set; }
         public virtual DbSet<SPECIALTY> SPECIALTies { get; set; }
-        public virtual DbSet<CatSpecUserViewModel> CatSpecUserViewModels { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -42,11 +41,6 @@ namespace MUE.Models
                 .HasForeignKey(e => e.UserId);
 
             modelBuilder.Entity<AspNetUser>()
-                .HasMany(e => e.PROJECTs)
-                .WithOptional(e => e.AspNetUser)
-                .HasForeignKey(e => e.PROJECTCREATORID);
-
-            modelBuilder.Entity<AspNetUser>()
                 .HasMany(e => e.Messages)
                 .WithRequired(e => e.AspNetUser)
                 .HasForeignKey(e => e.RecieverID)
@@ -63,6 +57,11 @@ namespace MUE.Models
                 .WithRequired(e => e.AspNetUser)
                 .HasForeignKey(e => e.USERID)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<AspNetUser>()
+                .HasMany(e => e.PROJECTs)
+                .WithOptional(e => e.AspNetUser)
+                .HasForeignKey(e => e.PROJECTCREATORID);
 
             modelBuilder.Entity<AspNetUser>()
                 .HasMany(e => e.SPECIALTies)

@@ -217,15 +217,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704071730186_initial.cs" />
-    <Compile Include="Migrations\201704071730186_initial.Designer.cs">
-      <DependentUpon>201704071730186_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704071854211_1.cs" />
-    <Compile Include="Migrations\201704071854211_1.Designer.cs">
-      <DependentUpon>201704071854211_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddCatagoryViewModel.cs" />
     <Compile Include="Models\AspNetRole.cs" />
@@ -235,9 +226,8 @@
     <Compile Include="Models\CATAGORY.cs" />
     <Compile Include="Models\CatSpecUserViewModel.cs" />
     <Compile Include="Models\CONVERSATION.cs" />
-    <Compile Include="Models\C__MigrationHistory.cs" />
     <Compile Include="Models\EXPERT.cs" />
-    <Compile Include="Models\ExpertsDatabase3.cs" />
+    <Compile Include="Models\ExpertsDatabase5.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Message.cs" />
@@ -272,9 +262,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -358,14 +346,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704071730186_initial.resx">
-      <DependentUpon>201704071730186_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704071854211_1.resx">
-      <DependentUpon>201704071854211_1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
