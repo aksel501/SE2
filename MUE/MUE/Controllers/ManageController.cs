@@ -123,7 +123,7 @@ namespace MUE.Controllers
             _dbContext.SPECIALTies.Add(specialty);
             _dbContext.SaveChanges();
 
-            return RedirectToAction("Index", "Manage");
+            return RedirectToAction("ViewSpecialties", "Manage");
 
         }
 
@@ -153,14 +153,14 @@ namespace MUE.Controllers
         [HttpPost]
         public ActionResult DoDeleteSpecialty(int Id)
         {
-            var specialty = _dbContext.SPECIALTies.SingleOrDefault(s => s.ID == Id);
+            var specialty = _dbContext.SPECIALTies.FirstOrDefault(s => s.ID == Id);
             if (specialty == null)
             {
                 return HttpNotFound();
             }
             _dbContext.SPECIALTies.Remove(specialty);
             _dbContext.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ViewSpecialties");
 
         }
 
