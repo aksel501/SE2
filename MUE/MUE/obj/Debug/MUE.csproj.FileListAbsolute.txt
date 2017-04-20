@@ -570,10 +570,7 @@ C:\Users\stagg\Source\Repos\Updated\MUE\MUE\bin\Microsoft.Owin.Security.Microsof
 C:\Users\stagg\Source\Repos\Updated\MUE\MUE\obj\Debug\MUE.csprojResolveAssemblyReference.cache
 C:\Users\stagg\Source\Repos\Updated\MUE\MUE\obj\Debug\MUE.dll
 C:\Users\stagg\Source\Repos\Updated\MUE\MUE\obj\Debug\MUE.pdb
-C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\obj\Debug\MUE.Migrations.initial.resources
-C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\obj\Debug\MUE.csproj.GenerateResource.Cache
 C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\obj\Debug\MUE.csprojResolveAssemblyReference.cache
-C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\obj\Debug\MUE.Migrations._1.resources
 D:\My Class @ MU\Spring 2017\marcos4\MUE\MUE\bin\ApplicationInsights.config
 D:\My Class @ MU\Spring 2017\marcos4\MUE\MUE\bin\roslyn\csc.exe
 D:\My Class @ MU\Spring 2017\marcos4\MUE\MUE\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -829,3 +826,7 @@ D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\obj\Debug\MUE.Migrations._1.resourc
 D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\obj\Debug\MUE.csproj.GenerateResource.Cache
 D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\obj\Debug\MUE.dll
 D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\obj\Debug\MUE.pdb
+C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\bin\AntiXssLibrary.dll
+C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\bin\HtmlSanitizationLibrary.dll
+C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\bin\AntiXssLibrary.xml
+C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\bin\HtmlSanitizationLibrary.xml
