@@ -821,12 +821,13 @@ D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\bin\Microsoft.Owin.Security.Google.
 D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\bin\Microsoft.Owin.Security.Twitter.xml
 D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\obj\Debug\MUE.csprojResolveAssemblyReference.cache
-D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\obj\Debug\MUE.Migrations.initial.resources
-D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\obj\Debug\MUE.Migrations._1.resources
-D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\obj\Debug\MUE.csproj.GenerateResource.Cache
 D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\obj\Debug\MUE.dll
 D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\obj\Debug\MUE.pdb
 C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\bin\AntiXssLibrary.dll
 C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\bin\HtmlSanitizationLibrary.dll
 C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\bin\AntiXssLibrary.xml
 C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\bin\HtmlSanitizationLibrary.xml
+D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\bin\AntiXssLibrary.dll
+D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\bin\HtmlSanitizationLibrary.dll
+D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\bin\AntiXssLibrary.xml
+D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\bin\HtmlSanitizationLibrary.xml

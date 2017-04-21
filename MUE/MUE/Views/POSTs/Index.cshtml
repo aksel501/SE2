@@ -20,7 +20,7 @@
 <div class="right">
     @using (Html.BeginForm("Index", "POSTs", FormMethod.Get))
     {
-        <b>Search By: Subject </b>  <br />
+        <b>Search By: Title </b>  <br />
         @Html.TextBox("search")<input type="submit" value="Search" />
     }
 </div>
@@ -34,11 +34,12 @@
             @Html.DisplayNameFor(model => model.DATETIMEPOSTED)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SUBJECT)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.TITLE)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SUBJECT)
+        </th>
+        
        
         <th></th>
     </tr>
