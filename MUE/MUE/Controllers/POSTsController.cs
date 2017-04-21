@@ -13,7 +13,7 @@ namespace MUE.Controllers
     
     public class POSTsController : Controller
     {
-        private ExpertsDatabase3 db = new ExpertsDatabase3();
+        private ExpertsDatabase5 db = new ExpertsDatabase5();
 
         // GET: POSTs
         [AllowAnonymous]
@@ -26,14 +26,14 @@ namespace MUE.Controllers
         {
              var pOSTs = db.POSTs.Include(p => p.AspNetUser).Include(p => p.POST2);
 
-            if (searchBy == "SUBJECT")
+            if (searchBy == "TITLE")
             {
-                return View(db.POSTs.Where(x => x.TITLE.StartsWith( search) || search == null).ToList());
+                return View(db.POSTs.Where(x => x.TITLE==( search) || search == null).ToList());
 
             }
             else
             {
-                return View(db.POSTs.Where(x => x.SUBJECT.StartsWith(search) || search == null).ToList());
+                return View(db.POSTs.Where(x => x.TITLE.StartsWith(search) || search == null).ToList());
             }
         }
 
@@ -85,7 +85,7 @@ public ActionResult Details(int? id)
                     TITLE=pOST.TITLE,
           
                 };
-                db.POSTs.Add(Forms);
+                db.POSTs.Add(pOST);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -570,10 +570,7 @@ C:\Users\stagg\Source\Repos\Updated\MUE\MUE\bin\Microsoft.Owin.Security.Microsof
 C:\Users\stagg\Source\Repos\Updated\MUE\MUE\obj\Debug\MUE.csprojResolveAssemblyReference.cache
 C:\Users\stagg\Source\Repos\Updated\MUE\MUE\obj\Debug\MUE.dll
 C:\Users\stagg\Source\Repos\Updated\MUE\MUE\obj\Debug\MUE.pdb
-C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\obj\Debug\MUE.Migrations.initial.resources
-C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\obj\Debug\MUE.csproj.GenerateResource.Cache
 C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\obj\Debug\MUE.csprojResolveAssemblyReference.cache
-C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\obj\Debug\MUE.Migrations._1.resources
 D:\My Class @ MU\Spring 2017\marcos4\MUE\MUE\bin\ApplicationInsights.config
 D:\My Class @ MU\Spring 2017\marcos4\MUE\MUE\bin\roslyn\csc.exe
 D:\My Class @ MU\Spring 2017\marcos4\MUE\MUE\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -824,97 +821,13 @@ D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\bin\Microsoft.Owin.Security.Google.
 D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\bin\Microsoft.Owin.Security.Twitter.xml
 D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\obj\Debug\MUE.csprojResolveAssemblyReference.cache
-D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\obj\Debug\MUE.Migrations.initial.resources
-D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\obj\Debug\MUE.Migrations._1.resources
-D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\obj\Debug\MUE.csproj.GenerateResource.Cache
 D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\obj\Debug\MUE.dll
 D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\obj\Debug\MUE.pdb
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\ApplicationInsights.config
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\roslyn\csc.exe
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\roslyn\vbc.exe
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\roslyn\VBCSCompiler.exe
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\MUE.dll.config
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\MUE.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\MUE.pdb
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\AntiXssLibrary.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Antlr3.Runtime.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\EntityFramework.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\EntityFramework.SqlServer.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\HtmlSanitizationLibrary.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.AI.Agent.Intercept.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.AI.DependencyCollector.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.AI.PerfCounterCollector.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.AI.ServerTelemetryChannel.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.AI.Web.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.AI.WindowsServer.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.ApplicationInsights.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.AspNet.Identity.Core.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.AspNet.Identity.Owin.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.Owin.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.Owin.Host.SystemWeb.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.Owin.Security.Cookies.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.Owin.Security.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.Owin.Security.Facebook.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.Owin.Security.Google.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.Owin.Security.OAuth.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.Owin.Security.Twitter.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Newtonsoft.Json.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Owin.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\System.Web.Helpers.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\System.Web.Mvc.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\System.Web.Optimization.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\System.Web.Razor.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\System.Web.WebPages.Deployment.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\System.Web.WebPages.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\System.Web.WebPages.Razor.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\WebGrease.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\AntiXssLibrary.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\HtmlSanitizationLibrary.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.AI.DependencyCollector.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.AI.ServerTelemetryChannel.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.AI.Web.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.AI.WindowsServer.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.ApplicationInsights.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\System.Web.Helpers.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\System.Web.Mvc.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\System.Web.Optimization.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\System.Web.Razor.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\System.Web.WebPages.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\System.Web.WebPages.Deployment.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\System.Web.WebPages.Razor.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Antlr3.Runtime.pdb
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Newtonsoft.Json.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\EntityFramework.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\EntityFramework.SqlServer.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.AspNet.Identity.Core.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.AspNet.Identity.Owin.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.Owin.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.Owin.Host.SystemWeb.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.Owin.Security.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.Owin.Security.Facebook.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.Owin.Security.Cookies.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.Owin.Security.OAuth.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.Owin.Security.Google.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.Owin.Security.Twitter.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\obj\Debug\MUE.csprojResolveAssemblyReference.cache
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\obj\Debug\MUE.Migrations.initial.resources
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\obj\Debug\MUE.Migrations._1.resources
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\obj\Debug\MUE.csproj.GenerateResource.Cache
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\obj\Debug\MUE.dll
-C:\Users\Joshua\Source\Repos\SE2Reboot\MUE\MUE\obj\Debug\MUE.pdb
+C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\bin\AntiXssLibrary.dll
+C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\bin\HtmlSanitizationLibrary.dll
+C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\bin\AntiXssLibrary.xml
+C:\Users\aksel\Documents\GitHub\SE2\MUE\MUE\bin\HtmlSanitizationLibrary.xml
+D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\bin\AntiXssLibrary.dll
+D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\bin\HtmlSanitizationLibrary.dll
+D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\bin\AntiXssLibrary.xml
+D:\My Class @ MU\Spring 2017\marcos5\MUE\MUE\bin\HtmlSanitizationLibrary.xml
