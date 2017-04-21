@@ -47,6 +47,7 @@ namespace MUE.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Message message = db.Messages.Find(id);
+            
          
 
             if (message == null)
@@ -59,7 +60,7 @@ namespace MUE.Controllers
         // GET: Messages/Create
         public ActionResult Create()
         {
-            String test = "ChooseWhateverWeGottaFixThisItWillWork";
+           
             var email = User.Identity.GetUserName();
             ViewBag.RecieverID = new SelectList(db.AspNetUsers, "Id", "Email");
             //ViewBag.SenderID = new SelectList(test);

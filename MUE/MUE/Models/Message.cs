@@ -11,11 +11,9 @@ namespace MUE.Models
     {
         public int ID { get; set; }
 
-        [Required]
+        
         [StringLength(128)]
         public string SenderID { get; set; }
-
-        [Required]
         [StringLength(128)]
         public string RecieverID { get; set; }
 
