@@ -46,22 +46,24 @@
 
 
 
-    [
-    @if (Model.HasPassword)
-    {
-        @Html.ActionLink("Change your password", "ChangePassword")
-    }
-    else
-    {
-        @Html.ActionLink("Create", "SetPassword")
-    }
-    ]
+   
     <div class="row">
          <div class="col-md-8">
         <em>To edit your basic account information</em>
         @Html.ActionLink("Click Here", "Edit", routeValues: null, htmlAttributes: new { id = "editAccountLink" })
     </div>
     </div>
+
+ [
+@if (Model.HasPassword)
+{
+    @Html.ActionLink("Change your password", "ChangePassword")
+}
+else
+{
+    @Html.ActionLink("Create", "SetPassword")
+}
+    ]
 
 
     @*<dt>External Logins:</dt>

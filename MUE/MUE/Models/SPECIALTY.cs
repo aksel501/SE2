@@ -9,21 +9,23 @@ namespace MUE.Models
     [Table("SPECIALTY")]
     public partial class SPECIALTY
     {
+        [Required]
+        [StringLength(128)]
+        public string expertID { get; set; }
+
         [Key]
         [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [StringLength(64)]
+        [Display(Name = "Specialty")]
         public string NAME { get; set; }
 
         [Required]
-        [StringLength(128)]
-        public string expertID { get; set; }
-
-        [Required]
+        [Display(Name = "Description")]
         public string DESCRIPTION { get; set; }
 
         public virtual AspNetUser AspNetUser { get; set; }

@@ -93,6 +93,22 @@ namespace MUE.Controllers
 
         }
 
+        //[HttpPost]
+        //public ActionResult AddFieldOfStudy(AddCatagoryViewModel model)
+        //{
+        //    //var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
+        //    //_dbContext.CATAGORies.Add(new { USERID = manager.FindById(User.Identity.GetUserId()), CATAGORYID = catID });
+        //    ViewBag.CATAGORYID = new SelectList(_dbContext.CATAGORies, "ID", "NAME");
+        //    var catID = ViewBag.CatagoryID;
+        //    var addFieldOfStudy = new AddCatagoryViewModel
+        //    {
+        //        CATAGORYID = catID,
+        //        USERID = User.Identity.GetUserId()
+        //    };
+        //    _dbContext.USERCATAGORY.Add(catID);
+        //    return View(model);
+        //}
+
         [Authorize(Roles = "Expert, Admin")]
         public ActionResult AddSpecialty()
         {
@@ -141,7 +157,7 @@ namespace MUE.Controllers
 
         public ActionResult DeleteSpecialty(int ID)
         {
-            var specialty = _dbContext.SPECIALTies.FirstOrDefault(s => s.ID == ID);
+            var specialty = _dbContext.SPECIALTies.SingleOrDefault(s => s.ID == ID);
             if (specialty == null)
             {
                 return HttpNotFound();
@@ -153,7 +169,7 @@ namespace MUE.Controllers
         [HttpPost]
         public ActionResult DoDeleteSpecialty(int Id)
         {
-            var specialty = _dbContext.SPECIALTies.FirstOrDefault(s => s.ID == Id);
+            var specialty = _dbContext.SPECIALTies.SingleOrDefault(s => s.ID == Id);
             if (specialty == null)
             {
                 return HttpNotFound();
