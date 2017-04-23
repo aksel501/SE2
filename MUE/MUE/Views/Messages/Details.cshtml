@@ -1,40 +1,45 @@
-﻿@model MUE.Models.Message
+﻿@model IEnumerable<MUE.Models.Message>
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Message";
 }
 
-<h2>Details</h2>
+<table class="table">
+    <tr>
 
-<div>
-    <h4>Message</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AspNetUser.FirstName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AspNetUser1.FirstName)
-        </dd>
+        <th>
+            User
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Message
+        </th>
+        <th></th>
+    </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DATETIMEMADE)
-        </dt>
+    @foreach (var item in Model)
+    {
+        <tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.DATETIMEMADE)
-        </dd>
+            <td>
+                @Html.DisplayFor(modelItem => item.AspNetUser1.Email)
+                <hr>
+            </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TEXT)
-        </dt>
+            <td>
+                @Html.DisplayFor(modelItem => item.DATETIMEMADE)
+                <hr>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TEXT)
+                <hr>
+            </td>
+            
+ 
+          
+        </tr>
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.TEXT)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</table>
