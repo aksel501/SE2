@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MUE.Models;
+using Microsoft.AspNet.Identity;
 
 namespace MUE.Controllers
 {
@@ -26,14 +27,14 @@ namespace MUE.Controllers
         {
              var pOSTs = db.POSTs.Include(p => p.AspNetUser).Include(p => p.POST2);
 
-            if (searchBy == "SUBJECT")
+            if (searchBy == "TITLE")
             {
-                return View(db.POSTs.Where(x => x.TITLE.StartsWith( search) || search == null).ToList());
+                return View(db.POSTs.Where(x => x.TITLE==( search) || search == null).ToList());
 
             }
             else
             {
-                return View(db.POSTs.Where(x => x.SUBJECT.StartsWith(search) || search == null).ToList());
+                return View(db.POSTs.Where(x => x.TITLE.StartsWith(search) || search == null).ToList());
             }
         }
 
@@ -77,9 +78,10 @@ public ActionResult Details(int? id)
             if (ModelState.IsValid)
             {
                 var Forms = new POST
-                {
+                { 
                    // AspNetUser= User.Identity.Name,
-                    USERID= User.Identity.Name,
+                   USERID=User.Identity.GetUserId(),
+                   //USERID= User.Identity.GetUserName,
                    DATETIMEPOSTED=System.DateTime.Now,
                     SUBJECT= pOST.SUBJECT,
                     TITLE=pOST.TITLE,
@@ -90,11 +92,15 @@ public ActionResult Details(int? id)
                 return RedirectToAction("Index");
             }
 
-            ViewBag.USERID = new SelectList(db.AspNetUsers, "Id", "FirstName", pOST.USERID);
-            ViewBag.REPLIED_TO_POST_ID = new SelectList(db.POSTs, "ID", "USERID", pOST.REPLIED_TO_POST_ID);
+            //ViewBag.USERID = new SelectList(db.AspNetUsers, "Id", "FirstName", pOST.USERID);
+            //ViewBag.REPLIED_TO_POST_ID = new SelectList(db.POSTs, "ID", "USERID", pOST.REPLIED_TO_POST_ID);
             return View(pOST);
         }
 
+        public ActionResult Reply()
+        {
+            return View();
+        }
         // GET: POSTs/Edit/5
         public ActionResult Edit(int? id)
         {

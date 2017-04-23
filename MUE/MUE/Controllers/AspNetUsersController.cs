@@ -15,11 +15,26 @@ namespace MUE.Controllers
         private ExpertsDatabase5 db = new ExpertsDatabase5();
 
         // GET: AspNetUsers
-        public ActionResult Index(string searchBy, string search)
+        public ActionResult Index(string searchString)
         {
+            //var experts = from s in db.AspNetUsers.Where(s => s.AspNetRoles.Select(y => y.Name).Contains("Expert")) select s;
             var experts = from s in db.AspNetUsers.Where(s => s.AspNetRoles.Select(y => y.Name).Contains("Expert")) select s;
-            return View(experts);
+
+            var sp = from x in db.SPECIALTies select x;
+            ViewBag.ShowList = false;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                ViewBag.ShowList = true;
+                experts = experts.Where(x => x.LastName.ToUpper().Contains(searchString.ToUpper()));
+            }
+            //else
+            //{
+            //    experts = experts.Where(x => x.Email.ToLower().Contains(searchString.ToLower()));
+
+            //}
+           return View(experts);
         }
+         
 
             //if (searchBy == "FirstName")
             //{

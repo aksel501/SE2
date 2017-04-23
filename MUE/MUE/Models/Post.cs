@@ -21,7 +21,6 @@ namespace MUE.Models
 
         public int? REPLIED_TO_POST_ID { get; set; }
 
-        [Required]
         [StringLength(128)]
         public string USERID { get; set; }
 

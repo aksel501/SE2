@@ -10,21 +10,21 @@
         @Html.ActionLink("Create New", "Create")
     </p>
 *@
-@*<style>
+<style>
     .right {
         position: absolute;
         right: 100px;
-        top: 200px;
+        top: 150px;
     }
 </style>
 
 <div class="right">
     @using (Html.BeginForm("Index", "AspNetUsers", FormMethod.Get))
     {
-        <b>Search By: Name </b>  <br />
-        @Html.TextBox("search")<input type="submit" value="Search" />
+        <b>Filter by : Last Name </b>  <br />
+        @Html.TextBox("searchString")<input type="submit" value="Search" />
     }
-</div>*@
+</div>
 
 
 
