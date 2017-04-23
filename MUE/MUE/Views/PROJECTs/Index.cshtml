@@ -19,8 +19,8 @@
             @*@Html.DisplayNameFor(model => model.COMPLETED)*@
         </th>
         <th>
-            <p>Date Completed</p>
-            @*@Html.DisplayNameFor(model => model.DATCOMPLETED)*@
+            @*<p>Date Completed</p>
+            @Html.DisplayNameFor(model => model.DATCOMPLETED)*@
         </th>
         <th>
             <p>Title</p>
@@ -55,7 +55,7 @@
             @Html.DisplayFor(modelItem => item.DESCRIPTION)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) 
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) 
             @*@Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
         </td>
