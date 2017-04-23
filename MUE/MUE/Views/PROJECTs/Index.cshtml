@@ -15,19 +15,24 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.COMPLETED)
+            <p>Completed</p>
+            @*@Html.DisplayNameFor(model => model.COMPLETED)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DATCOMPLETED)
+            @*<p>Date Completed</p>
+            @Html.DisplayNameFor(model => model.DATCOMPLETED)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TITLE)
+            <p>Title</p>
+            @*@Html.DisplayNameFor(model => model.TITLE)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.STARTDATE)
+            <p>Start Date</p>
+            @*@Html.DisplayNameFor(model => model.STARTDATE)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DESCRIPTION)
+            <p>Description</p>
+            @*@Html.DisplayNameFor(model => model.DESCRIPTION)*@
         </th>
         <th></th>
     </tr>
@@ -50,9 +55,9 @@
             @Html.DisplayFor(modelItem => item.DESCRIPTION)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) 
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
         </td>
     </tr>
 }

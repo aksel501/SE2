@@ -16,6 +16,7 @@ namespace MUE.Controllers
         private ExpertsDatabase5 db = new ExpertsDatabase5();
 
         // GET: PROJECTs
+        [Authorize(Roles = "Expert, User")]
         public ActionResult Index()
         {
             return View(db.PROJECTs.ToList());
@@ -39,7 +40,8 @@ namespace MUE.Controllers
         // GET: PROJECTs/Create
         public ActionResult Create()
         {
-            return View();
+            var viewModel = new PROJECT { STARTDATE = DateTime.Now };
+            return View(viewModel);
         }
 
         // POST: PROJECTs/Create
@@ -55,7 +57,6 @@ namespace MUE.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(pROJECT);
         }
 
