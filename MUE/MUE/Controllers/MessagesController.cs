@@ -22,10 +22,11 @@ namespace MUE.Controllers
         {
             var userId = User.Identity.GetUserId();
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Email" : "";
+            
             var messages = from m in db.Messages where m.RecieverID == userId select m;
             if (!String.IsNullOrEmpty(searchString))
             {
-                messages = messages.Where(m => m.TEXT.Contains(searchString) || m.AspNetUser.Email.Contains(searchString));
+                messages = messages.Where(m => m.TEXT.Contains(searchString));
             }
             switch (sortOrder)
             {
@@ -42,24 +43,30 @@ namespace MUE.Controllers
         // GET: Messages/Details/5
         public ActionResult Details(int? id)
         {
+            
+            var userId = User.Identity.GetUserId();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Message message = db.Messages.Find(id);
-         
+            var receiverId = message.RecieverID;
+            var senderId = message.SenderID;
 
+            var messages = from m in db.Messages where (m.SenderID == senderId && m.RecieverID == receiverId) || (m.SenderID == receiverId && m.RecieverID == senderId) select m;
+            
             if (message == null)
             {
                 return HttpNotFound();
             }
-            return View(message);
+            messages = messages.OrderByDescending(m => m.DATETIMEMADE);
+            return View(messages);
         }
 
         // GET: Messages/Create
         public ActionResult Create()
         {
-            String test = "ChooseWhateverWeGottaFixThisItWillWork";
+            var userId = User.Identity.GetUserId();
             var email = User.Identity.GetUserName();
             ViewBag.RecieverID = new SelectList(db.AspNetUsers, "Id", "Email");
             //ViewBag.SenderID = new SelectList(test);
