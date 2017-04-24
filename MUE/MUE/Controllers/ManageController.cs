@@ -79,17 +79,18 @@ namespace MUE.Controllers
         [HttpPost]
         public ActionResult AddFieldOfStudy(AddCatagoryViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
-                //_dbContext.CATAGORies.Add(new { USERID = manager.FindById(User.Identity.GetUserId()), CATAGORYID = catID });
-                ViewBag.CATAGORYID = new SelectList(_dbContext.CATAGORies, "ID", "NAME");
-                var catID = ViewBag.CatagoryID;
-                _dbContext.CATAGORies.Add(catID);
-                return View(model);
-            }
+            //if (ModelState.IsValid)
+            //{
+            //    var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
+            //    //_dbContext.CATAGORies.Add(new { USERID = manager.FindById(User.Identity.GetUserId()), CATAGORYID = catID });
+            //    ViewBag.CATAGORYID = new SelectList(_dbContext.CATAGORies, "ID", "NAME");
+            //    var catID = ViewBag.CatagoryID;
+            //    _dbContext.CATAGORies.Add(catID);
+            //    return View(model);
+            //}
 
-            else { return RedirectToAction("Index", "Manage"); }
+            //else { return RedirectToAction("Index", "Manage"); }
+            return RedirectToAction("Index", "Manage");
 
         }
 
