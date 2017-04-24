@@ -16,6 +16,7 @@
         <th>
             Message
         </th>
+
         <th></th>
     </tr>
 
@@ -36,10 +37,20 @@
                 @Html.DisplayFor(modelItem => item.TEXT)
                 <hr>
             </td>
-            
- 
-          
+            <td>
+                @Html.ActionLink("Reply", "Create", new { RecieverID = item.SenderID })
+                <hr>
+            </td>
         </tr>
-    }
 
+    }
+    
+
+
+    
 </table>
+
+
+
+
+

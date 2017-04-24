@@ -55,12 +55,19 @@
 
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
+                <hr>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LastName)
+                <hr>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
+                <hr>
+            </td>
+            <td>
+             @Html.ActionLink("Message", "Create", "Messages", new { RecieverID = item.Id }, null)
+                <hr>
             </td>
             @*
                 <td>
