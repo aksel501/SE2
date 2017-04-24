@@ -11,6 +11,8 @@ using Microsoft.Owin.Security;
 using MUE.Models;
 using System.IO;
 using System.Web.Mvc.Html;
+using System.Net;
+using Newtonsoft.Json.Linq;
 
 namespace MUE.Controllers
 {
@@ -175,10 +177,14 @@ namespace MUE.Controllers
             {
 
 
-                //string EncodedResponse = Request.Form["g-Recaptcha-Response"];
-                //bool IsCaptchaValid=(ReCaptcha.Validate(EncodedResponse)=="True" ? true: false);
-                //if (IsCaptchaValid)
-                //{
+                var response = Request["g-Recaptcha-Response"];
+                string secretKey = "6LeLbRYUAAAAAF1hI8AseIrwFpxkGpjPapEqjhpk";
+                var client = new WebClient();
+                var captchaResult = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secretKey, response));
+                var obj = JObject.Parse(captchaResult);
+                var status = (bool)obj.SelectToken("success");
+                ViewBag.Message = status ? "Google reCaptcha validation success" : "Google reCaptcha validation failed";
+
                 var user = new ApplicationUser
                 {
                     UserName = model.Email,
