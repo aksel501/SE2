@@ -5,7 +5,7 @@
 <br />
 <br />
 <h2>@ViewBag.Title.</h2>
-
+<script src='https://www.google.com/recaptcha/api.js'></script>
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
