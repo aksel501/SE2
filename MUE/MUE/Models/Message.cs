@@ -19,6 +19,7 @@ namespace MUE.Models
 
         public DateTime DATETIMEMADE { get; set; }
 
+        [DataType(DataType.MultilineText)]
         public string TEXT { get; set; }
 
         public virtual AspNetUser AspNetUser { get; set; }
