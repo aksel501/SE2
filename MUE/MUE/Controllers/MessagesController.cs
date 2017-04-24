@@ -64,7 +64,7 @@ namespace MUE.Controllers
         }
 
         // GET: Messages/Create
-        public ActionResult Create()
+        public ActionResult Create(string RecieverID)
         {
             var userId = User.Identity.GetUserId();
             var email = User.Identity.GetUserName();

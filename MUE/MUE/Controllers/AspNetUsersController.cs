@@ -18,7 +18,8 @@ namespace MUE.Controllers
         public ActionResult Index(string searchBy, string search)
         {
             var experts = from s in db.AspNetUsers.Where(s => s.AspNetRoles.Select(y => y.Name).Contains("Expert")) select s;
-            return View(experts);
+            
+           return View(experts);
         }
 
             //if (searchBy == "FirstName")
@@ -110,6 +111,8 @@ namespace MUE.Controllers
             }
             return View(aspNetUser);
         }
+
+
 
         // POST: AspNetUsers/Delete/5
         [HttpPost, ActionName("Delete")]

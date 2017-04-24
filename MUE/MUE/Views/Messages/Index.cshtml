@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Your inbox</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    
     @using (Html.BeginForm())
     {
     <p>
@@ -50,7 +50,7 @@
                 </td>
                 <td>
 
-                    @Html.ActionLink("Message", "Details", new { id = item.ID })
+                    @Html.ActionLink("Conversation", "Details", new { id = item.ID })
                     <hr>
                 </td>
             </tr>
